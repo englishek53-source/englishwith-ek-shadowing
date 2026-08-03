@@ -507,15 +507,19 @@ prevBtn.addEventListener("click", () => {
 });
 
 nextLessonBtn.addEventListener("click", () => {
-  if(currentLesson < lessons.length - 1) loadLesson(currentLesson + 1);
-});
+  markLessonComplete(currentLesson);
 
+  if(currentLesson < lessons.length - 1){
+    loadLesson(currentLesson + 1);
+  }
+});
+  
 prevLessonBtn.addEventListener("click", () => {
   if(currentLesson > 0) loadLesson(currentLesson - 1);
 });
-
-// initial load
+  // initial load
 loadLesson(0);
+updateProgressUI();
 
 </script>
 
