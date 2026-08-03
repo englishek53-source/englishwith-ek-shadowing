@@ -10,7 +10,7 @@ const lessons = [
   // ---------------- Lesson 01 ----------------
   {
     title: "Stop Comparing Yourself to Others",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","looked","at","someone","else's","life","and","wondered,","\"Why","am","I","not","where","they","are?\""],
       ["Maybe","you","see","someone","who","is","more","successful,","more","confident,","or","living","a","life","that","seems","perfect."],
@@ -59,7 +59,7 @@ const lessons = [
   // ---------------- Lesson 02 ----------------
   {
     title: "Confidence Is Built, Not Born",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","met","someone","who","seemed","naturally","confident?"],
       ["They","spoke","with","ease,","smiled","without","fear,","and","never","appeared","to","doubt","themselves."],
@@ -115,7 +115,7 @@ const lessons = [
   // ---------------- Lesson 03 ----------------
   {
     title: "The Power of Tiny Changes",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","promised","yourself","that","you","would","change","your","life","overnight?"],
       ["Maybe","you","planned","to","exercise","every","day,","read","fifty","books","a","year,","or","master","English","in","just","a","few","months."],
@@ -165,7 +165,7 @@ const lessons = [
   // ---------------- Lesson 04 ----------------
   {
     title: "Your Inner Voice Becomes Your Reality",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","noticed","how","you","talk","to","yourself","after","making","a","mistake?"],
       ["For","many","people,","the","first","thought","is,","\"I'm","not","smart","enough,\"","or","\"I","always","fail.\""],
@@ -208,7 +208,7 @@ const lessons = [
 // ---------------- Lesson 05 ----------------
   {
     title: "Every Mistake Is a Hidden Lesson",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["What","if","your","biggest","mistake","turned","out","to","be","your","greatest","teacher?"],
       ["It","may","sound","strange,","but","almost","every","successful","person","has","a","story","that","begins","with","failure."],
@@ -254,7 +254,7 @@ const lessons = [
 // ---------------- Lesson 06 ----------------
   {
     title: "Learn to Enjoy Being Alone",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","noticed","how","uncomfortable","silence","can","feel?"],
       ["The","moment","we're","alone,","many","of","us","reach","for","our","phones,","turn","on","the","TV,","or","look","for","someone","to","talk","to."],
@@ -301,7 +301,7 @@ const lessons = [
 // ---------------- Lesson 07 ----------------
   {
     title: "The Habit That Changes Everything",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","wondered","why","some","people","achieve","incredible","results","while","others","struggle","to","make","progress?"],
       ["It","isn't","because","they","are","more","talented","or","more","intelligent."],
@@ -346,7 +346,7 @@ const lessons = [
 // ---------------- Lesson 08 ----------------
   {
     title: "The Magic of Curiosity",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["When","was","the","last","time","you","learned","something","just","because","you","were","curious?"],
       ["As","children,","we","ask","endless","questions."],
@@ -389,7 +389,7 @@ const lessons = [
 // ---------------- Lesson 09 ----------------
   {
     title: "The Courage to Say No",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","agreed","to","something","even","though","you","wanted","to","say","no?"],
       ["Maybe","you","didn't","want","to","disappoint","someone."],
@@ -431,7 +431,7 @@ const lessons = [
 // ---------------- Lesson 10 ----------------
   {
     title: "The Power of Trying New Things",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Imagine","eating","the","same","food,","visiting","the","same","places,","and","doing","the","same","things","every","single","day."],
       ["Life","would","quickly","become","predictable."],
@@ -474,7 +474,7 @@ const lessons = [
   // ---------------- Lesson 11 ----------------
   {
     title: "Why You Don't Need to Be Perfect",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","delayed","doing","something","because","you","were","waiting","for","the","perfect","moment?"],
       ["Maybe","you","wanted","to","start","learning","English,","apply","for","a","new","job,","or","begin","a","healthy","lifestyle."],
@@ -523,7 +523,7 @@ const lessons = [
 // ---------------- Lesson 12 ----------------
   {
     title: "The Secret Behind Emotionally Strong People",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","met","someone","who","stayed","calm","while","everyone","else","was","panicking?"],
       ["Maybe","they","had","problems","just","like","everyone","else,","yet","they","didn't","let","those","problems","control","them."],
@@ -569,7 +569,7 @@ const lessons = [
   // ---------------- Lesson 13 ----------------
   {
     title: "Your Comfort Zone Is Stealing Your Future",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Imagine","living","the","exact","same","day","for","the","next","ten","years."],
       ["You","wake","up","at","the","same","time,","follow","the","same","routine,","meet","the","same","people,","and","avoid","every","new","opportunity."],
@@ -615,7 +615,7 @@ const lessons = [
     // ---------------- Lesson 14 ----------------
   {
     title: "The Art of Starting Again",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","felt","that","it","was","too","late","to","begin","again?"],
       ["Maybe","you","failed","an","exam,","ended","a","relationship,","lost","a","job,","or","gave","up","on","a","dream."],
@@ -658,7 +658,7 @@ const lessons = [
     // ---------------- Lesson 15 ----------------
   {
     title: "Stop Waiting for the Perfect Moment",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["How","many","dreams","have","been","lost","because","of","one","sentence:","\"I'll","do","it","tomorrow.\""],
       ["Tomorrow","becomes","next","week."],
@@ -704,7 +704,7 @@ const lessons = [
     // ---------------- Lesson 16 ----------------
   {
     title: "The People Around You Shape Your Mind",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","noticed","that","your","mood","changes","depending","on","who","you're","with?"],
       ["Spend","time","with","positive","people,","and","you","begin","to","feel","more","hopeful."],
@@ -746,7 +746,7 @@ const lessons = [
     // ---------------- Lesson 17 ----------------
   {
     title: "The Surprising Power of Gratitude",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Imagine","waking","up","tomorrow","and","only","having","the","things","you","thanked","life","for","today."],
       ["What","would","still","be","there?"],
@@ -790,7 +790,7 @@ const lessons = [
     // ---------------- Lesson 18 ----------------
   {
     title: "Why Overthinking Never Solves Anything",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["Have","you","ever","stayed","awake","at","night","replaying","the","same","conversation","over","and","over","again?"],
       ["Maybe","you","wondered","if","you","said","the","wrong","thing,","made","the","wrong","decision,","or","missed","the","perfect","opportunity."],
@@ -836,7 +836,7 @@ const lessons = [
     // ---------------- Lesson 19 ----------------
   {
     title: "Learn to Protect Your Peace",
-    videoId: "aqz-KE-bpKQ",
+    videoId: "",
     sentences: [
       ["The","modern","world","is","louder","than","ever."],
       ["Notifications","never","stop."],
@@ -882,7 +882,7 @@ const lessons = [
     // ---------------- Lesson 20 ----------------
 {
   title: "Become the Person Your Future Self Will Thank",
-  videoId: "aqz-KE-bpKQ",
+  videoId: "",
   sentences: [
     ["Imagine","meeting","yourself","ten","years","from","now."],
     ["What","kind","of","person","would","you","see?"],
@@ -927,7 +927,7 @@ const lessons = [
   // ---------------- Lesson 21 ----------------
 {
   title: "Why Failure Is a Good Sign",
-  videoId: "aqz-KE-bpKQ",
+  videoId: "",
   sentences: [
     ["Imagine","a","child","learning","to","walk."],
     ["They","fall","once,","then","twice,","then","dozens","of","times."],
