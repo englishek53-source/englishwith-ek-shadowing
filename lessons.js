@@ -513,7 +513,7 @@ const lessons = [
     ],
     reflection: "What have you been waiting to start because you wanted everything to be perfect?",
     quote: "Perfection delays dreams. Progress brings them to life."
-  }
+  },
 // ---------------- Lesson 12 ----------------
   {
     title: "The Secret Behind Emotionally Strong People",
@@ -868,4 +868,4 @@ const lessons = [
     
 ];
 
-const TOTAL_LESSONS = 30; // update this if your final course size changes
+const TOTAL_LESSONS = 19; // update this if your final course size changes
