@@ -250,6 +250,7 @@ const lessons = [
     reflection: "What is one mistake that made you a stronger person?",
     quote: "Mistakes don't define you. They develop you."
   },
+  
 // ---------------- Lesson 06 ----------------
   {
     title: "Learn to Enjoy Being Alone",
@@ -296,6 +297,7 @@ const lessons = [
     reflection: "When was the last time you spent an hour alone without using your phone?",
     quote: "The quieter you become, the more clearly you can hear yourself."
   },
+  
 // ---------------- Lesson 07 ----------------
   {
     title: "The Habit That Changes Everything",
@@ -340,6 +342,7 @@ const lessons = [
     reflection: "What is one habit that could completely change your life if you practiced it every day?",
     quote: "Your future is hidden inside your daily habits."
   },
+  
 // ---------------- Lesson 08 ----------------
   {
     title: "The Magic of Curiosity",
@@ -382,6 +385,7 @@ const lessons = [
     reflection: "What is one topic you've always wanted to learn more about?",
     quote: "Curiosity opens doors that fear keeps closed."
   },
+  
 // ---------------- Lesson 09 ----------------
   {
     title: "The Courage to Say No",
@@ -423,6 +427,7 @@ const lessons = [
     reflection: "Is it easy or difficult for you to say no? Why?",
     quote: "Every time you say yes to everything, you say no to something important."
   },
+  
 // ---------------- Lesson 10 ----------------
   {
     title: "The Power of Trying New Things",
@@ -514,6 +519,7 @@ const lessons = [
     reflection: "What have you been waiting to start because you wanted everything to be perfect?",
     quote: "Perfection delays dreams. Progress brings them to life."
   },
+  
 // ---------------- Lesson 12 ----------------
   {
     title: "The Secret Behind Emotionally Strong People",
@@ -559,6 +565,7 @@ const lessons = [
     reflection: "How do you usually react when something doesn't go as planned?",
     quote: "Your greatest strength is not controlling life—it's controlling your response to it."
   },
+  
   // ---------------- Lesson 13 ----------------
   {
     title: "Your Comfort Zone Is Stealing Your Future",
@@ -604,6 +611,7 @@ const lessons = [
     reflection: "What is one opportunity you've avoided because it felt uncomfortable?",
     quote: "Comfort makes you feel safe. Courage makes you grow."
   },
+  
     // ---------------- Lesson 14 ----------------
   {
     title: "The Art of Starting Again",
@@ -646,6 +654,7 @@ const lessons = [
     reflection: "If you had the courage to start again today, what would you choose to do differently?",
     quote: "Every ending quietly prepares you for a new beginning."
   },
+  
     // ---------------- Lesson 15 ----------------
   {
     title: "Stop Waiting for the Perfect Moment",
@@ -691,6 +700,7 @@ const lessons = [
     reflection: "What dream have you been postponing for too long?",
     quote: "The perfect moment is the one you decide to begin."
   },
+  
     // ---------------- Lesson 16 ----------------
   {
     title: "The People Around You Shape Your Mind",
@@ -732,6 +742,7 @@ const lessons = [
     reflection: "Who inspires you to become a better person?",
     quote: "The voices you hear every day eventually become your own."
   },
+  
     // ---------------- Lesson 17 ----------------
   {
     title: "The Surprising Power of Gratitude",
@@ -775,6 +786,7 @@ const lessons = [
     reflection: "What are three things you're grateful for today?",
     quote: "Gratitude doesn't change your life overnight. It changes how you see your life."
   },
+  
     // ---------------- Lesson 18 ----------------
   {
     title: "Why Overthinking Never Solves Anything",
@@ -820,6 +832,7 @@ const lessons = [
     reflection: "What is something you've been overthinking lately that you simply need to act on?",
     quote: "Overthinking creates problems that reality never asked you to solve."
   },
+  
     // ---------------- Lesson 19 ----------------
   {
     title: "Learn to Protect Your Peace",
@@ -866,8 +879,6 @@ const lessons = [
     quote: "Peace begins when you stop giving your energy to everything that demands it."
   },
     
-];
-
 ];
 
 const TOTAL_LESSONS = lessons.length; // update this if your final course size changes
