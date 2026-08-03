@@ -507,8 +507,17 @@ prevBtn.addEventListener("click", () => {
 });
 
 nextLessonBtn.addEventListener("click", () => {
-  if(currentLesson < lessons.length - 1){
+  nextLessonBtn.addEventListener("click", () => {
+  // Mark the current lesson as completed
+  markLessonComplete(currentLesson);
+
+  // Go to the next lesson if it exists
+  if (currentLesson < lessons.length - 1) {
     loadLesson(currentLesson + 1);
+  } else {
+    // Update the progress bar and show a completion message
+    updateProgressUI();
+    alert("🎉 Congratulations! You have completed all lessons.");
   }
 });
   
