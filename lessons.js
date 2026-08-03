@@ -465,4 +465,56 @@ const lessons = [
     reflection: "What is one new experience you would like to have this year?",
     quote: "A new experience can change your life in ways you never expected."
   },
+
+  // ---------------- Lesson 11 ----------------
+  {
+    title: "Why You Don't Need to Be Perfect",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["Have","you","ever","delayed","doing","something","because","you","were","waiting","for","the","perfect","moment?"],
+      ["Maybe","you","wanted","to","start","learning","English,","apply","for","a","new","job,","or","begin","a","healthy","lifestyle."],
+      ["But","instead","of","taking","action,","you","kept","telling","yourself,","\"I'll","start","when","I'm","ready.\""],
+      ["The","truth","is,","perfection","is","one","of","the","biggest","illusions","we","believe","in."],
+      ["It","promises","that","everything","will","be","easier","if","we","wait","a","little","longer."],
+      ["But","that","day","rarely","comes."],
+      ["Think","about","a","baby","learning","to","walk."],
+      ["No","one","expects","perfect","balance","on","the","first","attempt."],
+      ["Falling","is","part","of","learning."],
+      ["In","fact,","every","fall","teaches","the","baby","something","new."],
+      ["Adults","are","no","different."],
+      ["Every","mistake,","every","imperfect","attempt,","and","every","small","failure","brings","us","one","step","closer","to","success."],
+      ["People","who","achieve","great","things","aren't","perfect."],
+      ["They","simply","refuse","to","let","imperfection","stop","them."],
+      ["They","understand","that","progress","is","always","more","valuable","than","perfection."],
+      ["The","next","time","you","catch","yourself","waiting","for","everything","to","be","perfect,","remember","this:","your","future","isn't","built","by","perfect","days."],
+      ["It's","built","by","the","ordinary","days","when","you","decide","to","keep","moving","forward."],
+      ["Start","before","you","feel","ready."],
+      ["Improve","as","you","go."],
+      ["One","imperfect","step","today","is","worth","more","than","a","hundred","perfect","plans","that","never","leave","your","mind."]
+    ],
+    vocab: [
+      ["Delay","To do something later"],
+      ["Illusion","Something that seems true but isn't"],
+      ["Balance","The ability to stay steady"],
+      ["Attempt","An effort to do something"],
+      ["Refuse","To say no or not allow"],
+      ["Imperfection","The state of not being perfect"],
+      ["Progress","Improvement over time"],
+      ["Valuable","Very useful or important"],
+      ["Ordinary","Normal or common"],
+      ["Improve","To become better"]
+    ],
+    expressions: [
+      "Progress over perfection.",
+      "Start before you're ready.",
+      "Learn as you go.",
+      "Every step counts.",
+      "Keep moving forward."
+    ],
+    reflection: "What have you been waiting to start because you wanted everything to be perfect?",
+    quote: "Perfection delays dreams. Progress brings them to life."
+  }
+
+];
+
 const TOTAL_LESSONS = 30; // update this if your final course size changes
