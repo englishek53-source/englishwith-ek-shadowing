@@ -514,7 +514,358 @@ const lessons = [
     reflection: "What have you been waiting to start because you wanted everything to be perfect?",
     quote: "Perfection delays dreams. Progress brings them to life."
   }
-
+// ---------------- Lesson 12 ----------------
+  {
+    title: "The Secret Behind Emotionally Strong People",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["Have","you","ever","met","someone","who","stayed","calm","while","everyone","else","was","panicking?"],
+      ["Maybe","they","had","problems","just","like","everyone","else,","yet","they","didn't","let","those","problems","control","them."],
+      ["At","first,","it","might","seem","like","they","were","simply","born","stronger."],
+      ["But","emotional","strength","isn't","something","you're","born","with—it's","something","you","build."],
+      ["Emotionally","strong","people","don't","ignore","their","feelings."],
+      ["They","recognize","them,","accept","them,","and","choose","how","to","respond","instead","of","reacting","immediately."],
+      ["They","understand","that","emotions","are","like","waves."],
+      ["They","rise,","they","fall,","and","they","never","stay","forever."],
+      ["Life","will","always","bring","disappointment,","criticism,","and","unexpected","challenges."],
+      ["You","can't","control","every","situation,","but","you","can","control","your","response."],
+      ["That","is","where","real","strength","begins."],
+      ["The","next","time","something","upsets","you,","don't","ask","yourself,","\"Why","is","this","happening","to","me?\""],
+      ["Instead,","ask,","\"What","is","the","best","way","to","respond?\""],
+      ["One","question","focuses","on","the","problem."],
+      ["The","other","focuses","on","the","solution."],
+      ["Being","emotionally","strong","doesn't","mean","you","never","cry","or","feel","sad."],
+      ["It","means","you","don't","let","temporary","emotions","make","permanent","decisions."]
+    ],
+    vocab: [
+      ["Emotionally","Related to feelings"],
+      ["Recognize","To identify"],
+      ["Respond","To react thoughtfully"],
+      ["Temporary","Lasting a short time"],
+      ["Permanent","Lasting forever"],
+      ["Criticism","Negative feedback"],
+      ["Disappointment","Sadness when expectations aren't met"],
+      ["Challenge","A difficult situation"],
+      ["Solution","The answer to a problem"],
+      ["Strength","Mental or physical power"]
+    ],
+    expressions: [
+      "Stay calm.",
+      "Think before you react.",
+      "Control your response.",
+      "This feeling will pass.",
+      "Keep your balance."
+    ],
+    reflection: "How do you usually react when something doesn't go as planned?",
+    quote: "Your greatest strength is not controlling life—it's controlling your response to it."
+  },
+  // ---------------- Lesson 13 ----------------
+  {
+    title: "Your Comfort Zone Is Stealing Your Future",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["Imagine","living","the","exact","same","day","for","the","next","ten","years."],
+      ["You","wake","up","at","the","same","time,","follow","the","same","routine,","meet","the","same","people,","and","avoid","every","new","opportunity."],
+      ["At","first,","it","feels","safe."],
+      ["But","after","a","while,","safety","quietly","turns","into","regret."],
+      ["Your","comfort","zone","is","a","place","where","everything","feels","familiar."],
+      ["There's","nothing","wrong","with","feeling","comfortable,","but","nothing","truly","changes","there","either."],
+      ["Growth","begins","the","moment","you","choose","uncertainty","over","routine."],
+      ["Every","new","skill","once","felt","uncomfortable."],
+      ["The","first","conversation","in","English."],
+      ["The","first","day","at","a","new","job."],
+      ["The","first","presentation."],
+      ["They","all","seemed","frightening","until","they","became","familiar."],
+      ["Fear","often","tells","you","to","stay","where","you","are."],
+      ["Curiosity","tells","you","to","take","one","more","step."],
+      ["The","people","who","build","extraordinary","lives","aren't","fearless—they","simply","refuse","to","let","fear","make","their","decisions."],
+      ["Ask","yourself","this:","one","year","from","now,","will","you","regret","trying...","or","regret","never","trying","at","all?"],
+      ["The","future","belongs","to","those","who","are","willing","to","feel","uncomfortable","today."]
+    ],
+    vocab: [
+      ["Comfort zone","A place where you feel safe"],
+      ["Routine","A regular way of doing things"],
+      ["Regret","Sadness about the past"],
+      ["Familiar","Well known"],
+      ["Uncertainty","Not knowing what will happen"],
+      ["Opportunity","A chance"],
+      ["Frightening","Causing fear"],
+      ["Curious","Wanting to learn"],
+      ["Fearless","Not afraid"],
+      ["Extraordinary","Remarkable"]
+    ],
+    expressions: [
+      "Step outside your comfort zone.",
+      "Take a chance.",
+      "Face your fears.",
+      "Growth begins with courage.",
+      "Try before you decide."
+    ],
+    reflection: "What is one opportunity you've avoided because it felt uncomfortable?",
+    quote: "Comfort makes you feel safe. Courage makes you grow."
+  },
+    // ---------------- Lesson 14 ----------------
+  {
+    title: "The Art of Starting Again",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["Have","you","ever","felt","that","it","was","too","late","to","begin","again?"],
+      ["Maybe","you","failed","an","exam,","ended","a","relationship,","lost","a","job,","or","gave","up","on","a","dream."],
+      ["In","moments","like","these,","it's","easy","to","believe","that","your","best","days","are","behind","you."],
+      ["But","life","doesn't","move","in","a","straight","line."],
+      ["Every","successful","person","has","experienced","moments","when","they","had","to","start","over."],
+      ["The","difference","is","that","they","didn't","see","a","new","beginning","as","proof","of","failure."],
+      ["They","saw","it","as","another","chance","to","build","something","better."],
+      ["Starting","again","requires","courage","because","it","means","accepting","that","the","past","cannot","be","changed."],
+      ["Instead","of","carrying","regret","everywhere","you","go,","you","choose","to","carry","wisdom."],
+      ["Every","sunrise","is","a","reminder","that","life","gives","us","another","opportunity","to","begin."],
+      ["You","don't","need","a","new","year,","a","new","month,","or","even","a","new","Monday."],
+      ["Sometimes,","all","you","need","is","the","decision","to","take","the","first","step","again."],
+      ["Your","story","is","not","finished","because","one","chapter","was","difficult."],
+      ["Some","of","the","most","beautiful","chapters","are","written","after","the","hardest","ones."]
+    ],
+    vocab: [
+      ["Begin","To start"],
+      ["Failure","Lack of success"],
+      ["Opportunity","A chance"],
+      ["Wisdom","Knowledge gained through experience"],
+      ["Regret","Sadness about the past"],
+      ["Chapter","A part of a story"],
+      ["Sunrise","The beginning of the day"],
+      ["Accept","To receive willingly"],
+      ["Decision","A choice"],
+      ["Journey","The process of moving toward a goal"]
+    ],
+    expressions: [
+      "Start over.",
+      "Turn the page.",
+      "Learn from the past.",
+      "Never stop believing.",
+      "Every day is a new beginning."
+    ],
+    reflection: "If you had the courage to start again today, what would you choose to do differently?",
+    quote: "Every ending quietly prepares you for a new beginning."
+  },
+    // ---------------- Lesson 15 ----------------
+  {
+    title: "Stop Waiting for the Perfect Moment",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["How","many","dreams","have","been","lost","because","of","one","sentence:","\"I'll","do","it","tomorrow.\""],
+      ["Tomorrow","becomes","next","week."],
+      ["Next","week","becomes","next","year."],
+      ["Before","you","realize","it,","years","have","passed,","and","nothing","has","changed."],
+      ["Many","people","believe","that","successful","people","waited","for","the","perfect","opportunity."],
+      ["The","truth","is","exactly","the","opposite."],
+      ["They","started","before","they","felt","ready."],
+      ["They","made","mistakes,","learned","from","them,","and","improved","along","the","way."],
+      ["There","will","always","be","another","excuse."],
+      ["You","may","think","you","need","more","time,","more","money,","more","knowledge,","or","more","confidence."],
+      ["But","the","perfect","moment","is","a","myth."],
+      ["Life","doesn't","wait","until","everything","is","perfect,","and","neither","should","you."],
+      ["Action","creates","clarity."],
+      ["The","first","step","is","often","the","hardest,","but","it's","also","the","most","important."],
+      ["Once","you","begin,","you'll","discover","that","you're","capable","of","much","more","than","you","imagined."],
+      ["One","year","from","today,","you'll","wish","you","had","started","now."],
+      ["Don't","let","fear","steal","another","day","from","your","future."]
+    ],
+    vocab: [
+      ["Opportunity","A good chance"],
+      ["Excuse","A reason for not doing something"],
+      ["Clarity","Clear understanding"],
+      ["Capable","Able to do something"],
+      ["Imagine","To create a picture in your mind"],
+      ["Confidence","Belief in yourself"],
+      ["Action","Doing something"],
+      ["Improve","To become better"],
+      ["Future","The time ahead"],
+      ["Myth","A false belief"]
+    ],
+    expressions: [
+      "Start now.",
+      "Take action.",
+      "Stop making excuses.",
+      "The best time is today.",
+      "Don't wait."
+    ],
+    reflection: "What dream have you been postponing for too long?",
+    quote: "The perfect moment is the one you decide to begin."
+  },
+    // ---------------- Lesson 16 ----------------
+  {
+    title: "The People Around You Shape Your Mind",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["Have","you","ever","noticed","that","your","mood","changes","depending","on","who","you're","with?"],
+      ["Spend","time","with","positive","people,","and","you","begin","to","feel","more","hopeful."],
+      ["Spend","time","with","people","who","constantly","complain,","and","their","negativity","slowly","becomes","your","own."],
+      ["The","people","around","you","influence","your","thoughts,","habits,","and","even","your","dreams."],
+      ["Without","realizing","it,","you","begin","to","copy","their","attitudes,","their","language,","and","the","way","they","see","the","world."],
+      ["This","doesn't","mean","you","should","avoid","everyone","who","has","problems."],
+      ["It","simply","means","you","should","choose","relationships","that","encourage","growth","instead","of","fear."],
+      ["Look","for","people","who","inspire","you","to","become","better."],
+      ["Read","books","written","by","wise","people."],
+      ["Listen","to","meaningful","conversations."],
+      ["Fill","your","mind","with","ideas","that","help","you","grow."],
+      ["Remember,","your","environment","is","shaping","the","person","you're","becoming","every","single","day."],
+      ["Choose","it","carefully."]
+    ],
+    vocab: [
+      ["Influence","To affect someone"],
+      ["Mood","The way you feel"],
+      ["Negativity","A negative attitude"],
+      ["Attitude","A way of thinking"],
+      ["Inspire","To motivate"],
+      ["Relationship","A connection with others"],
+      ["Encourage","To support"],
+      ["Environment","The people and places around you"],
+      ["Meaningful","Important"],
+      ["Growth","Personal improvement"]
+    ],
+    expressions: [
+      "Choose wisely.",
+      "Surround yourself with positive people.",
+      "Learn from others.",
+      "Positive energy matters.",
+      "Grow together."
+    ],
+    reflection: "Who inspires you to become a better person?",
+    quote: "The voices you hear every day eventually become your own."
+  },
+    // ---------------- Lesson 17 ----------------
+  {
+    title: "The Surprising Power of Gratitude",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["Imagine","waking","up","tomorrow","and","only","having","the","things","you","thanked","life","for","today."],
+      ["What","would","still","be","there?"],
+      ["Most","people","spend","their","lives","chasing","what","they","don't","have."],
+      ["They","believe","happiness","will","finally","arrive","when","they","earn","more","money,","buy","a","bigger","house,","or","achieve","another","goal."],
+      ["But","happiness","has","a","strange","habit—it","keeps","moving","further","away."],
+      ["Gratitude","changes","this."],
+      ["Instead","of","focusing","on","what's","missing,","it","reminds","you","of","what's","already","present."],
+      ["A","healthy","body."],
+      ["A","caring","friend."],
+      ["A","peaceful","morning."],
+      ["The","ability","to","learn,","grow,","and","dream."],
+      ["Gratitude","doesn't","remove","your","problems,","but","it","changes","the","way","you","see","them."],
+      ["It","teaches","your","mind","to","notice","opportunities","instead","of","obstacles."],
+      ["Take","one","minute","every","evening","to","write","down","three","things","you're","grateful","for."],
+      ["It","seems","like","a","small","habit,","but","over","time,","it","can","completely","change","the","way","you","experience","life."]
+    ],
+    vocab: [
+      ["Gratitude","Thankfulness"],
+      ["Opportunity","A chance"],
+      ["Obstacle","Something that blocks progress"],
+      ["Present","Existing now"],
+      ["Experience","Something that happens to you"],
+      ["Peaceful","Calm"],
+      ["Chase","To try to catch"],
+      ["Appreciate","To value"],
+      ["Notice","To become aware of"],
+      ["Dream","A hope for the future"]
+    ],
+    expressions: [
+      "Be grateful.",
+      "Count your blessings.",
+      "Appreciate the little things.",
+      "Focus on what you have.",
+      "Enjoy the present."
+    ],
+    reflection: "What are three things you're grateful for today?",
+    quote: "Gratitude doesn't change your life overnight. It changes how you see your life."
+  },
+    // ---------------- Lesson 18 ----------------
+  {
+    title: "Why Overthinking Never Solves Anything",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["Have","you","ever","stayed","awake","at","night","replaying","the","same","conversation","over","and","over","again?"],
+      ["Maybe","you","wondered","if","you","said","the","wrong","thing,","made","the","wrong","decision,","or","missed","the","perfect","opportunity."],
+      ["The","more","you","thought","about","it,","the","more","confused","you","became."],
+      ["This","is","the","trap","of","overthinking."],
+      ["Many","people","believe","that","thinking","longer","leads","to","better","decisions."],
+      ["Sometimes","that's","true."],
+      ["But","overthinking","is","different."],
+      ["It","doesn't","create","solutions—it","creates","anxiety."],
+      ["Instead","of","moving","forward,","your","mind","keeps","running","in","circles."],
+      ["Imagine","trying","to","drive","a","car","while","constantly","looking","in","the","rearview","mirror."],
+      ["You","would","never","enjoy","the","journey,","and","sooner","or","later,","you","would","lose","your","direction."],
+      ["The","truth","is","that","no","decision","comes","with","a","guarantee."],
+      ["You'll","never","know","every","possible","outcome","before","taking","action."],
+      ["At","some","point,","you","have","to","trust","yourself","and","move","forward."],
+      ["Thinking","helps","you","prepare."],
+      ["Overthinking","keeps","you","trapped."],
+      ["Learn","the","difference,","and","you'll","discover","a","quieter,","more","peaceful","mind."]
+    ],
+    vocab: [
+      ["Overthinking","Thinking too much"],
+      ["Replay","To think about something again"],
+      ["Opportunity","A chance"],
+      ["Anxiety","A feeling of worry"],
+      ["Journey","The process of moving forward"],
+      ["Direction","The path you follow"],
+      ["Outcome","The final result"],
+      ["Trust","To believe in"],
+      ["Prepare","To get ready"],
+      ["Trap","A difficult situation that's hard to escape"]
+    ],
+    expressions: [
+      "Let it go.",
+      "Trust yourself.",
+      "Stop overthinking.",
+      "Take the next step.",
+      "Focus on the present."
+    ],
+    reflection: "What is something you've been overthinking lately that you simply need to act on?",
+    quote: "Overthinking creates problems that reality never asked you to solve."
+  },
+    // ---------------- Lesson 19 ----------------
+  {
+    title: "Learn to Protect Your Peace",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["The","modern","world","is","louder","than","ever."],
+      ["Notifications","never","stop."],
+      ["Opinions","are","everywhere."],
+      ["People","argue","about","everything,","and","bad","news","travels","faster","than","good","news."],
+      ["If","you're","not","careful,","the","noise","around","you","will","slowly","become","the","noise","inside","your","mind."],
+      ["Protecting","your","peace","doesn't","mean","avoiding","reality."],
+      ["It","means","choosing","what","deserves","your","attention."],
+      ["You","don't","have","to","join","every","argument."],
+      ["You","don't","have","to","answer","every","message","immediately."],
+      ["And","you","certainly","don't","have","to","carry","problems","that","don't","belong","to","you."],
+      ["Peace","is","built","through","small","daily","choices."],
+      ["Spend","time","in","nature."],
+      ["Read","instead","of","endlessly","scrolling."],
+      ["Talk","to","people","who","leave","you","feeling","lighter,","not","exhausted."],
+      ["Learn","to","enjoy","quiet","moments","without","feeling","guilty."],
+      ["Your","attention","is","one","of","the","most","valuable","things","you","own."],
+      ["Spend","it","wisely,","because","whatever","you","give","your","attention","to","will","eventually","shape","your","life."]
+    ],
+    vocab: [
+      ["Notification","A message or alert"],
+      ["Opinion","A personal belief"],
+      ["Reality","The real world"],
+      ["Attention","Mental focus"],
+      ["Scroll","To move through content on a screen"],
+      ["Exhausted","Extremely tired"],
+      ["Peace","A calm state of mind"],
+      ["Valuable","Very important"],
+      ["Shape","To influence"],
+      ["Wisely","In a smart way"]
+    ],
+    expressions: [
+      "Protect your peace.",
+      "Choose your battles.",
+      "Less noise, more clarity.",
+      "Stay present.",
+      "Give yourself space."
+    ],
+    reflection: "What is one thing you could remove from your daily life to feel more peaceful?",
+    quote: "Peace begins when you stop giving your energy to everything that demands it."
+  },
+    
 ];
 
 const TOTAL_LESSONS = 30; // update this if your final course size changes
