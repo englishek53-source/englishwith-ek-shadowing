@@ -42,15 +42,22 @@ margin-top:20px;
 .video{
 width:90%;
 max-width:900px;
-height:350px;
-background:white;
 margin:auto;
 border-radius:25px;
-display:flex;
-align-items:center;
-justify-content:center;
+overflow:hidden;
 box-shadow:0 10px 30px rgba(0,0,0,.08);
-font-size:22px;
+position:relative;
+padding-top:50.625%; /* 16:9 ratio */
+background:white;
+}
+
+.video iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:0;
 }
 
 /* ---------- Shadowing Card ---------- */
@@ -121,6 +128,104 @@ color:white;
 transform:scale(1.06);
 }
 
+.lesson-title{
+width:90%;
+max-width:900px;
+margin:0 auto 20px;
+text-align:center;
+}
+
+.lesson-number{
+display:inline-block;
+background:#DCCDB8;
+color:#2B241F;
+padding:6px 18px;
+border-radius:999px;
+font-size:14px;
+font-weight:700;
+letter-spacing:.5px;
+margin-bottom:10px;
+}
+
+.lesson-title h2{
+font-size:28px;
+margin:10px 0 0;
+}
+
+/* ---------- Lesson Sections (Vocabulary / Expressions / Reflection / Quote) ---------- */
+
+.lesson-section{
+width:90%;
+max-width:900px;
+background:white;
+margin:20px auto;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+padding:35px 30px;
+box-sizing:border-box;
+}
+
+.lesson-section h3{
+margin-top:0;
+font-size:22px;
+color:#2B241F;
+}
+
+.vocab-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.vocab-table th, .vocab-table td{
+text-align:left;
+padding:10px 12px;
+border-bottom:1px solid #F1EEE8;
+font-size:16px;
+}
+
+.vocab-table th{
+color:#7D8E74;
+font-size:14px;
+text-transform:uppercase;
+letter-spacing:.5px;
+}
+
+.expressions-list{
+list-style:none;
+margin:0;
+padding:0;
+}
+
+.expressions-list li{
+padding:10px 16px;
+background:#F8F6F2;
+border-radius:14px;
+margin-bottom:10px;
+font-size:16px;
+}
+
+.reflection-box{
+background:#DCCDB8;
+border-radius:18px;
+padding:20px;
+font-size:17px;
+font-style:italic;
+}
+
+.quote-section{
+text-align:center;
+background:#2B241F;
+color:#F8F6F2;
+}
+
+.quote-section p{
+color:#F8F6F2;
+font-size:22px;
+font-style:italic;
+line-height:1.5;
+margin:0;
+}
+
 .cards{
 display:flex;
 justify-content:center;
@@ -154,10 +259,13 @@ text-align:center;
 
 </header>
 
+<div class="lesson-title">
+  <span class="lesson-number">Lesson 01</span>
+  <h2>Stop Comparing Yourself to Others</h2>
+</div>
+
 <div class="video">
-
-🎥 Lesson Player
-
+<iframe src="https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ" title="Lesson video" allowfullscreen></iframe>
 </div>
 
 <!-- ---------- Shadowing Card ---------- -->
@@ -171,6 +279,49 @@ text-align:center;
 
   <div class="sentence" id="sentence"></div>
 
+</div>
+
+<!-- ---------- Vocabulary ---------- -->
+<div class="lesson-section">
+  <h3>📚 Vocabulary</h3>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><td>Compare</td><td>To judge one thing against another</td></tr>
+    <tr><td>Journey</td><td>The process of reaching a goal</td></tr>
+    <tr><td>Invisible</td><td>Impossible to see</td></tr>
+    <tr><td>Struggle</td><td>A difficult experience or challenge</td></tr>
+    <tr><td>Achievement</td><td>Something you successfully complete</td></tr>
+    <tr><td>Progress</td><td>Improvement over time</td></tr>
+    <tr><td>Unique</td><td>Different from everything else</td></tr>
+    <tr><td>Meaningful</td><td>Important and valuable</td></tr>
+    <tr><td>Pace</td><td>The speed at which something happens</td></tr>
+    <tr><td>Trust</td><td>To believe in someone or something</td></tr>
+  </table>
+</div>
+
+<!-- ---------- Useful Expressions ---------- -->
+<div class="lesson-section">
+  <h3>💬 Useful Expressions</h3>
+  <ul class="expressions-list">
+    <li>Everyone has their own journey.</li>
+    <li>Focus on your own progress.</li>
+    <li>Trust the process.</li>
+    <li>Growth takes time.</li>
+    <li>You are doing better than you think.</li>
+  </ul>
+</div>
+
+<!-- ---------- Reflection Question ---------- -->
+<div class="lesson-section">
+  <h3>❓ Reflection Question</h3>
+  <div class="reflection-box">
+    What is one thing you have improved about yourself that you are proud of?
+  </div>
+</div>
+
+<!-- ---------- Quote ---------- -->
+<div class="lesson-section quote-section">
+  <p>"Don't compare your chapter one to someone else's chapter twenty."</p>
 </div>
 
 <div class="cards">
@@ -194,11 +345,28 @@ text-align:center;
 
 <script>
 
-// Each sentence has its words + an Arabic translation
+// Lesson 01 — Stop Comparing Yourself to Others, split sentence by sentence
 const sentences = [
-  { words: ["They","will","drag","you","down","to","their","level"] },
-  { words: ["Never","argue","with","stupid","people"] },
-  { words: ["Turn","knowledge","to","your","advantage"] }
+  { words: ["Have","you","ever","looked","at","someone","else's","life","and","wondered,","\"Why","am","I","not","where","they","are?\""] },
+  { words: ["Maybe","you","see","someone","who","is","more","successful,","more","confident,","or","living","a","life","that","seems","perfect."] },
+  { words: ["Without","realizing","it,","you","start","comparing","your","journey","to","theirs."] },
+  { words: ["And","slowly,","you","forget","something","important:","you","are","only","seeing","a","small","part","of","their","story."] },
+  { words: ["Everyone","has","struggles","that","remain","invisible."] },
+  { words: ["The","person","who","looks","successful","today","may","have","spent","years","fighting","doubts,","failures,","and","difficult","moments."] },
+  { words: ["You","see","their","results,","but","you","don't","see","their","process."] },
+  { words: ["Comparison","is","dangerous","because","it","makes","you","focus","on","what","you","lack","instead","of","what","you","have."] },
+  { words: ["It","turns","your","achievements","into","something","small","and","makes","you","forget","how","far","you","have","already","come."] },
+  { words: ["Imagine","planting","a","seed","and","checking","it","every","day,","wondering","why","it","hasn't","become","a","tree","yet."] },
+  { words: ["Growth","takes","time."] },
+  { words: ["A","tree","does","not","compete","with","another","tree;","it","simply","grows","at","its","own","pace."] },
+  { words: ["People","are","the","same."] },
+  { words: ["The","only","person","you","should","compare","yourself","with","is","the","person","you","were","yesterday."] },
+  { words: ["Are","you","learning?"] },
+  { words: ["Are","you","improving?"] },
+  { words: ["Are","you","becoming","kinder,","stronger,","and","wiser?"] },
+  { words: ["Your","journey","is","unique."] },
+  { words: ["You","don't","need","to","copy","someone","else's","path","to","create","a","meaningful","life."] },
+  { words: ["Focus","on","your","progress,","trust","your","timing,","and","remember","that","slow","growth","is","still","growth."] }
 ];
 
 let sentenceIndex = 0;
