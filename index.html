@@ -412,7 +412,7 @@ function loadLesson(index){
 
   const num = String(currentLesson + 1).padStart(2, "0");
   lessonNumber.textContent = "Lesson " + num;
-  lessonProgress.textContent = "Lesson " + (currentLesson + 1) + " / " + TOTAL_LESSONS;
+lessonProgress.textContent = "Lesson " + (currentLesson + 1) + " / " + lessons.length;
   lessonTitle.textContent = lesson.title;
   lessonVideo.src = "https://www.youtube-nocookie.com/embed/" + lesson.videoId;
 
