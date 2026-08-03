@@ -878,7 +878,51 @@ const lessons = [
     reflection: "What is one thing you could remove from your daily life to feel more peaceful?",
     quote: "Peace begins when you stop giving your energy to everything that demands it."
   },
-    
+  
+    // ---------------- Lesson 20 ----------------
+{
+  title: "Become the Person Your Future Self Will Thank",
+  videoId: "aqz-KE-bpKQ",
+  sentences: [
+    ["Imagine","meeting","yourself","ten","years","from","now."],
+    ["What","kind","of","person","would","you","see?"],
+    ["Would","your","future","self","thank","you","for","the","choices","you're","making","today","—","or","wish","you","had","chosen","differently?"],
+    ["The","future","isn't","created","by","one","big","decision."],
+    ["It's","built","through","hundreds","of","small","choices."],
+    ["Every","book","you","read,","every","workout","you","finish,","every","kind","word","you","speak,","and","every","minute","you","spend","learning","English","is","shaping","the","person","you're","becoming."],
+    ["It's","easy","to","sacrifice","tomorrow","for","today's","comfort."],
+    ["Skipping","one","workout","doesn't","seem","important."],
+    ["Wasting","one","evening","feels","harmless."],
+    ["But","small","decisions","have","a","way","of","becoming","habits,"],
+    ["And","habits","become","your","lifestyle."],
+    ["Ask","yourself","one","simple","question","before","making","a","decision:"],
+    ["Will","my","future","self","thank","me","for","this?"],
+    ["If","the","answer","is","yes,","do","it","—","even","if","it's","difficult."],
+    ["Your","future","is","not","waiting","for","you."],
+    ["It's","being","created","by","you,","one","choice","at","a","time."]
+  ],
+  vocab: [
+    ["Future self","The person you will become"],
+    ["Choice","A decision"],
+    ["Sacrifice","To give up something"],
+    ["Lifestyle","The way you live"],
+    ["Habit","A repeated behavior"],
+    ["Shape","To influence"],
+    ["Harmless","Not dangerous"],
+    ["Decision","A choice"],
+    ["Create","To make something"],
+    ["Discipline","The ability to do what is necessary"]
+  ],
+  expressions: [
+    "Think long-term.",
+    "Make wise choices.",
+    "Invest in yourself.",
+    "Your future starts today.",
+    "Small choices matter."
+  ],
+  reflection: "What is one decision you can make today that your future self will be grateful for?",
+  quote: "Your future is quietly built by the choices you make when no one is watching."
+},
 ];
 
 const TOTAL_LESSONS = lessons.length; // update this if your final course size changes
