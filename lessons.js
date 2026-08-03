@@ -203,9 +203,8 @@ const lessons = [
     ],
     reflection: "If your inner voice had a personality, would it be your biggest supporter or your biggest critic?",
     quote: "The words you repeat to yourself become the life you believe you deserve."
-  }
+  },
 
-];
 // ---------------- Lesson 05 ----------------
   {
     title: "Every Mistake Is a Hidden Lesson",
@@ -341,7 +340,6 @@ const lessons = [
     reflection: "What is one habit that could completely change your life if you practiced it every day?",
     quote: "Your future is hidden inside your daily habits."
   },
-
 // ---------------- Lesson 08 ----------------
   {
     title: "The Magic of Curiosity",
