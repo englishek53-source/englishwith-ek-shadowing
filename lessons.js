@@ -1001,6 +1001,7 @@ const lessons = [
   reflection: "What failure has taught you the most valuable lesson?",
   quote: "Failure isn't the opposite of success. It's part of the journey."
 },
+  
   // ---------------- Lesson 22 ----------------
 {
   title: "Your Phone Is Controlling Your Mind",
