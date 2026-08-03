@@ -923,6 +923,457 @@ const lessons = [
   reflection: "What is one decision you can make today that your future self will be grateful for?",
   quote: "Your future is quietly built by the choices you make when no one is watching."
 },
+
+  // ---------------- Lesson 21 ----------------
+{
+  title: "Why Failure Is a Good Sign",
+  videoId: "aqz-KE-bpKQ",
+  sentences: [
+    ["Imagine","a","child","learning","to","walk."],
+    ["They","fall","once,","then","twice,","then","dozens","of","times."],
+    ["Yet","no","one","calls","them","a","failure."],
+    ["Everyone","smiles","because","they","know","that","falling","is","part","of","learning."],
+    ["Somehow,","as","adults,","we","forget","this","simple","truth."],
+    ["Many","people","see","failure","as","proof","that","they","are","not","good","enough."],
+    ["They","avoid","challenges","because","they","are","afraid","of","making","mistakes."],
+    ["But","the","people","who","achieve","great","things","understand","something","different:"],
+    ["Failure","is","often","a","sign","that","you","are","trying","something","difficult."],
+    ["If","you","never","fail,","you","may","never","be","pushing","yourself","beyond","what","is","comfortable."],
+    ["Every","mistake","teaches","you","something","that","success","never","could."],
+    ["It","shows","you","where","to","improve,","what","to","change,","and","how","to","become","stronger."],
+    ["Think","about","your","own","life."],
+    ["The","lessons","you","remember","most","probably","didn't","come","from","easy","victories."],
+    ["They","came","from","difficult","moments","that","forced","you","to","grow."],
+    ["Don't","fear","failure."],
+    ["Fear","staying","in","the","same","place","because","you're","too","afraid","to","try."],
+    ["One","failed","attempt","doesn't","define","your","future."],
+    ["Giving","up","does."]
+  ],
+  vocab: [
+    ["Failure","Lack of success"],
+    ["Challenge","A difficult task"],
+    ["Mistake","Something done incorrectly"],
+    ["Improve","To become better"],
+    ["Victory","Success"],
+    ["Attempt","An effort"],
+    ["Comfortable","Feeling safe and relaxed"],
+    ["Grow","To develop"],
+    ["Define","To describe or determine"],
+    ["Courage","Mental strength"]
+  ],
+  expressions: [
+    "Learn from failure.",
+    "Try again.",
+    "Don't give up.",
+    "Failure is feedback.",
+    "Keep growing."
+  ],
+  reflection: "What failure has taught you the most valuable lesson?",
+  quote: "Failure isn't the opposite of success. It's part of the journey."
+},
+  // ---------------- Lesson 22 ----------------
+{
+  title: "Your Phone Is Controlling Your Mind",
+  videoId: "",
+  sentences: [
+    ["When","was","the","last","time","you","picked","up","your","phone","without","even","thinking","about","it?"],
+    ["Maybe","you","only","wanted","to","check","the","time,","but","a","few","minutes","later","you","found","yourself","scrolling","through","videos,","reading","comments,","and","forgetting","why","you","picked","it","up","in","the","first","place."],
+    ["This","happens","to","millions","of","people","every","day."],
+    ["Smartphones","are","wonderful","tools,","but","they","can","easily","become","distractions."],
+    ["Every","notification","pulls","your","attention","away","from","the","present","moment."],
+    ["Little","by","little,","your","ability","to","focus","becomes","weaker."],
+    ["Your","brain","was","designed","to","concentrate","on","one","thing","at","a","time,","not","to","jump","endlessly","between","messages,","videos,","and","social","media."],
+    ["The","more","distractions","you","allow,","the","harder","it","becomes","to","study,","read,","or","even","enjoy","a","quiet","conversation."],
+    ["Imagine","spending","just","one","hour","every","day","without","your","phone."],
+    ["You","could","read","a","book,","exercise,","learn","English,","or","simply","think."],
+    ["Over","a","year,","that","single","hour","could","completely","change","your","life."],
+    ["Don't","let","your","phone","decide","where","your","attention","goes."],
+    ["Your","attention","is","your","life."],
+    ["Protect","it."]
+  ],
+  vocab: [
+    ["Distraction","Something that takes your attention"],
+    ["Notification","A message or alert"],
+    ["Focus","To concentrate"],
+    ["Scroll","To move through content"],
+    ["Attention","Mental focus"],
+    ["Conversation","Talking with someone"],
+    ["Concentrate","To think carefully"],
+    ["Present","The current moment"],
+    ["Habit","A repeated action"],
+    ["Decide","To make a choice"]
+  ],
+  expressions: [
+    "Put your phone away.",
+    "Stay focused.",
+    "Live in the moment.",
+    "Protect your attention.",
+    "Less screen time, more life."
+  ],
+  reflection: "How many hours do you think you spend on your phone every day?",
+  quote: "The greatest distraction in your pocket may also be the greatest thief of your time."
+},
+
+// ---------------- Lesson 23 ----------------
+{
+  title: "The Happiness Trap",
+  videoId: "",
+  sentences: [
+    ["What","if","the","harder","you","chase","happiness,","the","further","it","moves","away?"],
+    ["Many","people","believe","they","will","finally","be","happy","when","they","earn","more","money,","lose","weight,","buy","a","bigger","house,","or","achieve","another","goal."],
+    ["They","keep","telling","themselves,","\"I'll","be","happy","when...\""],
+    ["But","when","that","moment","arrives,","the","feeling","doesn't","last."],
+    ["Soon,","a","new","goal","takes","its","place,","and","the","chase","begins","again."],
+    ["This","is","known","as","the","happiness","trap."],
+    ["We","convince","ourselves","that","happiness","lives","somewhere","in","the","future,","while","ignoring","the","life","we're","living","today."],
+    ["Truly","happy","people","don't","have","perfect","lives."],
+    ["They","simply","learn","to","appreciate","ordinary","moments","—","a","quiet","morning,","a","meaningful","conversation,","a","walk","in","nature,","or","a","meal","shared","with","loved","ones."],
+    ["They","understand","that","happiness","isn't","a","destination."],
+    ["It's","a","way","of","experiencing","the","present."],
+    ["Goals","are","important","because","they","give","us","direction."],
+    ["But","don't","postpone","your","happiness","until","you","reach","them."],
+    ["Learn","to","enjoy","the","journey,","not","just","the","finish","line."],
+    ["The","happiest","people","are","not","those","who","have","everything."],
+    ["They","are","the","ones","who","notice","the","beauty","in","what","they","already","have."]
+  ],
+  vocab: [
+    ["Chase","To try to get something"],
+    ["Destination","The place you want to reach"],
+    ["Appreciate","To value"],
+    ["Ordinary","Normal"],
+    ["Meaningful","Important"],
+    ["Journey","The process"],
+    ["Direction","The path forward"],
+    ["Present","The current moment"],
+    ["Beauty","Something that gives pleasure"],
+    ["Postpone","To delay"]
+  ],
+  expressions: [
+    "Live in the present.",
+    "Enjoy the journey.",
+    "Appreciate what you have.",
+    "Happiness starts within.",
+    "Don't chase perfection."
+  ],
+  reflection: "What simple moment made you smile this week?",
+  quote: "Happiness grows when you stop chasing it and start noticing it."
+},
+
+// ---------------- Lesson 24 ----------------
+{
+  title: "The Courage to Be Different",
+  videoId: "",
+  sentences: [
+    ["Have","you","ever","hidden","your","true","opinion","because","you","were","afraid","that","people","might","judge","you?"],
+    ["Maybe","you","laughed","at","a","joke","you","didn't","find","funny","or","agreed","with","something","you","didn't","believe."],
+    ["Almost","everyone","has","done","this","at","some","point."],
+    ["We","naturally","want","to","belong."],
+    ["We","want","people","to","like","us","and","accept","us."],
+    ["But","when","we","spend","our","lives","trying","to","please","everyone,","we","slowly","lose","ourselves."],
+    ["Being","different","is","not","a","weakness."],
+    ["It's","a","sign","that","you","have","the","courage","to","think","for","yourself."],
+    ["Every","great","inventor,","artist,","scientist,","and","leader","was","once","considered","different."],
+    ["If","they","had","followed","the","crowd,","the","world","would","never","have","changed."],
+    ["You","don't","need","everyone's","approval","to","live","a","meaningful","life."],
+    ["The","people","who","truly","matter","will","respect","you","for","being","honest,","even","if","they","don't","always","agree","with","you."],
+    ["Be","kind."],
+    ["Be","respectful."],
+    ["But","never","be","afraid","to","be","yourself."],
+    ["The","world","doesn't","need","another","copy","of","someone","else."],
+    ["It","needs","the","best","version","of","you."]
+  ],
+  vocab: [
+    ["Opinion","What you think"],
+    ["Judge","To form an opinion about someone"],
+    ["Belong","To feel accepted"],
+    ["Approval","Acceptance from others"],
+    ["Honest","Truthful"],
+    ["Respectful","Showing respect"],
+    ["Crowd","A large group of people"],
+    ["Courage","Bravery"],
+    ["Version","A form of something"],
+    ["Meaningful","Important"]
+  ],
+  expressions: [
+    "Be yourself.",
+    "Don't follow the crowd.",
+    "Stand by your values.",
+    "Stay true to yourself.",
+    "Think for yourself."
+  ],
+  reflection: "Have you ever changed your opinion just to fit in?",
+  quote: "The courage to be different is the beginning of living authentically."
+},
+
+// ---------------- Lesson 25 ----------------
+{
+  title: "Your Past Doesn't Define You",
+  videoId: "",
+  sentences: [
+    ["Have","you","ever","replayed","an","old","mistake","in","your","mind","and","wished","you","could","go","back","and","change","it?"],
+    ["Maybe","you","said","something","you","regret,","missed","an","important","opportunity,","or","made","a","decision","that","changed","your","life."],
+    ["We","all","carry","memories","we","wish","were","different."],
+    ["The","problem","begins","when","we","allow","yesterday","to","control","today."],
+    ["Your","past","is","a","teacher,","not","a","prison."],
+    ["It","was","meant","to","give","you","wisdom,","not","to","steal","your","confidence."],
+    ["Every","experience","—","good","or","bad","—","has","something","valuable","to","teach","you."],
+    ["The","question","is","whether","you","choose","to","learn","from","it","or","live","inside","it."],
+    ["Think","of","a","book."],
+    ["Every","chapter","tells","part","of","the","story,","but","no","single","chapter","tells","the","whole","story."],
+    ["If","one","chapter","is","sad,","you","don't","throw","the","entire","book","away."],
+    ["You","keep","reading","because","you","know","better","pages","are","still","waiting."],
+    ["The","same","is","true","for","your","life."],
+    ["You","cannot","rewrite","yesterday,","but","you","can","write","a","better","tomorrow."],
+    ["Forgive","yourself,","learn","the","lesson,","and","keep","moving","forward."],
+    ["Your","future","deserves","more","attention","than","your","past."]
+  ],
+  vocab: [
+    ["Define","To describe or determine"],
+    ["Regret","A feeling of sadness about the past"],
+    ["Opportunity","A chance"],
+    ["Wisdom","Knowledge gained through experience"],
+    ["Prison","A place where someone is trapped"],
+    ["Valuable","Important and useful"],
+    ["Rewrite","To write again differently"],
+    ["Forgive","To stop blaming"],
+    ["Chapter","A part of a book"],
+    ["Deserve","To be worthy of something"]
+  ],
+  expressions: [
+    "Learn from the past.",
+    "Forgive yourself.",
+    "Turn the page.",
+    "Keep moving forward.",
+    "Start a new chapter."
+  ],
+  reflection: "If you could forgive yourself for one mistake today, what would it be?",
+  quote: "Your past explains you. It doesn't define you."
+},
+  
+  // ---------------- Lesson 26 ----------------
+{
+  title: "The People Who Change Your Life",
+  videoId: "",
+  sentences: [
+    ["Sometimes,","one","conversation","can","change","your","life","forever."],
+    ["Think","about","the","teachers","who","believed","in","you,","the","friend","who","encouraged","you","when","you","wanted","to","give","up,","or","the","stranger","whose","advice","stayed","in","your","mind","for","years."],
+    ["Often,","the","biggest","turning","points","in","life","begin","with","ordinary","people."],
+    ["The","people","around","you","influence","the","way","you","think,","speak,","and","dream."],
+    ["They","can","either","lift","you","higher","or","slowly","pull","you","down."],
+    ["That's","why","choosing","the","right","company","is","one","of","the","most","important","decisions","you'll","ever","make."],
+    ["But","remember,","you","also","have","the","power","to","change","someone","else's","life."],
+    ["A","kind","word,","honest","encouragement,","or","simply","listening","to","someone","can","give","them","hope","when","they","need","it","most."],
+    ["Never","underestimate","the","impact","of","kindness."],
+    ["Years","from","now,","someone","may","remember","your","words","long","after","you've","forgotten","saying","them."],
+    ["Become","the","kind","of","person","who","leaves","people","feeling","stronger","than","before","they","met","you."]
+  ],
+  vocab: [
+    ["Stranger","Someone you don't know"],
+    ["Turning point","A moment that changes everything"],
+    ["Encourage","To give confidence"],
+    ["Company","The people you spend time with"],
+    ["Influence","To affect"],
+    ["Impact","A strong effect"],
+    ["Kindness","Being caring and helpful"],
+    ["Hope","A feeling that good things are possible"],
+    ["Advice","Helpful suggestions"],
+    ["Strengthen","To make stronger"]
+  ],
+  expressions: [
+    "Choose your company wisely.",
+    "Lift others up.",
+    "Words matter.",
+    "Be a positive influence.",
+    "Kindness costs nothing."
+  ],
+  reflection: "Who has had the biggest positive influence on your life?",
+  quote: "One kind person can change the direction of another person's life."
+},
+  
+  // ---------------- Lesson 27 ----------------
+{
+  title: "Keep the Promises You Make to Yourself",
+  videoId: "",
+  sentences: [
+    ["Imagine","having","a","friend","who","constantly","broke","every","promise","they","made","to","you."],
+    ["They","would","say,","\"I'll","be","there,\"","but","never","show","up."],
+    ["They","would","promise","to","help,","but","always","find","an","excuse."],
+    ["After","a","while,","would","you","trust","them?"],
+    ["Now","ask","yourself","a","different","question."],
+    ["How","many","promises","have","you","broken","to","yourself?"],
+    ["\"I'll","start","exercising","on","Monday.\"","\"I'll","study","English","tonight.\"","\"I'll","stop","wasting","so","much","time.\""],
+    ["When","these","promises","are","broken","again","and","again,","something","invisible","happens."],
+    ["You","slowly","stop","trusting","yourself."],
+    ["Your","confidence","doesn't","disappear","because","you","failed."],
+    ["It","disappears","because","your","actions","no","longer","match","your","words."],
+    ["Keeping","promises","to","yourself","builds","self-respect."],
+    ["It","doesn't","have","to","be","something","big."],
+    ["Read","one","page."],
+    ["Exercise","for","ten","minutes."],
+    ["Learn","five","new","English","words."],
+    ["Small","promises","kept","consistently","create","a","strong","character."],
+    ["Every","time","you","keep","your","word,","you","send","your","mind","a","powerful","message:"],
+    ["\"I","can","trust","myself.\""],
+    ["And","that","belief","becomes","the","foundation","of","confidence."]
+  ],
+  vocab: [
+    ["Promise","A commitment to do something"],
+    ["Trust","To believe in someone"],
+    ["Excuse","A reason for not doing something"],
+    ["Confidence","Belief in yourself"],
+    ["Foundation","The base that supports something"],
+    ["Character","The qualities that define a person"],
+    ["Respect","Admiration and value"],
+    ["Consistently","Regularly over time"],
+    ["Commitment","A serious decision"],
+    ["Action","Something you do"]
+  ],
+  expressions: [
+    "Keep your word.",
+    "Be true to yourself.",
+    "Actions speak louder than words.",
+    "Stay committed.",
+    "Earn your own trust."
+  ],
+  reflection: "What is one promise you can make to yourself today—and keep?",
+  quote: "Self-confidence begins when your actions match your promises."
+},
+  
+  // ---------------- Lesson 28 ----------------
+{
+  title: "Success Is Surprisingly Boring",
+  videoId: "",
+  sentences: [
+    ["When","people","imagine","success,","they","often","picture","exciting","moments","—","standing","on","a","stage,","winning","an","award,","or","celebrating","a","big","achievement."],
+    ["But","those","moments","are","surprisingly","rare."],
+    ["Most","success","is","quiet."],
+    ["It","looks","like","waking","up","early","when","no","one","is","watching."],
+    ["It","looks","like","practicing","English","every","day,","even","when","you","don't","feel","motivated."],
+    ["It","looks","like","reading","another","chapter,","exercising","one","more","time,","and","choosing","discipline","over","comfort."],
+    ["There","is","nothing","glamorous","about","repeating","the","same","good","habits","every","day."],
+    ["In","fact,","it","can","feel","boring."],
+    ["But","that's","exactly","why","most","people","give","up."],
+    ["They","wait","for","motivation","to","appear,","while","successful","people","rely","on","routine."],
+    ["They","understand","that","motivation","comes","and","goes,","but","discipline","stays."],
+    ["If","you","want","extraordinary","results,","learn","to","enjoy","ordinary","days."],
+    ["The","small","things","you","do","repeatedly","are","creating","the","life","you'll","have","tomorrow."],
+    ["Success","isn't","built","during","exciting","moments."],
+    ["It's","built","during","the","ordinary","moments","that","most","people","ignore."]
+  ],
+  vocab: [
+    ["Routine","A regular way of doing things"],
+    ["Discipline","The ability to do what's necessary"],
+    ["Motivation","The desire to act"],
+    ["Glamorous","Attractive and exciting"],
+    ["Achievement","Something successfully completed"],
+    ["Repeat","To do again"],
+    ["Ordinary","Normal"],
+    ["Result","The outcome"],
+    ["Ignore","To pay no attention to"],
+    ["Consistency","Doing something regularly"]
+  ],
+  expressions: [
+    "Stay consistent.",
+    "Trust your routine.",
+    "Discipline beats motivation.",
+    "Keep showing up.",
+    "Success takes time."
+  ],
+  reflection: "Which daily habit could bring the biggest improvement to your life?",
+  quote: "Success is built on ordinary days, not extraordinary moments."
+},
+  
+  // ---------------- Lesson 29 ----------------
+{
+  title: "The Best Investment You'll Ever Make",
+  videoId: "",
+  sentences: [
+    ["If","someone","offered","you","an","investment","that","would","improve","your","career,","strengthen","your","relationships,","increase","your","confidence,","and","stay","with","you","for","the","rest","of","your","life,","would","you","accept","it?"],
+    ["Most","people","would","say","yes."],
+    ["The","surprising","truth","is","that","this","investment","already","exists."],
+    ["It's","called","investing","in","yourself."],
+    ["Every","book","you","read,","every","skill","you","learn,","every","language","you","practice,","and","every","healthy","habit","you","build","becomes","part","of","who","you","are."],
+    ["Unlike","money","or","possessions,","no","one","can","take","this","investment","away","from","you."],
+    ["Many","people","spend","years","waiting","for","their","lives","to","improve","while","forgetting","that","real","change","begins","from","within."],
+    ["They","hope","for","better","opportunities,","but","they","never","prepare","themselves","to","recognize","them."],
+    ["Imagine","spending","just","thirty","minutes","every","day","learning","something","new."],
+    ["It","may","not","seem","important","today,","but","after","one","year,","you'll","have","gained","hundreds","of","hours","of","knowledge."],
+    ["That","knowledge","will","influence","the","decisions","you","make,","the","people","you","meet,","and","the","future","you","create."],
+    ["The","greatest","investment","isn't","in","the","stock","market","or","real","estate."],
+    ["It's","in","becoming","a","wiser,","healthier,","and","more","capable","version","of","yourself."],
+    ["Because","when","you","grow,","every","part","of","your","life","grows","with","you."]
+  ],
+  vocab: [
+    ["Investment","Something that brings future benefits"],
+    ["Skill","An ability learned through practice"],
+    ["Knowledge","Information and understanding"],
+    ["Opportunity","A chance"],
+    ["Influence","To affect"],
+    ["Possession","Something you own"],
+    ["Recognize","To notice or identify"],
+    ["Capable","Able to do something"],
+    ["Improve","To become better"],
+    ["Version","A form of yourself"]
+  ],
+  expressions: [
+    "Invest in yourself.",
+    "Never stop learning.",
+    "Knowledge is power.",
+    "Grow every day.",
+    "Learning never ends."
+  ],
+  reflection: "If you had one extra hour every day, how would you invest it in yourself?",
+  quote: "The greatest return on investment comes from improving yourself."
+},
+  
+  // ---------------- Lesson 30 ----------------
+{
+  title: "Live a Life You Won't Regret",
+  videoId: "",
+  sentences: [
+    ["Imagine","yourself","many","years","from","now,","sitting","quietly","and","looking","back","on","your","life."],
+    ["What","memories","would","make","you","smile?"],
+    ["What","choices","would","fill","you","with","pride?"],
+    ["And","what","opportunities","would","you","wish","you","had","taken?"],
+    ["Many","people","fear","failure,","but","an","even","greater","tragedy","is","reaching","the","end","of","life","filled","with","regret."],
+    ["Regret","often","comes","not","from","the","things","we","tried,","but","from","the","dreams","we","never","pursued,","the","words","we","never","said,","and","the","chances","we","were","too","afraid","to","take."],
+    ["A","meaningful","life","isn't","perfect."],
+    ["It","includes","mistakes,","challenges,","and","unexpected","changes."],
+    ["But","it","is","also","filled","with","courage,","kindness,","curiosity,","and","growth."],
+    ["Every","decision","you","make","today","is","quietly","writing","the","story","you'll","remember","tomorrow."],
+    ["Don't","wait","for","life","to","become","easier","before","you","decide","to","live","fully."],
+    ["Call","the","people","you","love."],
+    ["Learn","the","skill","you've","always","wanted","to","master."],
+    ["Forgive","when","you","can."],
+    ["Be","kind","whenever","possible."],
+    ["Take","care","of","your","body","and","your","mind."],
+    ["Most","importantly,","never","stop","becoming","a","better","version","of","yourself."],
+    ["One","day,","your","future","will","become","your","present."],
+    ["When","that","day","comes,","may","you","look","back","with","gratitude","instead","of","regret","—","and","know","that","you","truly","lived,","rather","than","simply","existed."]
+  ],
+  vocab: [
+    ["Regret","Sadness about something not done"],
+    ["Opportunity","A chance"],
+    ["Pursue","To follow or work toward"],
+    ["Meaningful","Full of purpose"],
+    ["Courage","The strength to face fear"],
+    ["Curiosity","The desire to learn"],
+    ["Gratitude","Thankfulness"],
+    ["Exist","To simply be alive"],
+    ["Master","To become highly skilled"],
+    ["Journey","The process of life"]
+  ],
+  expressions: [
+    "Live with purpose.",
+    "Take the chance.",
+    "Make today count.",
+    "Follow your dreams.",
+    "Leave no regrets."
+  ],
+  reflection: "If you could give one piece of advice to your future self, what would it be?",
+  quote: "A meaningful life is not measured by how long you live, but by how deeply you live."
+},
+  
 ];
 
 const TOTAL_LESSONS = lessons.length; // update this if your final course size changes
