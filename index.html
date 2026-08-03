@@ -128,6 +128,27 @@ color:white;
 transform:scale(1.06);
 }
 
+.lesson-nav{
+width:90%;
+max-width:900px;
+margin:0 auto 15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.lesson-nav button{
+margin-top:0;
+padding:8px 18px;
+font-size:14px;
+}
+
+.lesson-progress{
+font-size:14px;
+font-weight:700;
+color:#7D8E74;
+}
+
 .lesson-title{
 width:90%;
 max-width:900px;
@@ -226,6 +247,11 @@ line-height:1.5;
 margin:0;
 }
 
+.lesson-nav button:disabled{
+opacity:.4;
+cursor:default;
+}
+
 .cards{
 display:flex;
 justify-content:center;
@@ -259,13 +285,19 @@ text-align:center;
 
 </header>
 
+<div class="lesson-nav">
+  <button id="prevLessonBtn">◀ Previous Lesson</button>
+  <span class="lesson-progress" id="lessonProgress">Lesson 1 / 30</span>
+  <button id="nextLessonBtn">Next Lesson ▶</button>
+</div>
+
 <div class="lesson-title">
-  <span class="lesson-number">Lesson 01</span>
-  <h2>Stop Comparing Yourself to Others</h2>
+  <span class="lesson-number" id="lessonNumber">Lesson 01</span>
+  <h2 id="lessonTitle"></h2>
 </div>
 
 <div class="video">
-<iframe src="https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ" title="Lesson video" allowfullscreen></iframe>
+<iframe id="lessonVideo" src="" title="Lesson video" allowfullscreen></iframe>
 </div>
 
 <!-- ---------- Shadowing Card ---------- -->
@@ -286,42 +318,25 @@ text-align:center;
   <h3>📚 Vocabulary</h3>
   <table class="vocab-table">
     <tr><th>Word</th><th>Meaning</th></tr>
-    <tr><td>Compare</td><td>To judge one thing against another</td></tr>
-    <tr><td>Journey</td><td>The process of reaching a goal</td></tr>
-    <tr><td>Invisible</td><td>Impossible to see</td></tr>
-    <tr><td>Struggle</td><td>A difficult experience or challenge</td></tr>
-    <tr><td>Achievement</td><td>Something you successfully complete</td></tr>
-    <tr><td>Progress</td><td>Improvement over time</td></tr>
-    <tr><td>Unique</td><td>Different from everything else</td></tr>
-    <tr><td>Meaningful</td><td>Important and valuable</td></tr>
-    <tr><td>Pace</td><td>The speed at which something happens</td></tr>
-    <tr><td>Trust</td><td>To believe in someone or something</td></tr>
+    <tbody id="vocabBody"></tbody>
   </table>
 </div>
 
 <!-- ---------- Useful Expressions ---------- -->
 <div class="lesson-section">
   <h3>💬 Useful Expressions</h3>
-  <ul class="expressions-list">
-    <li>Everyone has their own journey.</li>
-    <li>Focus on your own progress.</li>
-    <li>Trust the process.</li>
-    <li>Growth takes time.</li>
-    <li>You are doing better than you think.</li>
-  </ul>
+  <ul class="expressions-list" id="expressionsList"></ul>
 </div>
 
 <!-- ---------- Reflection Question ---------- -->
 <div class="lesson-section">
   <h3>❓ Reflection Question</h3>
-  <div class="reflection-box">
-    What is one thing you have improved about yourself that you are proud of?
-  </div>
+  <div class="reflection-box" id="reflectionBox"></div>
 </div>
 
 <!-- ---------- Quote ---------- -->
 <div class="lesson-section quote-section">
-  <p>"Don't compare your chapter one to someone else's chapter twenty."</p>
+  <p id="quoteText"></p>
 </div>
 
 <div class="cards">
@@ -343,32 +358,10 @@ text-align:center;
 
 </div>
 
+<script src="lessons.js"></script>
 <script>
 
-// Lesson 01 — Stop Comparing Yourself to Others, split sentence by sentence
-const sentences = [
-  { words: ["Have","you","ever","looked","at","someone","else's","life","and","wondered,","\"Why","am","I","not","where","they","are?\""] },
-  { words: ["Maybe","you","see","someone","who","is","more","successful,","more","confident,","or","living","a","life","that","seems","perfect."] },
-  { words: ["Without","realizing","it,","you","start","comparing","your","journey","to","theirs."] },
-  { words: ["And","slowly,","you","forget","something","important:","you","are","only","seeing","a","small","part","of","their","story."] },
-  { words: ["Everyone","has","struggles","that","remain","invisible."] },
-  { words: ["The","person","who","looks","successful","today","may","have","spent","years","fighting","doubts,","failures,","and","difficult","moments."] },
-  { words: ["You","see","their","results,","but","you","don't","see","their","process."] },
-  { words: ["Comparison","is","dangerous","because","it","makes","you","focus","on","what","you","lack","instead","of","what","you","have."] },
-  { words: ["It","turns","your","achievements","into","something","small","and","makes","you","forget","how","far","you","have","already","come."] },
-  { words: ["Imagine","planting","a","seed","and","checking","it","every","day,","wondering","why","it","hasn't","become","a","tree","yet."] },
-  { words: ["Growth","takes","time."] },
-  { words: ["A","tree","does","not","compete","with","another","tree;","it","simply","grows","at","its","own","pace."] },
-  { words: ["People","are","the","same."] },
-  { words: ["The","only","person","you","should","compare","yourself","with","is","the","person","you","were","yesterday."] },
-  { words: ["Are","you","learning?"] },
-  { words: ["Are","you","improving?"] },
-  { words: ["Are","you","becoming","kinder,","stronger,","and","wiser?"] },
-  { words: ["Your","journey","is","unique."] },
-  { words: ["You","don't","need","to","copy","someone","else's","path","to","create","a","meaningful","life."] },
-  { words: ["Focus","on","your","progress,","trust","your","timing,","and","remember","that","slow","growth","is","still","growth."] }
-];
-
+let currentLesson = 0;
 let sentenceIndex = 0;
 let wordIndex = 0;
 let playing = false;
@@ -378,11 +371,57 @@ const sentenceEl = document.getElementById("sentence");
 const playBtn = document.getElementById("playBtn");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
+const prevLessonBtn = document.getElementById("prevLessonBtn");
+const nextLessonBtn = document.getElementById("nextLessonBtn");
+const lessonProgress = document.getElementById("lessonProgress");
+const lessonNumber = document.getElementById("lessonNumber");
+const lessonTitle = document.getElementById("lessonTitle");
+const lessonVideo = document.getElementById("lessonVideo");
+const vocabBody = document.getElementById("vocabBody");
+const expressionsList = document.getElementById("expressionsList");
+const reflectionBox = document.getElementById("reflectionBox");
+const quoteText = document.getElementById("quoteText");
+
+function loadLesson(index){
+  pause();
+  currentLesson = index;
+  const lesson = lessons[currentLesson];
+
+  const num = String(currentLesson + 1).padStart(2, "0");
+  lessonNumber.textContent = "Lesson " + num;
+  lessonProgress.textContent = "Lesson " + (currentLesson + 1) + " / " + TOTAL_LESSONS;
+  lessonTitle.textContent = lesson.title;
+  lessonVideo.src = "https://www.youtube-nocookie.com/embed/" + lesson.videoId;
+
+  vocabBody.innerHTML = "";
+  lesson.vocab.forEach(([word, meaning]) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + word + "</td><td>" + meaning + "</td>";
+    vocabBody.appendChild(tr);
+  });
+
+  expressionsList.innerHTML = "";
+  lesson.expressions.forEach(exp => {
+    const li = document.createElement("li");
+    li.textContent = exp;
+    expressionsList.appendChild(li);
+  });
+
+  reflectionBox.textContent = lesson.reflection;
+  quoteText.textContent = "\"" + lesson.quote + "\"";
+
+  sentenceIndex = 0;
+  wordIndex = -1;
+  renderSentence();
+
+  prevLessonBtn.disabled = currentLesson === 0;
+  nextLessonBtn.disabled = currentLesson === lessons.length - 1;
+}
 
 function renderSentence(){
-  const current = sentences[sentenceIndex];
+  const words = lessons[currentLesson].sentences[sentenceIndex];
   sentenceEl.innerHTML = "";
-  current.words.forEach((w, i) => {
+  words.forEach((w, i) => {
     const span = document.createElement("span");
     span.className = "word";
     span.textContent = w;
@@ -393,11 +432,10 @@ function renderSentence(){
 }
 
 function stepWord(){
-  const current = sentences[sentenceIndex];
+  const words = lessons[currentLesson].sentences[sentenceIndex];
   wordIndex++;
-  if(wordIndex >= current.words.length){
-    // sentence finished — pause automatically
-    wordIndex = current.words.length - 1;
+  if(wordIndex >= words.length){
+    wordIndex = words.length - 1;
     renderSentence();
     pause();
     return;
@@ -418,11 +456,11 @@ function pause(){
 }
 
 playBtn.addEventListener("click", () => {
+  const words = lessons[currentLesson].sentences[sentenceIndex];
   if(playing){
     pause();
   } else {
-    // if sentence already finished, restart it
-    if(wordIndex >= sentences[sentenceIndex].words.length - 1){
+    if(wordIndex >= words.length - 1){
       wordIndex = -1;
     }
     play();
@@ -431,21 +469,30 @@ playBtn.addEventListener("click", () => {
 
 nextBtn.addEventListener("click", () => {
   pause();
-  sentenceIndex = (sentenceIndex + 1) % sentences.length;
-  wordIndex = 0;
+  const total = lessons[currentLesson].sentences.length;
+  sentenceIndex = (sentenceIndex + 1) % total;
+  wordIndex = -1;
   renderSentence();
 });
 
 prevBtn.addEventListener("click", () => {
   pause();
-  sentenceIndex = (sentenceIndex - 1 + sentences.length) % sentences.length;
-  wordIndex = 0;
+  const total = lessons[currentLesson].sentences.length;
+  sentenceIndex = (sentenceIndex - 1 + total) % total;
+  wordIndex = -1;
   renderSentence();
 });
 
-// initial render
-wordIndex = -1;
-renderSentence();
+nextLessonBtn.addEventListener("click", () => {
+  if(currentLesson < lessons.length - 1) loadLesson(currentLesson + 1);
+});
+
+prevLessonBtn.addEventListener("click", () => {
+  if(currentLesson > 0) loadLesson(currentLesson - 1);
+});
+
+// initial load
+loadLesson(0);
 
 </script>
 
