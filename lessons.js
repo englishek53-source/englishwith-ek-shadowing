@@ -868,4 +868,6 @@ const lessons = [
     
 ];
 
-const TOTAL_LESSONS = 19; // update this if your final course size changes
+];
+
+const TOTAL_LESSONS = lessons.length; // update this if your final course size changes
