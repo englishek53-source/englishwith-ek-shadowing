@@ -4,15 +4,15 @@
 // Each lesson needs: title, videoId, sentences, vocab,
 // expressions, reflection, quote
 // ---------------------------------------------------
-
-const lessons = [
 // Mark a lesson as completed
 function markLessonComplete(lessonId) {
   let completed = JSON.parse(localStorage.getItem("completedLessons")) || [];
+
   if (!completed.includes(lessonId)) {
     completed.push(lessonId);
     localStorage.setItem("completedLessons", JSON.stringify(completed));
   }
+
   updateProgressUI();
 }
 
@@ -22,22 +22,21 @@ function isLessonComplete(lessonId) {
   return completed.includes(lessonId);
 }
 
-// Update progress bar and lesson list UI
+// Update progress bar
 function updateProgressUI() {
   let completed = JSON.parse(localStorage.getItem("completedLessons")) || [];
+
   const percent = Math.round((completed.length / lessons.length) * 100);
 
   document.getElementById("progressBar").style.width = percent + "%";
   document.getElementById("progressText").innerText =
     `${completed.length} / ${lessons.length} lessons completed (${percent}%)`;
-
-  lessons.forEach((lesson, i) => {
-    const el = document.getElementById(`lesson-item-${i}`);
-    if (el && isLessonComplete(lesson.id)) {
-      el.classList.add("completed");
-    }
-  });
 }
+
+// ---------------- Lessons ----------------
+
+const lessons = [
+
   // ---------------- Lesson 01 ----------------
   {
     title: "Stop Comparing Yourself to Others",
