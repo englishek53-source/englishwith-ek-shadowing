@@ -507,8 +507,6 @@ prevBtn.addEventListener("click", () => {
 });
 
 nextLessonBtn.addEventListener("click", () => {
-  markLessonComplete(currentLesson);
-
   if(currentLesson < lessons.length - 1){
     loadLesson(currentLesson + 1);
   }
