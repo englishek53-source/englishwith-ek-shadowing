@@ -110,9 +110,101 @@ const lessons = [
     ],
     reflection: "What is one challenge you've been avoiding because you're waiting to feel \"ready\"?",
     quote: "Confidence is earned, not given."
+  },
+
+  // ---------------- Lesson 03 ----------------
+  {
+    title: "The Power of Tiny Changes",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["Have","you","ever","promised","yourself","that","you","would","change","your","life","overnight?"],
+      ["Maybe","you","planned","to","exercise","every","day,","read","fifty","books","a","year,","or","master","English","in","just","a","few","months."],
+      ["At","first,","you","felt","excited."],
+      ["But","after","a","week","or","two,","your","motivation","slowly","disappeared."],
+      ["The","problem","wasn't","your","dream."],
+      ["It","was","the","size","of","your","first","step."],
+      ["Many","people","believe","that","success","comes","from","making","big","decisions."],
+      ["In","reality,","it","often","comes","from","repeating","small","actions."],
+      ["A","single","page","read","today","may","not","seem","important."],
+      ["A","ten-minute","walk","may","feel","too","easy."],
+      ["Practicing","English","for","just","fifteen","minutes","might","not","sound","impressive."],
+      ["But","these","tiny","actions","have","something","powerful","in","common—they","are","easy","to","repeat."],
+      ["Success","is","rarely","built","in","one","dramatic","moment."],
+      ["It","is","built","quietly,","one","small","habit","at","a","time."],
+      ["Every","positive","choice","is","like","placing","one","brick."],
+      ["At","first,","you","don't","see","much."],
+      ["But","one","day,","you","look","back","and","realize","you've","built","something","strong."],
+      ["Don't","ask","yourself,","\"How","can","I","change","my","whole","life?\""],
+      ["Instead,","ask,","\"What","is","one","small","thing","I","can","do","today?\""],
+      ["Never","underestimate","the","power","of","tiny","changes."],
+      ["They","may","seem","invisible","today,","but","they","have","the","power","to","completely","transform","your","future."]
+    ],
+    vocab: [
+      ["Overnight","Happening very quickly"],
+      ["Master","To become very skilled at something"],
+      ["Motivation","The desire to do something"],
+      ["Repeat","To do something again"],
+      ["Habit","Something you do regularly"],
+      ["Brick","A block used to build walls"],
+      ["Transform","To change completely"],
+      ["Positive","Good or helpful"],
+      ["Powerful","Having great influence"],
+      ["Future","The time that is yet to come"]
+    ],
+    expressions: [
+      "One step at a time.",
+      "Small habits create big results.",
+      "Keep showing up.",
+      "Trust the process.",
+      "Little by little."
+    ],
+    reflection: "What's one tiny habit you can start today that could change your future?",
+    quote: "Great things are never built in a day. They are built every day."
+  },
+
+  // ---------------- Lesson 04 ----------------
+  {
+    title: "Your Inner Voice Becomes Your Reality",
+    videoId: "aqz-KE-bpKQ",
+    sentences: [
+      ["Have","you","ever","noticed","how","you","talk","to","yourself","after","making","a","mistake?"],
+      ["For","many","people,","the","first","thought","is,","\"I'm","not","smart","enough,\"","or","\"I","always","fail.\""],
+      ["At","first,","these","words","seem","harmless."],
+      ["But","when","you","repeat","them","every","day,","your","mind","begins","to","believe","them."],
+      ["Your","inner","voice","is","powerful."],
+      ["It","shapes","the","way","you","see","yourself","and","the","way","you","face","challenges."],
+      ["If","you","constantly","tell","yourself","that","you","can't","do","something,","you'll","probably","stop","trying."],
+      ["But","if","you","choose","words","that","encourage","you,","your","confidence","will","slowly","grow."],
+      ["This","doesn't","mean","pretending","that","life","is","perfect."],
+      ["It","means","speaking","to","yourself","with","honesty","and","kindness."],
+      ["Instead","of","saying,","\"I'm","terrible","at","English,\"","try","saying,","\"I'm","improving","every","day.\""],
+      ["That","small","change","can","completely","transform","your","attitude."],
+      ["Remember,","you","hear","your","own","voice","more","than","anyone","else's."],
+      ["Make","sure","it's","a","voice","that","helps","you","move","forward,","not","one","that","holds","you","back."]
+    ],
+    vocab: [
+      ["Inner voice","The thoughts inside your mind"],
+      ["Harmless","Not causing harm"],
+      ["Repeat","To say or do again"],
+      ["Shape","To influence or form"],
+      ["Challenge","A difficult situation"],
+      ["Encourage","To give confidence"],
+      ["Pretend","To act as if something is true"],
+      ["Attitude","The way you think or feel"],
+      ["Transform","To change completely"],
+      ["Hold back","To prevent progress"]
+    ],
+    expressions: [
+      "Believe in yourself.",
+      "Change your mindset.",
+      "Speak kindly to yourself.",
+      "Every day is a new chance.",
+      "Keep moving forward."
+    ],
+    reflection: "If your inner voice had a personality, would it be your biggest supporter or your biggest critic?",
+    quote: "The words you repeat to yourself become the life you believe you deserve."
   }
 
 ];
 
 const TOTAL_LESSONS = 30; // update this if your final course size changes
-
