@@ -12,6 +12,23 @@
     <div id="progressBar" class="progress-fill"></div>
   </div>
 </div>
+  .progress-bg {
+  width: 100%;
+  background: #e0e0e0;
+  border-radius: 10px;
+  height: 10px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: #4caf50;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+.completed {
+  color: #4caf50;
+  font-weight: bold;
+}
   
 body{
 margin:0;
