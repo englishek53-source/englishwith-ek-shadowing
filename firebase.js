@@ -2,12 +2,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
 import {
   getAuth,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   signOut,
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// Your Firebase project configuration
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCmj2ad7_3tQ7Xvt-UhnTg10NTxW3gCl30",
   authDomain: "englishwithek-fc6cd.firebaseapp.com",
@@ -22,38 +23,44 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-// Bind elements and event listeners once the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
+// Handle authentication redirect result
+getRedirectResult(auth)
+  .then((result) => {
+    if (result && result.user) {
+      console.log("Logged in successfully:", result.user);
+    }
+  })
+  .catch((error) => {
+    console.error("Redirect Login Error:", error);
+  });
+
+// Setup UI elements and authentication listeners
+function setupAuthUI() {
   const loginBtn = document.getElementById("loginBtn");
   const logoutBtn = document.getElementById("logoutBtn");
   const userName = document.getElementById("userName");
 
   // Sign-in button click event
   if (loginBtn) {
-    loginBtn.addEventListener("click", async () => {
-      try {
-        await signInWithPopup(auth, provider);
-      } catch (e) {
-        console.error("Login Error:", e);
-        alert("Login failed: " + e.message);
-      }
+    loginBtn.addEventListener("click", () => {
+      signInWithRedirect(auth, provider);
     });
   }
 
   // Sign-out button click event
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-      signOut(auth).catch((e) => console.error("Logout Error:", e));
+      signOut(auth).catch((error) => console.error("Logout Error:", error));
     });
   }
 
-  // Monitor auth state changes and update UI accordingly
+  // Monitor auth state changes
   onAuthStateChanged(auth, (user) => {
     if (user) {
       if (loginBtn) loginBtn.style.display = "none";
       if (logoutBtn) logoutBtn.style.display = "inline-block";
       if (userName) userName.textContent = "Welcome " + (user.displayName || "User");
-      
+
       // Update progress UI if function exists
       if (typeof updateProgressUI === "function") {
         updateProgressUI();
@@ -64,6 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (userName) userName.textContent = "";
     }
   });
-});
+}
+
+// Execute setup once DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", setupAuthUI);
+} else {
+  setupAuthUI();
+}
 
 window.auth = auth;
