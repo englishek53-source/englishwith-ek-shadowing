@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EnglishWith_EK Shadowing</title> 
+<title>EnglishWith_EK Shadowing</title>
   <div class="progress-container">
   <div id="progressText">0 / 0 lessons completed</div>
   <div class="progress-bg">
@@ -12,6 +12,32 @@
   </div>
 
 <style>
+
+/* ---------- Theme Variables ---------- */
+:root{
+  --bg:#F8F6F2;
+  --text:#2B241F;
+  --muted:#6d6d6d;
+  --card-bg:#ffffff;
+  --accent:#7D8E74;
+  --accent-light:rgba(125,142,116,.08);
+  --tag-bg:#DCCDB8;
+  --word-color:#9F907B;
+  --shadow:rgba(0,0,0,.08);
+}
+
+[data-theme="dark"]{
+  --bg:#17140F;
+  --text:#F1EEE8;
+  --muted:#B4AA9C;
+  --card-bg:#241F1A;
+  --accent:#8FA084;
+  --accent-light:rgba(143,160,132,.15);
+  --tag-bg:#4A3F33;
+  --word-color:#B9AB94;
+  --shadow:rgba(0,0,0,.5);
+}
+
   .progress-bg {
   width: 100%;
   background: #e0e0e0;
@@ -29,12 +55,13 @@
   color: #4caf50;
   font-weight: bold;
 }
-  
+
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#F8F6F2;
-color:#2B241F;
+background:var(--bg);
+color:var(--text);
+transition:background .3s ease, color .3s ease;
 }
 
 header{
@@ -48,11 +75,11 @@ margin:10px;
 }
 
 p{
-color:#6d6d6d;
+color:var(--muted);
 }
 
 button{
-background:#7D8E74;
+background:var(--accent);
 color:white;
 border:none;
 padding:15px 35px;
@@ -62,16 +89,53 @@ cursor:pointer;
 margin-top:20px;
 }
 
+/* ---------- Utility Bar (Theme / Focus) ---------- */
+.utility-bar{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  padding:10px 0 0;
+  flex-wrap:wrap;
+}
+.utility-bar button{
+  margin-top:0;
+  padding:8px 18px;
+  font-size:14px;
+  border-radius:50px;
+}
+
+/* ---------- Filter Bar ---------- */
+.filter-bar{
+  width:90%;
+  max-width:900px;
+  margin:15px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  font-size:14px;
+  color:var(--muted);
+}
+.filter-bar select{
+  padding:8px 14px;
+  border-radius:50px;
+  border:1px solid var(--tag-bg);
+  background:var(--card-bg);
+  color:var(--text);
+  font-size:14px;
+}
+
 .video{
 width:90%;
 max-width:900px;
 margin:auto;
 border-radius:25px;
 overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+box-shadow:0 10px 30px var(--shadow);
 position:relative;
-padding-top:50.625%; /* 16:9 ratio */
-background:white;
+padding-top:56.25%; /* 16:9 ratio */
+background:var(--card-bg);
 }
 
 .video iframe{
@@ -88,10 +152,10 @@ border:0;
 .shadow-card{
 width:90%;
 max-width:900px;
-background:white;
+background:var(--card-bg);
 margin:30px auto;
 border-radius:24px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+box-shadow:0 10px 30px var(--shadow);
 padding:35px 30px;
 box-sizing:border-box;
 }
@@ -102,6 +166,7 @@ align-items:center;
 justify-content:center;
 gap:18px;
 margin-bottom:25px;
+flex-wrap:wrap;
 }
 
 .shadow-controls button{
@@ -121,12 +186,27 @@ align-items:center;
 justify-content:center;
 }
 
+.loop-btn.active{
+  background:var(--text);
+  color:var(--bg);
+}
+
+#speedSelect{
+  background:var(--accent);
+  color:white;
+  border:none;
+  padding:10px 14px;
+  border-radius:50px;
+  font-size:14px;
+  cursor:pointer;
+}
+
 .sentence{
     display:block;
     text-align:left;
-    max-width:700px;
+    max-width:600px;
     margin:0 auto 20px;
-    line-height:1.8;
+    line-height:2;
 }
 .word{
     display:inline;
@@ -134,17 +214,17 @@ justify-content:center;
     margin-right: 4px;
     background:none;
     border-radius:8px;
-    color:#9F907B;      /* Dark beige */
-    font-size:32px;
+    color:var(--word-color);
+    font-size:30px;
     font-weight:500;
     border:2px solid transparent;
     transition:all .25s ease;
 }
 
 .word.active{
-    color:#7D8E74;                 /* Green */
-    border:2px solid #7D8E74;      /* Green border */
-    background:rgba(125,142,116,.08); /* Light green background */
+    color:var(--accent);
+    border:2px solid var(--accent);
+    background:var(--accent-light);
 }
 
 .lesson-nav{
@@ -165,7 +245,7 @@ font-size:14px;
 .lesson-progress{
 font-size:14px;
 font-weight:700;
-color:#7D8E74;
+color:var(--accent);
 }
 
 .lesson-title{
@@ -177,8 +257,8 @@ text-align:center;
 
 .lesson-number{
 display:inline-block;
-background:#DCCDB8;
-color:#2B241F;
+background:var(--tag-bg);
+color:var(--text);
 padding:6px 18px;
 border-radius:999px;
 font-size:14px;
@@ -197,10 +277,10 @@ margin:10px 0 0;
 .lesson-section{
 width:90%;
 max-width:900px;
-background:white;
+background:var(--card-bg);
 margin:20px auto;
 border-radius:24px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+box-shadow:0 10px 30px var(--shadow);
 padding:35px 30px;
 box-sizing:border-box;
 }
@@ -208,7 +288,7 @@ box-sizing:border-box;
 .lesson-section h3{
 margin-top:0;
 font-size:22px;
-color:#2B241F;
+color:var(--text);
 }
 
 .vocab-table{
@@ -219,12 +299,12 @@ border-collapse:collapse;
 .vocab-table th, .vocab-table td{
 text-align:left;
 padding:10px 12px;
-border-bottom:1px solid #F1EEE8;
+border-bottom:1px solid var(--tag-bg);
 font-size:16px;
 }
 
 .vocab-table th{
-color:#7D8E74;
+color:var(--accent);
 font-size:14px;
 text-transform:uppercase;
 letter-spacing:.5px;
@@ -238,14 +318,14 @@ padding:0;
 
 .expressions-list li{
 padding:10px 16px;
-background:#F8F6F2;
+background:var(--bg);
 border-radius:14px;
 margin-bottom:10px;
 font-size:16px;
 }
 
 .reflection-box{
-background:#DCCDB8;
+background:var(--tag-bg);
 border-radius:18px;
 padding:20px;
 font-size:17px;
@@ -280,12 +360,31 @@ padding:40px;
 }
 
 .card{
-background:white;
+background:var(--card-bg);
 padding:25px;
 border-radius:20px;
 width:250px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
+box-shadow:0 5px 20px var(--shadow);
 text-align:center;
+}
+
+/* ---------- Focus Mode ---------- */
+body.focus-mode .lesson-section,
+body.focus-mode .cards,
+body.focus-mode .filter-bar,
+body.focus-mode header p,
+body.focus-mode .lesson-nav{
+  display:none;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width:480px){
+  h1{font-size:30px;}
+  .word{font-size:26px;}
+  .lesson-nav{flex-direction:column;gap:10px;}
+  .utility-bar{gap:8px;}
+  .shadow-controls{gap:10px;}
+  .shadow-card, .lesson-section{padding:25px 18px;}
 }
 
 </style>
@@ -293,6 +392,11 @@ text-align:center;
 </head>
 
 <body>
+
+<div class="utility-bar">
+  <button id="themeToggle">🌙 Dark Mode</button>
+  <button id="focusToggle">🎯 Focus Mode</button>
+</div>
 
 <header>
 
@@ -303,6 +407,11 @@ text-align:center;
 <button>Start Shadowing</button>
 
 </header>
+
+<div class="filter-bar">
+  <label for="levelFilter">🎓 Filter by level (CEFR):</label>
+  <select id="levelFilter"></select>
+</div>
 
 <div class="lesson-nav">
   <button id="prevLessonBtn">◀ Previous Lesson</button>
@@ -316,7 +425,7 @@ text-align:center;
 </div>
 
 <div class="video">
-<iframe id="lessonVideo" src="" title="Lesson video" allowfullscreen></iframe>
+<div id="lessonVideo"></div>
 </div>
 
 <!-- ---------- Shadowing Card ---------- -->
@@ -326,6 +435,15 @@ text-align:center;
     <button id="prevBtn">⏮ Previous</button>
     <button class="play-btn" id="playBtn">▶</button>
     <button id="nextBtn">Next ⏭</button>
+    <button id="loopBtn" class="loop-btn">🔁 Loop</button>
+    <select id="speedSelect">
+      <option value="0.5">0.5x</option>
+      <option value="0.75">0.75x</option>
+      <option value="1" selected>1x</option>
+      <option value="1.25">1.25x</option>
+      <option value="1.5">1.5x</option>
+      <option value="2">2x</option>
+    </select>
   </div>
 
   <div class="sentence" id="sentence"></div>
@@ -378,6 +496,7 @@ text-align:center;
 </div>
 
 <script src="lessons.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
 
 let currentLesson = 0;
@@ -385,68 +504,146 @@ let sentenceIndex = 0;
 let wordIndex = 0;
 let playing = false;
 let timer = null;
+let loopSentence = false;
+let player = null;
+let pendingVideoId = null;
+let levelFilter = "All";
+let filteredLessons = lessons.map((l, i) => i);
+const baseWordInterval = 500; // ms per word at 1x speed
 
 const sentenceEl = document.getElementById("sentence");
 const playBtn = document.getElementById("playBtn");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
+const loopBtn = document.getElementById("loopBtn");
+const speedSelect = document.getElementById("speedSelect");
 const prevLessonBtn = document.getElementById("prevLessonBtn");
 const nextLessonBtn = document.getElementById("nextLessonBtn");
 const lessonProgress = document.getElementById("lessonProgress");
 const lessonNumber = document.getElementById("lessonNumber");
 const lessonTitle = document.getElementById("lessonTitle");
-const lessonVideo = document.getElementById("lessonVideo");
 const vocabBody = document.getElementById("vocabBody");
 const expressionsList = document.getElementById("expressionsList");
 const reflectionBox = document.getElementById("reflectionBox");
 const quoteText = document.getElementById("quoteText");
+const themeToggle = document.getElementById("themeToggle");
+const focusToggle = document.getElementById("focusToggle");
+const levelSelect = document.getElementById("levelFilter");
 
-// كلمات ربط بنعتبرها بداية طبيعية لعبارة/سطر جديد
-const breakWords = [
-    "and", "but", "because", "so", "then", "or",
-    "which", "that", "who", "when", "while",
-    "if", "although", "since", "unless", "until", "before", "after", "as"
-];
-
-// بيرجع مجموعة (Set) من الـ indexes يلي لازم نحط بعدها كسر سطر
-function getBreakIndices(words, maxChunkLen = 6, minChunkLen = 2) {
-    const breakIndices = new Set();
-    let chunkLen = 0;
-
-    words.forEach((word, i) => {
-        const clean = word.toLowerCase().replace(/[.,!?;:"']/g, "");
-        const isBreakWord = breakWords.includes(clean) && chunkLen >= minChunkLen;
-        const tooLong = chunkLen >= maxChunkLen;
-
-        // اقطع السطر قبل كلمة الربط، أو إذا طال السطر كتير
-        if ((isBreakWord || tooLong) && i > 0) {
-            breakIndices.add(i - 1);
-            chunkLen = 0;
-        }
-
-        chunkLen++;
-
-        // اقطع بعد فاصلة/نقطتين إذا في محتوى كافي بالسطر
-        const endsWithPause = /[,;:]$/.test(word);
-        if (endsWithPause && chunkLen >= minChunkLen) {
-            breakIndices.add(i);
-            chunkLen = 0;
-        }
-    });
-
-    return breakIndices;
+/* ---------- Dark / Light Mode ---------- */
+function applyTheme(theme){
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("ek-theme", theme);
+  themeToggle.textContent = theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
 }
 
+applyTheme(localStorage.getItem("ek-theme") || "light");
+
+themeToggle.addEventListener("click", () => {
+  const current = document.documentElement.getAttribute("data-theme");
+  applyTheme(current === "dark" ? "light" : "dark");
+});
+
+/* ---------- Focus Mode ---------- */
+focusToggle.addEventListener("click", () => {
+  document.body.classList.toggle("focus-mode");
+  const active = document.body.classList.contains("focus-mode");
+  focusToggle.textContent = active ? "🎯 Exit Focus" : "🎯 Focus Mode";
+});
+
+/* ---------- CEFR Level Filter ---------- */
+function buildLevelOptions(){
+  const levels = ["All", "A1", "A2", "B1", "B2", "C1", "C2"];
+  levelSelect.innerHTML = "";
+  levels.forEach(lvl => {
+    const opt = document.createElement("option");
+    opt.value = lvl;
+    opt.textContent = lvl;
+    levelSelect.appendChild(opt);
+  });
+}
+
+function applyFilter(lvl){
+  levelFilter = lvl;
+  filteredLessons = lessons
+    .map((l, i) => i)
+    .filter(i => lvl === "All" || lessons[i].level === lvl);
+
+  if (filteredLessons.length === 0) filteredLessons = lessons.map((l, i) => i);
+
+  if (!filteredLessons.includes(currentLesson)) {
+    loadLesson(filteredLessons[0]);
+  } else {
+    updateLessonNavUI();
+  }
+}
+
+levelSelect.addEventListener("change", () => applyFilter(levelSelect.value));
+
+function updateLessonNavUI(){
+  const pos = filteredLessons.indexOf(currentLesson);
+  const num = String(currentLesson + 1).padStart(2, "0");
+  lessonNumber.textContent = "Lesson " + num;
+  lessonProgress.textContent = "Lesson " + (pos + 1) + " / " + filteredLessons.length;
+  prevLessonBtn.disabled = pos <= 0;
+  nextLessonBtn.disabled = pos >= filteredLessons.length - 1;
+}
+
+/* ---------- YouTube Player (needed for speed control) ---------- */
+function onYouTubeIframeAPIReady(){
+  player = new YT.Player("lessonVideo", {
+    videoId: pendingVideoId || lessons[currentLesson].videoId,
+    playerVars: { rel: 0 },
+    events: {
+      onReady: () => {
+        if (pendingVideoId) {
+          player.loadVideoById(pendingVideoId);
+          pendingVideoId = null;
+        }
+        player.setPlaybackRate(parseFloat(speedSelect.value));
+      }
+    }
+  });
+}
+
+function loadVideo(videoId){
+  if (player && player.loadVideoById) {
+    player.loadVideoById(videoId);
+    player.setPlaybackRate(parseFloat(speedSelect.value));
+  } else {
+    pendingVideoId = videoId;
+  }
+}
+
+function getWordInterval(){
+  return baseWordInterval / parseFloat(speedSelect.value);
+}
+
+speedSelect.addEventListener("change", () => {
+  if (player && player.setPlaybackRate) {
+    player.setPlaybackRate(parseFloat(speedSelect.value));
+  }
+  // إذا كانت الكلمات عم تتحرك حالياً، أعد ضبط سرعتها فوراً حسب السرعة الجديدة
+  if (playing) {
+    clearInterval(timer);
+    timer = setInterval(stepWord, getWordInterval());
+  }
+});
+
+/* ---------- Loop Sentence ---------- */
+loopBtn.addEventListener("click", () => {
+  loopSentence = !loopSentence;
+  loopBtn.classList.toggle("active", loopSentence);
+});
+
+/* ---------- Lesson Loading ---------- */
 function loadLesson(index){
   pause();
   currentLesson = index;
   const lesson = lessons[currentLesson];
 
-  const num = String(currentLesson + 1).padStart(2, "0");
-  lessonNumber.textContent = "Lesson " + num;
-lessonProgress.textContent = "Lesson " + (currentLesson + 1) + " / " + lessons.length;
   lessonTitle.textContent = lesson.title;
-  lessonVideo.src = "https://www.youtube-nocookie.com/embed/" + lesson.videoId;
+  loadVideo(lesson.videoId);
 
   vocabBody.innerHTML = "";
   lesson.vocab.forEach(([word, meaning]) => {
@@ -469,9 +666,9 @@ lessonProgress.textContent = "Lesson " + (currentLesson + 1) + " / " + lessons.l
   wordIndex = -1;
   renderSentence();
 
-  prevLessonBtn.disabled = currentLesson === 0;
-  nextLessonBtn.disabled = currentLesson === lessons.length - 1;
+  updateLessonNavUI();
 }
+
 function renderSentence() {
 
     let sentence = lessons[currentLesson].sentences[sentenceIndex];
@@ -483,8 +680,6 @@ function renderSentence() {
     const words = sentence.split(" ");
     sentenceEl.innerHTML = "";
 
-    const breakIndices = getBreakIndices(words);
-
     words.forEach((word, index) => {
 
         const span = document.createElement("span");
@@ -495,15 +690,10 @@ function renderSentence() {
         if (index === wordIndex) span.classList.add("active");
 
         sentenceEl.appendChild(span);
-
-        // كسر سطر طبيعي حسب العبارات المعنوية بدل كسر السطر بالنص
-        if (breakIndices.has(index)) {
-            sentenceEl.appendChild(document.createElement("br"));
-        } else {
-            sentenceEl.append(" ");
-        }
+        sentenceEl.append(" ");
     });
 }
+
 function stepWord() {
 
     const words = lessons[currentLesson].sentences[sentenceIndex];
@@ -511,6 +701,11 @@ function stepWord() {
     wordIndex++;
 
     if (wordIndex >= words.length) {
+        if (loopSentence) {
+            wordIndex = -1;
+            renderSentence();
+            return;
+        }
         wordIndex = words.length - 1;
         renderSentence();
         pause();
@@ -519,11 +714,11 @@ function stepWord() {
 
     renderSentence();
   }
-  
+
 function play(){
   playing = true;
   playBtn.textContent = "⏸";
-  timer = setInterval(stepWord, 500);
+  timer = setInterval(stepWord, getWordInterval());
 }
 
 function pause(){
@@ -561,22 +756,26 @@ prevBtn.addEventListener("click", () => {
 });
 
 nextLessonBtn.addEventListener("click", () => {
-  markLessonComplete(currentLesson);
+  if (typeof markLessonComplete === "function") markLessonComplete(currentLesson);
 
-  if (currentLesson < lessons.length - 1) {
-    loadLesson(currentLesson + 1);
+  const pos = filteredLessons.indexOf(currentLesson);
+  if (pos < filteredLessons.length - 1) {
+    loadLesson(filteredLessons[pos + 1]);
   } else {
-    updateProgressUI();
-    alert("🎉 Congratulations! You have completed all lessons.");
+    if (typeof updateProgressUI === "function") updateProgressUI();
+    alert("🎉 Congratulations! You have completed all lessons in this category.");
   }
 });
-  
+
 prevLessonBtn.addEventListener("click", () => {
-  if(currentLesson > 0) loadLesson(currentLesson - 1);
+  const pos = filteredLessons.indexOf(currentLesson);
+  if (pos > 0) loadLesson(filteredLessons[pos - 1]);
 });
-  // initial load
+
+// initial load
+buildLevelOptions();
 loadLesson(0);
-updateProgressUI();
+if (typeof updateProgressUI === "function") updateProgressUI();
 
 </script>
 
