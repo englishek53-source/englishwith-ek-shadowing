@@ -131,7 +131,7 @@ justify-content:center;
 .word{
     display:inline;
     padding:2px 4px;
-    margin-right:8px;
+    margin-right: 4px;
     background:none;
     border-radius:8px;
     color:#9F907B;      /* Dark beige */
@@ -436,32 +436,109 @@ lessonProgress.textContent = "Lesson " + (currentLesson + 1) + " / " + lessons.l
   prevLessonBtn.disabled = currentLesson === 0;
   nextLessonBtn.disabled = currentLesson === lessons.length - 1;
 }
+function renderSentence() {
 
-function renderSentence(){
-  const words = lessons[currentLesson].sentences[sentenceIndex];
-  sentenceEl.innerHTML = "";
-  words.forEach((w, i) => {
-    const span = document.createElement("span");
-    span.className = "word";
-    span.textContent = w;
-    if(i < wordIndex) span.classList.add("done");
-    if(i === wordIndex) span.classList.add("active");
-    sentenceEl.appendChild(span);
-  });
+    let sentence = lessons[currentLesson].sentences[sentenceIndex];
+
+    if (Array.isArray(sentence)) {
+        sentence = sentence.join(" ");
+    }
+
+    const words = sentence.split(" ");
+    sentenceEl.innerHTML = "";
+
+    const breakWords = [
+        "and",
+        "but",
+        "because",
+        "so",
+        "then",
+        "or",
+        "which",
+        "that",
+        "who",
+        "when",
+        "while"
+    ];
+
+    words.forEach((word, index) => {
+
+        const span = document.createElement("span");
+        span.className = "word";
+        span.textContent = word;
+
+        if (index < wordIndex) span.classList.add("done");
+        if (index === wordIndex) span.classList.add("active");
+
+        sentenceEl.appendChild(span);
+        sentenceEl.append(" ");
+// Break after punctuation
+if (
+    word.endsWith(",") ||
+    word.endsWith(".") ||
+    word.endsWith("?") ||
+    word.endsWith("!") ||
+    word.endsWith(":") ||
+    word.endsWith(";")
+) {
+    sentenceEl.appendChild(document.createElement("br"));
+    sentenceEl.appendChild(document.createElement("br"));
 }
 
-function stepWord(){
-  const words = lessons[currentLesson].sentences[sentenceIndex];
-  wordIndex++;
-  if(wordIndex >= words.length){
-    wordIndex = words.length - 1;
-    renderSentence();
-    pause();
-    return;
+// Break before connector words
+else if (
+    index > 5 &&
+    [
+        "and","but","because","so","then","or",
+        "which","that","who","when","while"
+    ].includes(word.toLowerCase())
+) {
+    sentenceEl.appendChild(document.createElement("br"));
   }
-  renderSentence();
-}
+        // Break after punctuation
+        if (
+            word.endsWith(",") ||
+            word.endsWith(".") ||
+            word.endsWith("?") ||
+            word.endsWith("!") ||
+            word.endsWith(":") ||
+            word.endsWith(";")
+        ) {
+            sentenceEl.appendChild(document.createElement("br"));
+            sentenceEl.appendChild(document.createElement("br"));
+        }
 
+        // Break before connector words (only in long sentences)
+        else if (
+            index > 5 &&
+            breakWords.includes(word.toLowerCase())
+        ) {
+            sentenceEl.appendChild(document.createElement("br"));
+        }
+    });
+}
+function stepWord() {
+
+    let sentence = lessons[currentLesson].sentences[sentenceIndex];
+
+    if (Array.isArray(sentence)) {
+        sentence = sentence.join(" ");
+    }
+
+    const words = sentence.split(" ");
+
+    wordIndex++;
+
+    if (wordIndex >= words.length) {
+        wordIndex = words.length - 1;
+        renderSentence();
+        pause();
+        return;
+    }
+
+    renderSentence();
+  }
+  
 function play(){
   playing = true;
   playBtn.textContent = "⏸";
