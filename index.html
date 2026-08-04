@@ -498,12 +498,24 @@ text-align:center;
 }
 
 /* ---------- Focus Mode ---------- */
+/* يبقى ظاهر فقط: عنوان الدرس ورقمه + الفيديو + كرت الشادووينغ (نص + أزرار التحكم) + زر الخروج من التركيز */
 body.focus-mode .lesson-section,
 body.focus-mode .cards,
 body.focus-mode .filter-bar,
+body.focus-mode .lesson-nav,
 body.focus-mode header p,
-body.focus-mode .lesson-nav{
+body.focus-mode header h1,
+body.focus-mode header button,
+body.focus-mode #themeToggle{
   display:none;
+}
+
+body.focus-mode header{
+  padding:15px 25px 5px;
+}
+
+body.focus-mode .utility-bar{
+  padding:10px 0 0;
 }
 
 /* ---------- Mobile ---------- */
