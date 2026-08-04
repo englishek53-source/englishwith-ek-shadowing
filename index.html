@@ -472,60 +472,15 @@ function renderSentence() {
 
         sentenceEl.appendChild(span);
         sentenceEl.append(" ");
-// Break after punctuation
-if (
-    word.endsWith(",") ||
-    word.endsWith(".") ||
-    word.endsWith("?") ||
-    word.endsWith("!") ||
-    word.endsWith(":") ||
-    word.endsWith(";")
-) {
-    sentenceEl.appendChild(document.createElement("br"));
+// Break only once in the middle of long sentences
+if (index === Math.floor(words.length / 2) && words.length > 12) {
     sentenceEl.appendChild(document.createElement("br"));
 }
-
-// Break before connector words
-else if (
-    index > 5 &&
-    [
-        "and","but","because","so","then","or",
-        "which","that","who","when","while"
-    ].includes(word.toLowerCase())
-) {
-    sentenceEl.appendChild(document.createElement("br"));
-  }
-        // Break after punctuation
-        if (
-            word.endsWith(",") ||
-            word.endsWith(".") ||
-            word.endsWith("?") ||
-            word.endsWith("!") ||
-            word.endsWith(":") ||
-            word.endsWith(";")
-        ) {
-            sentenceEl.appendChild(document.createElement("br"));
-            sentenceEl.appendChild(document.createElement("br"));
-        }
-
-        // Break before connector words (only in long sentences)
-        else if (
-            index > 5 &&
-            breakWords.includes(word.toLowerCase())
-        ) {
-            sentenceEl.appendChild(document.createElement("br"));
-        }
     });
 }
 function stepWord() {
 
-    let sentence = lessons[currentLesson].sentences[sentenceIndex];
-
-    if (Array.isArray(sentence)) {
-        sentence = sentence.join(" ");
-    }
-
-    const words = sentence.split(" ");
+    const words = lessons[currentLesson].sentences[sentenceIndex];
 
     wordIndex++;
 
