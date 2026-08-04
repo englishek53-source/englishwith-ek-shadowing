@@ -122,33 +122,33 @@ justify-content:center;
 }
 
 .sentence{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-justify-content:center;
-margin-bottom:20px;
+    display:block;
+    text-align:left;
+    max-width:700px;
+    margin:0 auto 20px;
+    line-height:1.8;
 }
 
 .word{
-display:inline-block;
-padding:8px 16px;
-border-radius:999px;
-background:#F1EEE8;
-color:#2B241F;
-font-size:22px;
-font-weight:600;
-transition:background .25s ease, color .25s ease, transform .25s ease;
+display:inline;
+padding:0;
+margin-right:8px;
+background:none;
+border-radius:0;
+color:#DCCDB8;
+font-size:32px;
+font-weight:500;
+transition:color .25s ease;
 }
 
 .word.done{
-background:#DCCDB8;
-color:#2B241F;
+color:#DCCDB8;
 }
 
 .word.active{
-background:#7D8E74;
-color:white;
-transform:scale(1.06);
+color:#7D8E74;
+background:none;
+transform:none;
 }
 
 .lesson-nav{
