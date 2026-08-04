@@ -128,27 +128,23 @@ justify-content:center;
     margin:0 auto 20px;
     line-height:1.8;
 }
-
 .word{
-display:inline;
-padding:0;
-margin-right:8px;
-background:none;
-border-radius:0;
-color:#DCCDB8;
-font-size:32px;
-font-weight:500;
-transition:color .25s ease;
-}
-
-.word.done{
-color:#DCCDB8;
+    display:inline;
+    padding:2px 4px;
+    margin-right:8px;
+    background:none;
+    border-radius:8px;
+    color:#9F907B;      /* Dark beige */
+    font-size:32px;
+    font-weight:500;
+    border:2px solid transparent;
+    transition:all .25s ease;
 }
 
 .word.active{
-color:#7D8E74;
-background:none;
-transform:none;
+    color:#7D8E74;                 /* Green */
+    border:2px solid #7D8E74;      /* Green border */
+    background:rgba(125,142,116,.08); /* Light green background */
 }
 
 .lesson-nav{
