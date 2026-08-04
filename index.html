@@ -401,6 +401,42 @@ const expressionsList = document.getElementById("expressionsList");
 const reflectionBox = document.getElementById("reflectionBox");
 const quoteText = document.getElementById("quoteText");
 
+// كلمات ربط بنعتبرها بداية طبيعية لعبارة/سطر جديد
+const breakWords = [
+    "and", "but", "because", "so", "then", "or",
+    "which", "that", "who", "when", "while",
+    "if", "although", "since", "unless", "until", "before", "after", "as"
+];
+
+// بيرجع مجموعة (Set) من الـ indexes يلي لازم نحط بعدها كسر سطر
+function getBreakIndices(words, maxChunkLen = 6, minChunkLen = 2) {
+    const breakIndices = new Set();
+    let chunkLen = 0;
+
+    words.forEach((word, i) => {
+        const clean = word.toLowerCase().replace(/[.,!?;:"']/g, "");
+        const isBreakWord = breakWords.includes(clean) && chunkLen >= minChunkLen;
+        const tooLong = chunkLen >= maxChunkLen;
+
+        // اقطع السطر قبل كلمة الربط، أو إذا طال السطر كتير
+        if ((isBreakWord || tooLong) && i > 0) {
+            breakIndices.add(i - 1);
+            chunkLen = 0;
+        }
+
+        chunkLen++;
+
+        // اقطع بعد فاصلة/نقطتين إذا في محتوى كافي بالسطر
+        const endsWithPause = /[,;:]$/.test(word);
+        if (endsWithPause && chunkLen >= minChunkLen) {
+            breakIndices.add(i);
+            chunkLen = 0;
+        }
+    });
+
+    return breakIndices;
+}
+
 function loadLesson(index){
   pause();
   currentLesson = index;
@@ -447,19 +483,7 @@ function renderSentence() {
     const words = sentence.split(" ");
     sentenceEl.innerHTML = "";
 
-    const breakWords = [
-        "and",
-        "but",
-        "because",
-        "so",
-        "then",
-        "or",
-        "which",
-        "that",
-        "who",
-        "when",
-        "while"
-    ];
+    const breakIndices = getBreakIndices(words);
 
     words.forEach((word, index) => {
 
@@ -471,11 +495,13 @@ function renderSentence() {
         if (index === wordIndex) span.classList.add("active");
 
         sentenceEl.appendChild(span);
-        sentenceEl.append(" ");
-// Break only once in the middle of long sentences
-if (index === Math.floor(words.length / 2) && words.length > 12) {
-    sentenceEl.appendChild(document.createElement("br"));
-}
+
+        // كسر سطر طبيعي حسب العبارات المعنوية بدل كسر السطر بالنص
+        if (breakIndices.has(index)) {
+            sentenceEl.appendChild(document.createElement("br"));
+        } else {
+            sentenceEl.append(" ");
+        }
     });
 }
 function stepWord() {
