@@ -951,16 +951,24 @@ nextLessonBtn.addEventListener("click", () => {
 });
 
 prevLessonBtn.addEventListener("click", () => {
-  const pos = filteredLessons.indexOf(currentLesson);
-  if (pos > 0) loadLesson(filteredLessons[pos - 1]);
+    const pos = filteredLessons.indexOf(currentLesson);
+    if (pos > 0) loadLesson(filteredLessons[pos - 1]);
 });
 
 // initial load
 buildLevelOptions();
 loadLesson(0);
-if (typeof updateProgressUI === "function") updateProgressUI();
 
+if (typeof updateProgressUI === "function") {
+    updateProgressUI();
+}
 </script>
+
+<div id="authBox">
+    <button id="loginBtn">🔑 Sign in with Google</button>
+    <button id="logoutBtn" style="display:none;">🚪 Sign Out</button>
+    <p id="userName"></p>
+</div>
 
 <script type="module" src="firebase.js"></script>
 
