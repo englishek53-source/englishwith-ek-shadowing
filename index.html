@@ -1312,30 +1312,68 @@ function maybeShowResults(){
 }
 
 /* ---- Record button ---- */
+
+function pickSupportedMimeType(){
+  const candidates = [
+    "audio/webm;codecs=opus",
+    "audio/webm",
+    "audio/mp4",
+    "audio/ogg;codecs=opus"
+  ];
+  for (const type of candidates) {
+    if (window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(type)) {
+      return type;
+    }
+  }
+  return ""; // let the browser pick its own default
+}
+
 recordBtn.addEventListener("click", async () => {
   if (!isRecording) {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorder = new MediaRecorder(stream);
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true
+        }
+      });
+
+      const mimeType = pickSupportedMimeType();
+      mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
+
       audioChunks = [];
       recognizedText = "";
       recognitionEnded = false;
       recordingStopped = false;
 
-      mediaRecorder.ondataavailable = (e) => audioChunks.push(e.data);
+      mediaRecorder.ondataavailable = (e) => {
+        if (e.data && e.data.size > 0) audioChunks.push(e.data);
+      };
+
       mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+        const blobType = mediaRecorder.mimeType || "audio/webm";
+        const audioBlob = new Blob(audioChunks, { type: blobType });
         audioURL = URL.createObjectURL(audioBlob);
         playbackRow.classList.add("visible");
-        practiceStatus.textContent = SpeechRecognition ? "Analyzing pronunciation..." : "Recording saved ✓";
-        practiceStatus.className = "practice-status ready";
+
+        if (audioBlob.size < 1000) {
+          // Suspiciously small/empty file — the mic likely captured no real audio
+          practiceStatus.textContent = "⚠️ Recording seems empty — check mic permission and try again";
+          practiceStatus.className = "practice-status recording";
+        } else {
+          practiceStatus.textContent = SpeechRecognition ? "Analyzing pronunciation..." : "Recording saved ✓";
+          practiceStatus.className = "practice-status ready";
+        }
+
         stream.getTracks().forEach(track => track.stop());
 
         recordingStopped = true;
         maybeShowResults();
       };
 
-      mediaRecorder.start();
+      // request a data chunk every 250ms instead of waiting until stop()
+      mediaRecorder.start(250);
       if (recognition) {
         try { recognition.start(); } catch (e) {}
       }
@@ -1370,7 +1408,16 @@ recordBtn.addEventListener("click", async () => {
 
 /* ---- Playback / redo ---- */
 playMyBtn.addEventListener("click", () => {
-  if (audioURL) new Audio(audioURL).play();
+  if (!audioURL) return;
+  const audio = new Audio(audioURL);
+  audio.onerror = () => {
+    practiceStatus.textContent = "⚠️ Couldn't play the recording";
+    practiceStatus.className = "practice-status recording";
+  };
+  audio.play().catch(() => {
+    practiceStatus.textContent = "⚠️ Couldn't play the recording";
+    practiceStatus.className = "practice-status recording";
+  });
 });
 
 redoBtn.addEventListener("click", () => {
