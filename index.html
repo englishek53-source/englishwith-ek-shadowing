@@ -20,6 +20,7 @@
   --muted:#6d6d6d;
   --card-bg:#ffffff;
   --accent:#7D8E74;
+  --accent-dark:#5f6f57;
   --accent-light:rgba(125,142,116,.08);
   --tag-bg:#DCCDB8;
   --word-color:#9F907B;
@@ -27,6 +28,9 @@
   --border:#E1DACB;
   --loop-accent:#E8863F;
   --loop-accent-bg:rgba(232,134,63,.12);
+  --red:#C25B52;
+  --red-light:rgba(194,91,82,.12);
+  --gold:#D4A94F;
 }
 
 [data-theme="dark"]{
@@ -35,6 +39,7 @@
   --muted:#B4AA9C;
   --card-bg:#241F1A;
   --accent:#8FA084;
+  --accent-dark:#a9bb9f;
   --accent-light:rgba(143,160,132,.15);
   --tag-bg:#4A3F33;
   --word-color:#B9AB94;
@@ -42,6 +47,9 @@
   --border:#3A332A;
   --loop-accent:#F0A05E;
   --loop-accent-bg:rgba(240,160,94,.15);
+  --red:#E07A70;
+  --red-light:rgba(224,122,112,.15);
+  --gold:#E5BC72;
 }
 
   .progress-bg {
@@ -497,6 +505,196 @@ box-shadow:0 5px 20px var(--shadow);
 text-align:center;
 }
 
+/* ---------- Voice Practice Card ---------- */
+.practice-card{
+  width:90%;
+  max-width:900px;
+  background:var(--card-bg);
+  margin:20px auto 0;
+  border-radius:24px;
+  box-shadow:0 10px 30px var(--shadow);
+  padding:30px 28px;
+  box-sizing:border-box;
+}
+
+.practice-card h3{
+  margin:0 0 4px;
+  font-size:20px;
+  color:var(--text);
+  text-align:center;
+}
+
+.practice-sub{
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+.practice-target{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  text-align:center;
+  margin-bottom:18px;
+}
+
+.practice-target .ptlabel{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:var(--muted);
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.practice-target .ptsentence{
+  font-size:18px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:10px;
+  line-height:1.4;
+}
+
+.listen-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:20px;
+  padding:8px 18px;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:0;
+}
+.listen-btn svg{ width:13px; height:13px; fill:currentColor; }
+.listen-btn:active{ transform:scale(.96); }
+
+.record-wrap{
+  position:relative;
+  width:78px;
+  height:78px;
+  margin:4px auto 10px;
+}
+.pulse-ring{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:var(--red-light);
+  opacity:0;
+}
+.record-wrap.recording .pulse-ring{ animation:pulseRing 1.4s ease-out infinite; }
+@keyframes pulseRing{
+  0%{opacity:.6; transform:scale(1);}
+  100%{opacity:0; transform:scale(1.6);}
+}
+.record-btn{
+  position:relative;
+  width:78px; height:78px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  background:var(--accent);
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .25s ease, transform .15s ease;
+  z-index:1;
+  margin-top:0;
+  padding:0;
+}
+.record-btn:active{ transform:scale(.94); }
+.record-btn.recording{ background:var(--red); }
+.record-btn svg{ width:28px; height:28px; }
+
+.practice-status{
+  text-align:center;
+  font-size:13px;
+  font-weight:600;
+  color:var(--muted);
+  margin-bottom:16px;
+  min-height:16px;
+}
+.practice-status.recording{ color:var(--red); }
+.practice-status.ready{ color:var(--accent-dark); }
+
+.playback-row{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:16px;
+}
+.playback-row.visible{ display:flex; }
+.play-my-btn, .redo-btn{
+  display:flex; align-items:center; gap:6px;
+  padding:8px 14px;
+  border-radius:24px;
+  border:1.5px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:0;
+}
+.play-my-btn{ border-color:var(--accent); color:var(--accent-dark); }
+.play-my-btn svg, .redo-btn svg{ width:13px; height:13px; }
+
+.result-box{
+  display:none;
+  border-top:1px solid var(--border);
+  padding-top:16px;
+}
+.result-box.visible{ display:block; }
+
+.accuracy-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.accuracy-row .alabel{
+  font-size:13px;
+  font-weight:700;
+  color:var(--text);
+}
+.accuracy-score{
+  font-size:22px;
+  font-weight:800;
+}
+.accuracy-score.good{ color:var(--accent-dark); }
+.accuracy-score.mid{ color:var(--gold); }
+.accuracy-score.low{ color:var(--red); }
+
+.transcript-label{
+  font-size:11px;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:700;
+  margin-bottom:6px;
+}
+.transcript-box{
+  font-size:15px;
+  line-height:1.6;
+  padding:10px 12px;
+  background:var(--bg);
+  border-radius:10px;
+  border:1px solid var(--border);
+}
+.word-correct{ color:var(--accent-dark); font-weight:600; }
+.word-wrong{ color:var(--red); font-weight:600; text-decoration:line-through; text-decoration-color:var(--red-light); }
+
+.no-support{
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+  padding:6px;
+}
+
 /* ---------- Focus Mode ---------- */
 /* يبقى ظاهر فقط: عنوان الدرس ورقمه + الفيديو + كرت الشادووينغ (نص + أزرار التحكم) + زر الخروج من التركيز */
 body.focus-mode .lesson-section,
@@ -525,7 +723,7 @@ body.focus-mode .utility-bar{
   .lesson-nav{flex-direction:column;gap:10px;}
   .utility-bar{gap:8px;}
   .shadow-controls{gap:14px;}
-  .shadow-card, .lesson-section{padding:25px 18px;}
+  .shadow-card, .lesson-section, .practice-card{padding:25px 18px;}
   .mode-btn{padding:8px 14px 8px 12px; font-size:13px;}
 }
 
@@ -618,6 +816,65 @@ body.focus-mode .utility-bar{
 
   <div class="sentence" id="sentence"></div>
 
+</div>
+
+<!-- ---------- Voice Practice Card (under Shadowing) ---------- -->
+<div class="practice-card">
+  <h3>🎙️ Practice Your Pronunciation</h3>
+  <div class="practice-sub">Listen to the sentence, then record yourself repeating it</div>
+
+  <div class="practice-target">
+    <div class="ptlabel">Current Sentence</div>
+    <div class="ptsentence" id="ptSentence">—</div>
+    <button class="listen-btn" id="listenBtn">
+      <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+      Listen to Original
+    </button>
+  </div>
+
+  <div class="record-wrap" id="recordWrap">
+    <div class="pulse-ring"></div>
+    <button class="record-btn" id="recordBtn" aria-label="Start recording">
+      <svg id="micIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+        <line x1="12" y1="19" x2="12" y2="23"></line>
+        <line x1="8" y1="23" x2="16" y2="23"></line>
+      </svg>
+      <svg id="stopIcon" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+        <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+      </svg>
+    </button>
+  </div>
+
+  <div class="practice-status" id="practiceStatus">Tap to start recording</div>
+
+  <div class="playback-row" id="playbackRow">
+    <button class="play-my-btn" id="playMyBtn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+      Play My Voice
+    </button>
+    <button class="redo-btn" id="redoBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="1 4 1 10 7 10"></polyline>
+        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+      </svg>
+      Redo
+    </button>
+  </div>
+
+  <div class="result-box" id="resultBox">
+    <div class="accuracy-row">
+      <span class="alabel">Pronunciation Match</span>
+      <span class="accuracy-score" id="accuracyScore">--%</span>
+    </div>
+    <div class="transcript-label">What we heard you say</div>
+    <div class="transcript-box" id="transcriptBox">—</div>
+  </div>
+
+  <div class="no-support" id="noSupport" style="display:none;">
+    Speech recognition isn't supported in this browser. Try Chrome on desktop or Android for pronunciation analysis.
+  </div>
 </div>
 
 <!-- ---------- Vocabulary ---------- -->
@@ -848,6 +1105,7 @@ function loadLesson(index){
   sentenceIndex = 0;
   wordIndex = -1;
   renderSentence();
+  updatePracticeTarget();
 
   updateLessonNavUI();
 }
@@ -930,6 +1188,7 @@ nextBtn.addEventListener("click", () => {
   sentenceIndex = (sentenceIndex + 1) % total;
   wordIndex = -1;
   renderSentence();
+  updatePracticeTarget();
 });
 
 prevBtn.addEventListener("click", () => {
@@ -938,6 +1197,7 @@ prevBtn.addEventListener("click", () => {
   sentenceIndex = (sentenceIndex - 1 + total) % total;
   wordIndex = -1;
   renderSentence();
+  updatePracticeTarget();
 });
 
 nextLessonBtn.addEventListener("click", () => {
@@ -964,6 +1224,185 @@ loadLesson(0);
 if (typeof updateProgressUI === "function") {
     updateProgressUI();
 }
+
+/* =====================================================
+   ---------- Voice Practice (Record + Compare) ----------
+   ===================================================== */
+
+const ptSentence = document.getElementById("ptSentence");
+const listenBtn = document.getElementById("listenBtn");
+
+const recordWrap = document.getElementById("recordWrap");
+const recordBtn = document.getElementById("recordBtn");
+const micIcon = document.getElementById("micIcon");
+const stopIcon = document.getElementById("stopIcon");
+const practiceStatus = document.getElementById("practiceStatus");
+
+const playbackRow = document.getElementById("playbackRow");
+const playMyBtn = document.getElementById("playMyBtn");
+const redoBtn = document.getElementById("redoBtn");
+
+const resultBox = document.getElementById("resultBox");
+const accuracyScore = document.getElementById("accuracyScore");
+const transcriptBox = document.getElementById("transcriptBox");
+const noSupport = document.getElementById("noSupport");
+
+let mediaRecorder;
+let audioChunks = [];
+let audioURL;
+let isRecording = false;
+
+function getCurrentTargetSentence(){
+  let sentence = lessons[currentLesson].sentences[sentenceIndex];
+  if (Array.isArray(sentence)) sentence = sentence.join(" ");
+  return sentence;
+}
+
+function updatePracticeTarget(){
+  ptSentence.textContent = getCurrentTargetSentence();
+  resetPracticeUI();
+}
+
+function resetPracticeUI(){
+  playbackRow.classList.remove("visible");
+  resultBox.classList.remove("visible");
+  practiceStatus.textContent = "Tap to start recording";
+  practiceStatus.className = "practice-status";
+  audioChunks = [];
+  recognizedText = "";
+}
+
+/* ---- Listen to original (TTS) ---- */
+listenBtn.addEventListener("click", () => {
+  if (!("speechSynthesis" in window)) return;
+  const utter = new SpeechSynthesisUtterance(getCurrentTargetSentence());
+  utter.lang = "en-US";
+  utter.rate = 0.9;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utter);
+});
+
+/* ---- Speech recognition setup ---- */
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = null;
+let recognizedText = "";
+
+if (SpeechRecognition) {
+  recognition = new SpeechRecognition();
+  recognition.lang = "en-US";
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  recognition.onresult = (event) => {
+    recognizedText = event.results[0][0].transcript;
+  };
+
+  recognition.onerror = () => {
+    recognizedText = "";
+  };
+} else {
+  noSupport.style.display = "block";
+}
+
+/* ---- Record button ---- */
+recordBtn.addEventListener("click", async () => {
+  if (!isRecording) {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder = new MediaRecorder(stream);
+      audioChunks = [];
+      recognizedText = "";
+
+      mediaRecorder.ondataavailable = (e) => audioChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+        audioURL = URL.createObjectURL(audioBlob);
+        playbackRow.classList.add("visible");
+        practiceStatus.textContent = "Recording saved ✓";
+        practiceStatus.className = "practice-status ready";
+        stream.getTracks().forEach(track => track.stop());
+
+        setTimeout(showPracticeResults, 400);
+      };
+
+      mediaRecorder.start();
+      if (recognition) {
+        try { recognition.start(); } catch (e) {}
+      }
+      isRecording = true;
+
+      recordBtn.classList.add("recording");
+      recordWrap.classList.add("recording");
+      micIcon.style.display = "none";
+      stopIcon.style.display = "block";
+      practiceStatus.textContent = "Recording... tap to stop";
+      practiceStatus.className = "practice-status recording";
+      playbackRow.classList.remove("visible");
+      resultBox.classList.remove("visible");
+
+    } catch (err) {
+      practiceStatus.textContent = "Microphone access denied";
+      practiceStatus.className = "practice-status recording";
+    }
+
+  } else {
+    mediaRecorder.stop();
+    if (recognition) {
+      try { recognition.stop(); } catch (e) {}
+    }
+    isRecording = false;
+    recordBtn.classList.remove("recording");
+    recordWrap.classList.remove("recording");
+    micIcon.style.display = "block";
+    stopIcon.style.display = "none";
+  }
+});
+
+/* ---- Playback / redo ---- */
+playMyBtn.addEventListener("click", () => {
+  if (audioURL) new Audio(audioURL).play();
+});
+
+redoBtn.addEventListener("click", () => {
+  resetPracticeUI();
+});
+
+/* ---- Compare recognized text vs target sentence ---- */
+function normalizeWords(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^\w\s']/g, "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function showPracticeResults() {
+  if (!SpeechRecognition) return;
+
+  const targetWords = normalizeWords(getCurrentTargetSentence());
+  const saidWords = normalizeWords(recognizedText);
+
+  let matches = 0;
+  const highlighted = targetWords.map((word, i) => {
+    const said = saidWords[i];
+    const isMatch = said && said === word;
+    if (isMatch) matches++;
+    return '<span class="' + (isMatch ? "word-correct" : "word-wrong") + '">' + word + "</span>";
+  });
+
+  const pct = targetWords.length ? Math.round((matches / targetWords.length) * 100) : 0;
+
+  accuracyScore.textContent = pct + "%";
+  accuracyScore.className = "accuracy-score " + (pct >= 80 ? "good" : pct >= 50 ? "mid" : "low");
+  transcriptBox.textContent = recognizedText || "(nothing recognized — try speaking clearly)";
+
+  resultBox.classList.add("visible");
+}
+
+// initialize practice target for the first loaded lesson/sentence
+updatePracticeTarget();
+
 </script>
 
 <div id="authBox">
