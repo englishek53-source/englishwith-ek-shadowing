@@ -447,6 +447,34 @@ text-transform:uppercase;
 letter-spacing:.5px;
 }
 
+.save-word-btn{
+  background:none;
+  border:none;
+  color:var(--border);
+  font-size:20px;
+  cursor:pointer;
+  padding:0;
+  line-height:1;
+  margin-top:0;
+}
+.save-word-btn.saved{
+  color:var(--gold);
+}
+
+.remove-word-btn{
+  background:none;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+  padding:0;
+  margin-top:0;
+}
+
+#myVocabEmpty{
+  color:var(--muted);
+  font-size:15px;
+}
+
 .expressions-list{
 list-style:none;
 margin:0;
@@ -746,6 +774,12 @@ body.focus-mode .utility-bar{
     </span>
     <span class="label" id="focusLabel">Focus Mode</span>
   </button>
+  <button id="myVocabToggle" class="mode-btn">
+    <span class="icon">
+      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9 12 2"/></svg>
+    </span>
+    <span class="label" id="myVocabLabel">My Words</span>
+  </button>
 </div>
 
 <header>
@@ -763,6 +797,15 @@ body.focus-mode .utility-bar{
 <div class="filter-bar">
   <label for="levelFilter">🎓 Filter by level (CEFR):</label>
   <select id="levelFilter"></select>
+</div>
+
+<div class="lesson-section" id="myVocabSection" style="display:none;">
+  <h3>⭐ My Saved Words</h3>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Meaning</th><th></th></tr>
+    <tbody id="myVocabBody"></tbody>
+  </table>
+  <p id="myVocabEmpty" style="display:none;">لسا ما حفظت أي كلمة. اضغط ⭐ جنب أي كلمة بجدول Vocabulary لتحفظها.</p>
 </div>
 
 <div class="lesson-nav">
@@ -881,7 +924,7 @@ body.focus-mode .utility-bar{
 <div class="lesson-section">
   <h3>📚 Vocabulary</h3>
   <table class="vocab-table">
-    <tr><th>Word</th><th>Meaning</th></tr>
+    <tr><th>Word</th><th>Meaning</th><th></th></tr>
     <tbody id="vocabBody"></tbody>
   </table>
 </div>
@@ -959,6 +1002,11 @@ const themeLabel = document.getElementById("themeLabel");
 const focusToggle = document.getElementById("focusToggle");
 const focusLabel = document.getElementById("focusLabel");
 const levelSelect = document.getElementById("levelFilter");
+const myVocabToggle = document.getElementById("myVocabToggle");
+const myVocabLabel = document.getElementById("myVocabLabel");
+const myVocabSection = document.getElementById("myVocabSection");
+const myVocabBody = document.getElementById("myVocabBody");
+const myVocabEmpty = document.getElementById("myVocabEmpty");
 
 /* ---------- Icon markup (used to swap play/pause and sun/moon) ---------- */
 const ICON_MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
@@ -1029,6 +1077,93 @@ function updateLessonNavUI(){
   nextLessonBtn.disabled = pos >= filteredLessons.length - 1;
 }
 
+/* ---------- Saved Vocabulary (localStorage) ---------- */
+function getSavedVocab(){
+  try {
+    return JSON.parse(localStorage.getItem("ek-saved-vocab")) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function isWordSaved(word){
+  return getSavedVocab().some(item => item.word === word);
+}
+
+function saveVocabWord(word, meaning){
+  const saved = getSavedVocab();
+  if (!saved.some(item => item.word === word)) {
+    saved.push({ word, meaning });
+    localStorage.setItem("ek-saved-vocab", JSON.stringify(saved));
+  }
+}
+
+function removeVocabWord(word){
+  const saved = getSavedVocab().filter(item => item.word !== word);
+  localStorage.setItem("ek-saved-vocab", JSON.stringify(saved));
+}
+
+function renderVocabTable(lesson){
+  vocabBody.innerHTML = "";
+  lesson.vocab.forEach(([word, meaning]) => {
+    const saved = isWordSaved(word);
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      "<td>" + word + "</td>" +
+      "<td>" + meaning + "</td>" +
+      "<td><button class=\"save-word-btn" + (saved ? " saved" : "") + "\" data-word=\"" + word + "\" data-meaning=\"" + meaning.replace(/"/g, "&quot;") + "\">" + (saved ? "★" : "☆") + "</button></td>";
+    vocabBody.appendChild(tr);
+  });
+}
+
+function renderMyVocabPanel(){
+  const saved = getSavedVocab();
+  myVocabBody.innerHTML = "";
+  if (saved.length === 0) {
+    myVocabEmpty.style.display = "block";
+    return;
+  }
+  myVocabEmpty.style.display = "none";
+  saved.forEach(item => {
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      "<td>" + item.word + "</td>" +
+      "<td>" + item.meaning + "</td>" +
+      "<td><button class=\"remove-word-btn\" data-word=\"" + item.word + "\">🗑️</button></td>";
+    myVocabBody.appendChild(tr);
+  });
+}
+
+vocabBody.addEventListener("click", (e) => {
+  const btn = e.target.closest(".save-word-btn");
+  if (!btn) return;
+  const word = btn.dataset.word;
+  const meaning = btn.dataset.meaning;
+  if (isWordSaved(word)) {
+    removeVocabWord(word);
+  } else {
+    saveVocabWord(word, meaning);
+  }
+  renderVocabTable(lessons[currentLesson]);
+  renderMyVocabPanel();
+});
+
+myVocabBody.addEventListener("click", (e) => {
+  const btn = e.target.closest(".remove-word-btn");
+  if (!btn) return;
+  removeVocabWord(btn.dataset.word);
+  renderVocabTable(lessons[currentLesson]);
+  renderMyVocabPanel();
+});
+
+myVocabToggle.addEventListener("click", () => {
+  const showing = myVocabSection.style.display !== "none";
+  myVocabSection.style.display = showing ? "none" : "block";
+  myVocabToggle.classList.toggle("active", !showing);
+  myVocabLabel.textContent = showing ? "My Words" : "Hide My Words";
+  if (!showing) renderMyVocabPanel();
+});
+
 /* ---------- YouTube Player (needed for speed control) ---------- */
 function onYouTubeIframeAPIReady(){
   player = new YT.Player("lessonVideo", {
@@ -1085,12 +1220,7 @@ function loadLesson(index){
   lessonTitle.textContent = lesson.title;
   loadVideo(lesson.videoId);
 
-  vocabBody.innerHTML = "";
-  lesson.vocab.forEach(([word, meaning]) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = "<td>" + word + "</td><td>" + meaning + "</td>";
-    vocabBody.appendChild(tr);
-  });
+  renderVocabTable(lesson);
 
   expressionsList.innerHTML = "";
   lesson.expressions.forEach(exp => {
