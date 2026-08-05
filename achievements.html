@@ -11,9 +11,11 @@
       --muted: #6d6d6d;
       --card-bg: #ffffff;
       --accent: #7D8E74;
+      --accent-dark: #5f6f57;
       --accent-light: rgba(125, 142, 116, 0.12);
       --border: #E1DACB;
-      --shadow: rgba(0, 0, 0, 0.05);
+      --shadow: rgba(0, 0, 0, 0.06);
+      --gold: #D4A94F;
     }
 
     * {
@@ -71,7 +73,7 @@
     /* Page Title */
     .title-section {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     .title-section h1 {
@@ -85,6 +87,51 @@
       font-size: 0.95rem;
     }
 
+    /* Overall progress */
+    .overall-progress {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+
+    .overall-progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .overall-progress-top span:first-child {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .overall-progress-top span:last-child {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      border-radius: 20px;
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+
     /* Achievements Grid */
     .achievements-grid {
       display: grid;
@@ -93,67 +140,110 @@
     }
 
     .badge-card {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 16px;
       padding: 16px;
       background-color: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       box-shadow: 0 4px 10px var(--shadow);
-      transition: all 0.3s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      overflow: hidden;
+    }
+
+    .badge-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px var(--shadow);
     }
 
     .badge-icon {
-      font-size: 2.5rem;
-      width: 60px;
-      height: 60px;
+      position: relative;
+      font-size: 2.3rem;
+      width: 58px;
+      height: 58px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: var(--bg);
       border-radius: 50%;
+      z-index: 1;
     }
 
     .badge-info {
       flex: 1;
+      min-width: 0;
     }
 
     .badge-info h3 {
-      font-size: 1.1rem;
-      margin-bottom: 4px;
+      font-size: 1.05rem;
+      margin-bottom: 3px;
       color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .badge-info p {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .badge-progress-text {
+      font-size: 0.75rem;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .badge-date {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    .mini-track {
+      width: 100%;
+      height: 5px;
+      background-color: var(--bg);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .mini-fill {
+      height: 100%;
+      background-color: var(--accent);
+      border-radius: 10px;
+      transition: width 0.6s ease;
+    }
+
+    .status-tag {
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 4px 9px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: flex-start;
     }
 
     /* Locked State */
     .badge-card.locked {
-      opacity: 0.5;
-      filter: grayscale(100%);
-    }
-
-    /* Unlocked State */
-    .badge-card.unlocked {
-      opacity: 1;
-      filter: grayscale(0%);
-      border-color: var(--accent);
       background-color: var(--card-bg);
     }
 
-    .badge-card.unlocked .badge-icon {
-      background-color: var(--accent-light);
+    .badge-card.locked .badge-icon {
+      filter: grayscale(100%);
+      opacity: 0.45;
     }
 
-    .status-tag {
-      font-size: 0.75rem;
-      font-weight: bold;
-      padding: 4px 8px;
-      border-radius: 6px;
-      text-transform: uppercase;
+    .badge-card.locked .badge-info h3 {
+      color: var(--muted);
     }
 
     .badge-card.locked .status-tag {
@@ -161,13 +251,98 @@
       color: var(--muted);
     }
 
+    /* Unlocked State */
+    .badge-card.unlocked {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--card-bg) 60%, var(--accent-light));
+    }
+
+    .badge-card.unlocked .badge-icon {
+      background-color: var(--accent-light);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
     .badge-card.unlocked .status-tag {
       background-color: var(--accent);
       color: #ffffff;
     }
+
+    /* Special styling for the hardest badge */
+    .badge-card.master.unlocked {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, var(--card-bg) 55%, rgba(212, 169, 79, 0.15));
+    }
+
+    .badge-card.master.unlocked .badge-icon {
+      background-color: rgba(212, 169, 79, 0.18);
+      box-shadow: 0 0 0 3px rgba(212, 169, 79, 0.25);
+    }
+
+    .badge-card.master.unlocked .status-tag {
+      background-color: var(--gold);
+    }
+
+    .badge-card.master.unlocked::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(212, 169, 79, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Unlock pop animation */
+    @keyframes popIn {
+      0% { transform: scale(0.85); opacity: 0; }
+      60% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    .badge-card.just-unlocked {
+      animation: popIn 0.5s ease;
+    }
+
+    .badge-card.just-unlocked .badge-icon {
+      animation: iconPulse 0.8s ease;
+    }
+
+    @keyframes iconPulse {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
+
+    /* Confetti */
+    #confetti-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      top: -10px;
+      width: 8px;
+      height: 8px;
+      opacity: 0.9;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(600deg);
+        opacity: 0.4;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <div id="confetti-container"></div>
 
   <div class="container">
     <header>
@@ -180,31 +355,50 @@
       <p>Track your shadowing progress and unlocked badges</p>
     </section>
 
+    <div class="overall-progress">
+      <div class="overall-progress-top">
+        <span>Overall Progress</span>
+        <span id="overallText">0 / 3 unlocked</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="overallFill"></div>
+      </div>
+    </div>
+
     <div class="achievements-grid">
 
-      <div class="badge-card locked" id="badge-first-lesson">
+      <div class="badge-card locked" id="badge-first-lesson" data-target="1">
         <div class="badge-icon">🎯</div>
         <div class="badge-info">
           <h3>First Step</h3>
           <p>Complete your first shadowing lesson</p>
+          <div class="badge-progress-text" data-progress-text></div>
+          <div class="mini-track"><div class="mini-fill" data-fill></div></div>
+          <div class="badge-date" data-date></div>
         </div>
         <span class="status-tag">Locked</span>
       </div>
 
-      <div class="badge-card locked" id="badge-5-lessons">
+      <div class="badge-card locked" id="badge-5-lessons" data-target="5">
         <div class="badge-icon">🔥</div>
         <div class="badge-info">
           <h3>On Fire</h3>
           <p>Complete 5 lessons successfully</p>
+          <div class="badge-progress-text" data-progress-text></div>
+          <div class="mini-track"><div class="mini-fill" data-fill></div></div>
+          <div class="badge-date" data-date></div>
         </div>
         <span class="status-tag">Locked</span>
       </div>
 
-      <div class="badge-card locked" id="badge-master">
+      <div class="badge-card locked master" id="badge-master" data-target="10">
         <div class="badge-icon">👑</div>
         <div class="badge-info">
           <h3>Shadowing Master</h3>
           <p>Complete all available lessons</p>
+          <div class="badge-progress-text" data-progress-text></div>
+          <div class="mini-track"><div class="mini-fill" data-fill></div></div>
+          <div class="badge-date" data-date></div>
         </div>
         <span class="status-tag">Locked</span>
       </div>
@@ -231,50 +425,99 @@
 
     const userNameDisplay = document.getElementById("userName");
 
-    // Check user authentication and update UI
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        userNameDisplay.textContent = user.displayName || "User";
-      } else {
-        userNameDisplay.textContent = "Guest";
-      }
+      userNameDisplay.textContent = user ? (user.displayName || "User") : "Guest";
       loadAchievementsProgress();
     });
 
-    // Update Badges UI based on stored progress
     function loadAchievementsProgress() {
       const completed = JSON.parse(localStorage.getItem("completedLessons") || "[]");
+      const unlockDates = JSON.parse(localStorage.getItem("badgeUnlockDates") || "{}");
+      const previouslyUnlocked = JSON.parse(localStorage.getItem("previouslyUnlockedBadges") || "[]");
       const completedCount = completed.length;
 
-      // Update Badge 1
-      updateBadgeUI("badge-first-lesson", completedCount >= 1);
+      const badges = document.querySelectorAll(".badge-card");
+      let unlockedCount = 0;
+      const newlyUnlocked = [];
 
-      // Update Badge 2
-      updateBadgeUI("badge-5-lessons", completedCount >= 5);
+      badges.forEach((badge) => {
+        const target = parseInt(badge.dataset.target, 10);
+        const isUnlocked = completedCount >= target;
 
-      // Update Badge 3
-      updateBadgeUI("badge-master", completedCount >= 10);
+        if (isUnlocked) {
+          unlockedCount++;
+          if (!unlockDates[badge.id]) {
+            unlockDates[badge.id] = new Date().toLocaleDateString();
+          }
+          if (!previouslyUnlocked.includes(badge.id)) {
+            newlyUnlocked.push(badge.id);
+          }
+        }
+
+        updateBadgeUI(badge, isUnlocked, completedCount, target, unlockDates[badge.id]);
+      });
+
+      // Overall progress bar
+      const total = badges.length;
+      document.getElementById("overallText").textContent = `${unlockedCount} / ${total} unlocked`;
+      document.getElementById("overallFill").style.width = `${(unlockedCount / total) * 100}%`;
+
+      localStorage.setItem("badgeUnlockDates", JSON.stringify(unlockDates));
+
+      // Trigger animation + confetti for newly unlocked badges
+      if (newlyUnlocked.length > 0) {
+        newlyUnlocked.forEach((id) => {
+          const el = document.getElementById(id);
+          el.classList.add("just-unlocked");
+        });
+        launchConfetti();
+        localStorage.setItem(
+          "previouslyUnlockedBadges",
+          JSON.stringify([...previouslyUnlocked, ...newlyUnlocked])
+        );
+      }
     }
 
-    // Helper function to toggle badge classes and status label
-    function updateBadgeUI(badgeId, isUnlocked) {
-      const badge = document.getElementById(badgeId);
-      if (!badge) return;
-
+    function updateBadgeUI(badge, isUnlocked, current, target, dateStr) {
       const tag = badge.querySelector(".status-tag");
+      const fill = badge.querySelector("[data-fill]");
+      const progressText = badge.querySelector("[data-progress-text]");
+      const dateEl = badge.querySelector("[data-date]");
+
+      const clampedCurrent = Math.min(current, target);
+      const pct = (clampedCurrent / target) * 100;
+      fill.style.width = `${pct}%`;
 
       if (isUnlocked) {
         badge.classList.remove("locked");
         badge.classList.add("unlocked");
-        if (tag) tag.textContent = "Unlocked";
+        tag.textContent = "Unlocked";
+        progressText.textContent = `Completed ${target}/${target} lessons`;
+        dateEl.textContent = dateStr ? `Unlocked on ${dateStr}` : "";
       } else {
         badge.classList.add("locked");
         badge.classList.remove("unlocked");
-        if (tag) tag.textContent = "Locked";
+        tag.textContent = "Locked";
+        progressText.textContent = `${clampedCurrent}/${target} lessons`;
+        dateEl.textContent = "";
+      }
+    }
+
+    function launchConfetti() {
+      const colors = ["#7D8E74", "#D4A94F", "#E1DACB", "#5f6f57"];
+      const container = document.getElementById("confetti-container");
+      for (let i = 0; i < 60; i++) {
+        const piece = document.createElement("div");
+        piece.className = "confetti-piece";
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDuration = `${2 + Math.random() * 1.5}s`;
+        piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+        container.appendChild(piece);
+        setTimeout(() => piece.remove(), 3600);
       }
     }
   </script>
 
 </body>
 </html>
-
