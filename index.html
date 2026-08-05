@@ -1278,6 +1278,8 @@ listenBtn.addEventListener("click", () => {
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 let recognition = null;
 let recognizedText = "";
+let recognitionEnded = false;
+let recordingStopped = false;
 
 if (SpeechRecognition) {
   recognition = new SpeechRecognition();
@@ -1290,10 +1292,23 @@ if (SpeechRecognition) {
   };
 
   recognition.onerror = () => {
-    recognizedText = "";
+    // leave recognizedText as-is; onend will still fire after this
+  };
+
+  recognition.onend = () => {
+    recognitionEnded = true;
+    maybeShowResults();
   };
 } else {
   noSupport.style.display = "block";
+}
+
+function maybeShowResults(){
+  // Only show results once BOTH the recording has stopped AND
+  // speech recognition has actually finished processing.
+  if (recordingStopped && (recognitionEnded || !SpeechRecognition)) {
+    showPracticeResults();
+  }
 }
 
 /* ---- Record button ---- */
@@ -1304,17 +1319,20 @@ recordBtn.addEventListener("click", async () => {
       mediaRecorder = new MediaRecorder(stream);
       audioChunks = [];
       recognizedText = "";
+      recognitionEnded = false;
+      recordingStopped = false;
 
       mediaRecorder.ondataavailable = (e) => audioChunks.push(e.data);
       mediaRecorder.onstop = () => {
         const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
         audioURL = URL.createObjectURL(audioBlob);
         playbackRow.classList.add("visible");
-        practiceStatus.textContent = "Recording saved ✓";
+        practiceStatus.textContent = SpeechRecognition ? "Analyzing pronunciation..." : "Recording saved ✓";
         practiceStatus.className = "practice-status ready";
         stream.getTracks().forEach(track => track.stop());
 
-        setTimeout(showPracticeResults, 400);
+        recordingStopped = true;
+        maybeShowResults();
       };
 
       mediaRecorder.start();
@@ -1371,6 +1389,9 @@ function normalizeWords(str) {
 
 function showPracticeResults() {
   if (!SpeechRecognition) return;
+
+  practiceStatus.textContent = "Recording saved ✓";
+  practiceStatus.className = "practice-status ready";
 
   const targetWords = normalizeWords(getCurrentTargetSentence());
   const saidWords = normalizeWords(recognizedText);
