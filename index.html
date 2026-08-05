@@ -1217,14 +1217,6 @@ prevLessonBtn.addEventListener("click", () => {
     if (pos > 0) loadLesson(filteredLessons[pos - 1]);
 });
 
-// initial load
-buildLevelOptions();
-loadLesson(0);
-
-if (typeof updateProgressUI === "function") {
-    updateProgressUI();
-}
-
 /* =====================================================
    ---------- Voice Practice (Record + Compare) ----------
    ===================================================== */
@@ -1400,8 +1392,13 @@ function showPracticeResults() {
   resultBox.classList.add("visible");
 }
 
-// initialize practice target for the first loaded lesson/sentence
-updatePracticeTarget();
+// ---------- initial load (runs last, after all consts/functions above exist) ----------
+buildLevelOptions();
+loadLesson(0);
+
+if (typeof updateProgressUI === "function") {
+    updateProgressUI();
+}
 
 </script>
 
