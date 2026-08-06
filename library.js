@@ -2014,4 +2014,3 @@ if (typeof updateProgressUI === "function") {
 
 </body>
 </html>
-
