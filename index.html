@@ -4,12 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EnglishWith_EK Shadowing</title>
-  <div class="progress-container">
-  <div id="progressText">0 / 0 lessons completed</div>
-  <div class="progress-bg">
-    <div id="progressBar" class="progress-fill"></div>
-  </div>
-  </div>
 
 <style>
 
@@ -51,6 +45,20 @@
   --red-light:rgba(224,122,112,.15);
   --gold:#E5BC72;
 }
+
+  .progress-container{
+    width:90%;
+    max-width:900px;
+    margin:0 auto;
+    padding:18px 0 0;
+  }
+
+  #progressText{
+    font-size:13px;
+    font-weight:600;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
 
   .progress-bg {
   width: 100%;
@@ -744,6 +752,169 @@ body.focus-mode .utility-bar{
   padding:10px 0 0;
 }
 
+/* ---------- Library ---------- */
+.library-grid{
+  width:90%;
+  max-width:900px;
+  margin:0 auto 40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:16px;
+}
+
+#libraryItems{
+  grid-template-columns:1fr;
+}
+
+.category-card{
+  background:var(--card-bg);
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  padding:28px 18px;
+  margin-top:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  cursor:pointer;
+  color:var(--text);
+  font-size:15px;
+  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.category-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--accent);
+  box-shadow:0 14px 30px var(--shadow);
+}
+
+.category-card .cat-icon{ font-size:38px; line-height:1; }
+.category-card .cat-name{ font-size:17px; font-weight:700; }
+
+.category-card .cat-count{
+  font-size:13px;
+  color:var(--accent-dark);
+  background:var(--accent-light);
+  padding:5px 14px;
+  border-radius:999px;
+  font-weight:600;
+}
+
+.library-item-card{
+  background:var(--card-bg);
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+  margin-top:0;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-align:left;
+  cursor:pointer;
+  color:var(--text);
+  font-size:15px;
+  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.library-item-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent);
+  box-shadow:0 12px 26px var(--shadow);
+}
+
+.library-item-card .item-icon{
+  font-size:24px;
+  flex-shrink:0;
+  width:50px;
+  height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--accent-light);
+  border-radius:14px;
+}
+
+.library-item-card .item-body{ flex:1; min-width:0; }
+.library-item-card .item-title{ display:block; font-weight:700; font-size:15px; line-height:1.35; }
+.library-item-card .item-meta{ display:block; font-size:12.5px; color:var(--muted); margin-top:5px; }
+
+.library-item-card .item-play{
+  flex-shrink:0;
+  font-size:12.5px;
+  font-weight:700;
+  color:var(--accent-dark);
+  border:1.5px solid var(--accent);
+  padding:7px 15px;
+  border-radius:999px;
+  transition:background .2s ease, color .2s ease;
+}
+
+.library-item-card:hover .item-play{ background:var(--accent); color:#fff; }
+
+#librarySub{
+  text-align:center;
+  margin:0 auto 26px;
+  max-width:560px;
+  font-size:15px;
+}
+
+#libraryItemsWrap .lesson-nav{ margin-top:34px; }
+
+/* ---------- Library Search / Level Filter ---------- */
+.library-tools{
+  width:90%;
+  max-width:900px;
+  margin:0 auto 24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.library-search{
+  flex:1;
+  min-width:220px;
+  max-width:520px;
+  padding:11px 20px;
+  border-radius:999px;
+  border:1.5px solid var(--border);
+  background:var(--card-bg);
+  color:var(--text);
+  font-size:14px;
+  font-family:inherit;
+  outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.library-search::placeholder{ color:var(--muted); }
+.library-search:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px var(--accent-light);
+}
+
+.library-level{
+  padding:11px 16px;
+  border-radius:999px;
+  border:1.5px solid var(--border);
+  background:var(--card-bg);
+  color:var(--text);
+  font-size:14px;
+  font-weight:600;
+  font-family:inherit;
+  cursor:pointer;
+  transition:border-color .2s ease;
+}
+.library-level:focus{ border-color:var(--accent); outline:none; }
+
+.library-empty{
+  text-align:center;
+  color:var(--muted);
+  font-size:15px;
+  padding:8px 0 40px;
+  margin:0;
+}
+
 /* ---------- Mobile ---------- */
 @media (max-width:480px){
   h1{font-size:30px;}
@@ -760,6 +931,13 @@ body.focus-mode .utility-bar{
 </head>
 
 <body>
+
+<div class="progress-container">
+  <div id="progressText">0 / 0 lessons completed</div>
+  <div class="progress-bg">
+    <div id="progressBar" class="progress-fill"></div>
+  </div>
+</div>
 
 <div class="utility-bar">
   <button id="themeToggle" class="mode-btn">
@@ -780,6 +958,12 @@ body.focus-mode .utility-bar{
     </span>
     <span class="label" id="myVocabLabel">My Words</span>
   </button>
+  <button id="libraryToggle" class="mode-btn">
+    <span class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    </span>
+    <span class="label" id="libraryLabel">Library</span>
+  </button>
 </div>
 
 <header>
@@ -788,16 +972,11 @@ body.focus-mode .utility-bar{
 
 <p>Listen • Repeat • Speak Naturally</p>
 
-<button>Start Shadowing</button> 
+<button id="startShadowBtn">Start Shadowing</button> 
   <a href="achievements.html" style="display:inline-block; margin-top:10px; padding:8px 16px; background:#fff; border:1px solid #E1DACB; border-radius:8px; text-decoration:none; color:#2B241F; font-weight:600;">🏆 Achievements</a>
 
 
 </header>
-
-<div class="filter-bar">
-  <label for="levelFilter">🎓 Filter by level (CEFR):</label>
-  <select id="levelFilter"></select>
-</div>
 
 <div class="lesson-section" id="myVocabSection" style="display:none;">
   <h3>⭐ My Saved Words</h3>
@@ -808,10 +987,23 @@ body.focus-mode .utility-bar{
   <p id="myVocabEmpty" style="display:none;">لسا ما حفظت أي كلمة. اضغط ⭐ جنب أي كلمة بجدول Vocabulary لتحفظها.</p>
 </div>
 
-<div class="lesson-nav">
+<div id="courseView">
+
+<div class="filter-bar">
+  <label for="levelFilter">🎓 Filter by level (CEFR):</label>
+  <select id="levelFilter"></select>
+</div>
+
+<div class="lesson-nav" id="courseNav">
   <button id="prevLessonBtn">◀ Previous Lesson</button>
   <span class="lesson-progress" id="lessonProgress">Lesson 1 / 30</span>
   <button id="nextLessonBtn">Next Lesson ▶</button>
+</div>
+
+<div class="lesson-nav" id="libraryNav" style="display:none;">
+  <button id="libraryBackBtn">← Back to Library</button>
+  <span class="lesson-progress" id="libraryItemProgress"></span>
+  <span></span>
 </div>
 
 <div class="lesson-title">
@@ -965,11 +1157,58 @@ body.focus-mode .utility-bar{
 
 </div>
 
+</div><!-- /courseView -->
+
+<!-- ---------- Library Section ---------- -->
+<div id="libraryView" style="display:none;">
+
+  <div class="lesson-title">
+    <span class="lesson-number">📚 Library</span>
+    <h2 id="libraryHeading">Choose a Category</h2>
+    <p id="librarySub">Podcasts, movies, TED Talks and more — pick a format and start shadowing.</p>
+  </div>
+
+  <div class="library-tools">
+    <input type="search" id="librarySearch" class="library-search" placeholder="🔍 Search by title or type..." autocomplete="off">
+    <select id="libraryLevelFilter" class="library-level" aria-label="Filter by level">
+      <option value="All">🎓 All levels</option>
+      <option value="A1">A1</option>
+      <option value="A2">A2</option>
+      <option value="B1">B1</option>
+      <option value="B2">B2</option>
+      <option value="C1">C1</option>
+      <option value="C2">C2</option>
+    </select>
+  </div>
+
+  <div class="library-grid" id="libraryCategories"></div>
+
+  <div id="libraryItemsWrap" style="display:none;">
+    <div class="lesson-nav">
+      <button id="backToCategoriesBtn">← All Categories</button>
+      <span class="lesson-progress" id="libraryCategoryName"></span>
+      <span></span>
+    </div>
+    <div class="library-grid" id="libraryItems"></div>
+  </div>
+
+  <p id="libraryNoResults" class="library-empty" style="display:none;"></p>
+
+</div>
+
+<script src="library.js"></script>
 <script src="lessons.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
 
 let currentLesson = 0;
+let view = "course";
+let activeSource = "course";
+let activeLibraryItem = 0;
+let activeLibraryCategory = null;
+let activeLibraryItems = [];
+let librarySearchQuery = "";
+let libraryLevelFilter = "All";
 let sentenceIndex = 0;
 let wordIndex = 0;
 let playing = false;
@@ -1007,6 +1246,25 @@ const myVocabLabel = document.getElementById("myVocabLabel");
 const myVocabSection = document.getElementById("myVocabSection");
 const myVocabBody = document.getElementById("myVocabBody");
 const myVocabEmpty = document.getElementById("myVocabEmpty");
+const libraryToggle = document.getElementById("libraryToggle");
+const libraryLabel = document.getElementById("libraryLabel");
+const courseView = document.getElementById("courseView");
+const courseNav = document.getElementById("courseNav");
+const libraryNav = document.getElementById("libraryNav");
+const libraryBackBtn = document.getElementById("libraryBackBtn");
+const libraryItemProgress = document.getElementById("libraryItemProgress");
+const filterBar = document.querySelector(".filter-bar");
+const libraryView = document.getElementById("libraryView");
+const libraryHeading = document.getElementById("libraryHeading");
+const libraryCategories = document.getElementById("libraryCategories");
+const libraryItemsWrap = document.getElementById("libraryItemsWrap");
+const libraryCategoryName = document.getElementById("libraryCategoryName");
+const libraryItems = document.getElementById("libraryItems");
+const backToCategoriesBtn = document.getElementById("backToCategoriesBtn");
+const librarySearch = document.getElementById("librarySearch");
+const libraryLevelSelect = document.getElementById("libraryLevelFilter");
+const libraryNoResults = document.getElementById("libraryNoResults");
+const libraryData = (typeof libraryContent !== "undefined") ? libraryContent : [];
 
 /* ---------- Icon markup (used to swap play/pause and sun/moon) ---------- */
 const ICON_MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
@@ -1144,7 +1402,7 @@ vocabBody.addEventListener("click", (e) => {
   } else {
     saveVocabWord(word, meaning);
   }
-  renderVocabTable(lessons[currentLesson]);
+  renderVocabTable(getActiveContent());
   renderMyVocabPanel();
 });
 
@@ -1152,7 +1410,7 @@ myVocabBody.addEventListener("click", (e) => {
   const btn = e.target.closest(".remove-word-btn");
   if (!btn) return;
   removeVocabWord(btn.dataset.word);
-  renderVocabTable(lessons[currentLesson]);
+  renderVocabTable(getActiveContent());
   renderMyVocabPanel();
 });
 
@@ -1167,7 +1425,7 @@ myVocabToggle.addEventListener("click", () => {
 /* ---------- YouTube Player (needed for speed control) ---------- */
 function onYouTubeIframeAPIReady(){
   player = new YT.Player("lessonVideo", {
-    videoId: pendingVideoId || lessons[currentLesson].videoId,
+    videoId: pendingVideoId || getActiveContent().videoId,
     playerVars: { rel: 0 },
     events: {
       onReady: () => {
@@ -1182,6 +1440,10 @@ function onYouTubeIframeAPIReady(){
 }
 
 function loadVideo(videoId){
+  if (!videoId) {
+    if (player && player.stopVideo) player.stopVideo();
+    return;
+  }
   if (player && player.loadVideoById) {
     player.loadVideoById(videoId);
     player.setPlaybackRate(parseFloat(speedSelect.value));
@@ -1212,37 +1474,39 @@ loopBtn.addEventListener("click", () => {
 });
 
 /* ---------- Lesson Loading ---------- */
-function loadLesson(index){
+function renderContent(content){
   pause();
-  currentLesson = index;
-  const lesson = lessons[currentLesson];
+  lessonTitle.textContent = content.title;
+  loadVideo(content.videoId || "");
 
-  lessonTitle.textContent = lesson.title;
-  loadVideo(lesson.videoId);
-
-  renderVocabTable(lesson);
+  renderVocabTable(content);
 
   expressionsList.innerHTML = "";
-  lesson.expressions.forEach(exp => {
+  content.expressions.forEach(exp => {
     const li = document.createElement("li");
     li.textContent = exp;
     expressionsList.appendChild(li);
   });
 
-  reflectionBox.textContent = lesson.reflection;
-  quoteText.textContent = "\"" + lesson.quote + "\"";
+  reflectionBox.textContent = content.reflection;
+  quoteText.textContent = "\"" + content.quote + "\"";
 
   sentenceIndex = 0;
   wordIndex = -1;
   renderSentence();
   updatePracticeTarget();
+}
 
+function loadLesson(index){
+  activeSource = "course";
+  currentLesson = index;
+  renderContent(lessons[currentLesson]);
   updateLessonNavUI();
 }
 
 function renderSentence() {
 
-    let sentence = lessons[currentLesson].sentences[sentenceIndex];
+    let sentence = getActiveContent().sentences[sentenceIndex];
 
     if (Array.isArray(sentence)) {
         sentence = sentence.join(" ");
@@ -1267,7 +1531,7 @@ function renderSentence() {
 
 function stepWord() {
 
-    const words = lessons[currentLesson].sentences[sentenceIndex];
+    const words = getActiveContent().sentences[sentenceIndex];
 
     wordIndex++;
 
@@ -1301,7 +1565,7 @@ function pause(){
 }
 
 playBtn.addEventListener("click", () => {
-  const words = lessons[currentLesson].sentences[sentenceIndex];
+  const words = getActiveContent().sentences[sentenceIndex];
   if(playing){
     pause();
   } else {
@@ -1314,7 +1578,7 @@ playBtn.addEventListener("click", () => {
 
 nextBtn.addEventListener("click", () => {
   pause();
-  const total = lessons[currentLesson].sentences.length;
+  const total = getActiveContent().sentences.length;
   sentenceIndex = (sentenceIndex + 1) % total;
   wordIndex = -1;
   renderSentence();
@@ -1323,7 +1587,7 @@ nextBtn.addEventListener("click", () => {
 
 prevBtn.addEventListener("click", () => {
   pause();
-  const total = lessons[currentLesson].sentences.length;
+  const total = getActiveContent().sentences.length;
   sentenceIndex = (sentenceIndex - 1 + total) % total;
   wordIndex = -1;
   renderSentence();
@@ -1345,6 +1609,180 @@ nextLessonBtn.addEventListener("click", () => {
 prevLessonBtn.addEventListener("click", () => {
     const pos = filteredLessons.indexOf(currentLesson);
     if (pos > 0) loadLesson(filteredLessons[pos - 1]);
+});
+
+/* =====================================================
+   ---------- Library (Podcasts / Movies / TED Talks) ----------
+   ===================================================== */
+
+const LIBRARY_CATEGORIES = [
+  { key: "podcast",      label: "Podcasts",      icon: "🎙" },
+  { key: "movie",        label: "Movies",        icon: "🎬" },
+  { key: "ted",          label: "TED Talks",     icon: "🎓" },
+  { key: "news",         label: "News",          icon: "📰" },
+  { key: "conversation", label: "Conversations", icon: "💬" },
+  { key: "audiobook",    label: "Audiobooks",    icon: "🎧" },
+  { key: "story",        label: "Stories",       icon: "📖" }
+];
+
+function getCategory(catKey){
+  return LIBRARY_CATEGORIES.find(c => c.key === catKey) || { key: catKey, label: catKey, icon: "📚" };
+}
+
+// Returns the content currently in the player: a course lesson or a library item.
+function getActiveContent(){
+  return activeSource === "library" ? libraryData[activeLibraryItem] : lessons[currentLesson];
+}
+
+function getLibraryFilteredItems(){
+  const q = librarySearchQuery.trim().toLowerCase();
+  return libraryData
+    .map((item, i) => i)
+    .filter(i => {
+      const item = libraryData[i];
+      if (libraryLevelFilter !== "All" && item.level !== libraryLevelFilter) return false;
+      if (q && (item.title + " " + (item.type || "")).toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    });
+}
+
+function updateLibraryEmptyMessage(){
+  const filtering = librarySearchQuery.trim() !== "" || libraryLevelFilter !== "All";
+  if (libraryData.length === 0) {
+    libraryNoResults.textContent = "The library is empty — add items to library.js to get started.";
+    libraryNoResults.style.display = "block";
+  } else if (filtering) {
+    libraryNoResults.textContent = "No items match your search or level filter.";
+    libraryNoResults.style.display = "block";
+  } else {
+    libraryNoResults.style.display = "none";
+  }
+}
+
+function renderLibraryCategories(){
+  libraryCategories.innerHTML = "";
+  const matched = getLibraryFilteredItems();
+  LIBRARY_CATEGORIES.forEach(cat => {
+    const count = matched.filter(i => libraryData[i].category === cat.key).length;
+    if (count === 0) return;
+    const btn = document.createElement("button");
+    btn.className = "category-card";
+    btn.innerHTML =
+      '<span class="cat-icon">' + cat.icon + "</span>" +
+      '<span class="cat-name">' + cat.label + "</span>" +
+      '<span class="cat-count">' + count + " item" + (count > 1 ? "s" : "") + "</span>";
+    btn.addEventListener("click", () => openCategory(cat.key));
+    libraryCategories.appendChild(btn);
+  });
+  updateLibraryEmptyMessage();
+}
+
+function renderCategoryItems(){
+  activeLibraryItems = getLibraryFilteredItems().filter(i => libraryData[i].category === activeLibraryCategory);
+  const cat = getCategory(activeLibraryCategory);
+  libraryCategoryName.textContent = cat.icon + " " + cat.label + " · " + activeLibraryItems.length + " items";
+  libraryItems.innerHTML = "";
+  activeLibraryItems.forEach(idx => {
+    const item = libraryData[idx];
+    const btn = document.createElement("button");
+    btn.className = "library-item-card";
+    btn.innerHTML =
+      '<span class="item-icon">' + cat.icon + "</span>" +
+      '<span class="item-body">' +
+        '<span class="item-title">' + item.title + "</span>" +
+        '<span class="item-meta">' + (item.level || "B1") + " · " + item.sentences.length + " sentences</span>" +
+      "</span>" +
+      '<span class="item-play">▶ Shadow</span>';
+    btn.addEventListener("click", () => openLibraryItem(idx));
+    libraryItems.appendChild(btn);
+  });
+  updateLibraryEmptyMessage();
+}
+
+function openCategory(catKey){
+  activeLibraryCategory = catKey;
+  const cat = getCategory(catKey);
+  libraryHeading.textContent = cat.icon + " " + cat.label;
+  renderCategoryItems();
+  showView("libraryItems");
+}
+
+function applyLibraryFilters(){
+  if (view === "libraryCategories") {
+    renderLibraryCategories();
+  } else if (view === "libraryItems") {
+    renderCategoryItems();
+  }
+}
+
+librarySearch.addEventListener("input", () => {
+  librarySearchQuery = librarySearch.value;
+  applyLibraryFilters();
+});
+
+libraryLevelSelect.addEventListener("change", () => {
+  libraryLevelFilter = libraryLevelSelect.value;
+  applyLibraryFilters();
+});
+
+function openLibraryItem(itemIndex){
+  activeSource = "library";
+  activeLibraryItem = itemIndex;
+  renderContent(libraryData[itemIndex]);
+  showView("libraryPlayer");
+}
+
+function showView(v){
+  view = v;
+  const inPlayer = (v === "course" || v === "libraryPlayer");
+  courseView.style.display = inPlayer ? "" : "none";
+  libraryView.style.display = inPlayer ? "none" : "";
+  libraryToggle.classList.toggle("active", !inPlayer);
+  libraryLabel.textContent = inPlayer ? "Library" : "Back to Course";
+  if (v === "course") setModeUI("course");
+  if (v === "libraryPlayer") setModeUI("library");
+  if (v === "libraryCategories") libraryItemsWrap.style.display = "none";
+  if (v === "libraryItems") libraryItemsWrap.style.display = "";
+  window.scrollTo(0, 0);
+}
+
+function setModeUI(mode){
+  const isLib = mode === "library";
+  courseNav.style.display = isLib ? "none" : "";
+  libraryNav.style.display = isLib ? "" : "none";
+  filterBar.style.display = isLib ? "none" : "";
+  if (isLib) {
+    const cat = getCategory(activeLibraryCategory);
+    lessonNumber.textContent = cat.icon + " " + cat.label;
+    const pos = activeLibraryItems.indexOf(activeLibraryItem);
+    libraryItemProgress.textContent = "Item " + (pos + 1) + " / " + activeLibraryItems.length;
+  } else {
+    updateLessonNavUI();
+  }
+}
+
+libraryToggle.addEventListener("click", () => {
+  if (view === "libraryCategories" || view === "libraryItems") {
+    showView("course");
+  } else {
+    renderLibraryCategories();
+    libraryHeading.textContent = "Choose a Category";
+    showView("libraryCategories");
+  }
+});
+
+backToCategoriesBtn.addEventListener("click", () => {
+  libraryHeading.textContent = "Choose a Category";
+  renderLibraryCategories();
+  showView("libraryCategories");
+});
+
+libraryBackBtn.addEventListener("click", () => {
+  if (activeLibraryCategory) {
+    openCategory(activeLibraryCategory);
+  } else {
+    showView("libraryCategories");
+  }
 });
 
 /* =====================================================
@@ -1375,7 +1813,7 @@ let audioURL;
 let isRecording = false;
 
 function getCurrentTargetSentence(){
-  let sentence = lessons[currentLesson].sentences[sentenceIndex];
+  let sentence = getActiveContent().sentences[sentenceIndex];
   if (Array.isArray(sentence)) sentence = sentence.join(" ");
   return sentence;
 }
@@ -1596,6 +2034,17 @@ loadLesson(0);
 
 if (typeof updateProgressUI === "function") {
     updateProgressUI();
+}
+
+/* ---------- Start Shadowing CTA: jump to the player (and leave Library if open) ---------- */
+const startShadowBtn = document.getElementById("startShadowBtn");
+if (startShadowBtn) {
+  startShadowBtn.addEventListener("click", () => {
+    if (view === "libraryCategories" || view === "libraryItems") {
+      libraryToggle.click();
+    }
+    document.getElementById("courseView").scrollIntoView({ behavior: "smooth" });
+  });
 }
 
 </script>
