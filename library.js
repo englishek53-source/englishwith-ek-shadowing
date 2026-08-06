@@ -4,12 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EnglishWith_EK Shadowing</title>
-  <div class="progress-container">
-  <div id="progressText">0 / 0 lessons completed</div>
-  <div class="progress-bg">
-    <div id="progressBar" class="progress-fill"></div>
-  </div>
-  </div>
 
 <style>
 
@@ -52,56 +46,66 @@
   --gold:#E5BC72;
 }
 
-  .progress-bg {
+.progress-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 15px auto 0;
+  text-align: center;
+}
+
+.progress-bg {
   width: 100%;
   background: #e0e0e0;
   border-radius: 10px;
   height: 10px;
   overflow: hidden;
+  margin-top: 5px;
 }
+
 .progress-fill {
   height: 100%;
   background: #4caf50;
   width: 0%;
   transition: width 0.3s ease;
 }
+
 .completed {
   color: #4caf50;
   font-weight: bold;
 }
 
 body{
-margin:0;
-font-family:Arial, sans-serif;
-background:var(--bg);
-color:var(--text);
-transition:background .3s ease, color .3s ease;
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:background .3s ease, color .3s ease;
 }
 
 header{
-padding:25px;
-text-align:center;
+  padding:25px;
+  text-align:center;
 }
 
 h1{
-font-size:42px;
-margin:10px;
+  font-size:42px;
+  margin:10px;
 }
 
 p{
-color:var(--muted);
+  color:var(--muted);
 }
 
 button{
-background:var(--accent);
-color:white;
-border:none;
-padding:15px 35px;
-border-radius:50px;
-font-size:18px;
-cursor:pointer;
-margin-top:20px;
-font-family:inherit;
+  background:var(--accent);
+  color:white;
+  border:none;
+  padding:15px 35px;
+  border-radius:50px;
+  font-size:18px;
+  cursor:pointer;
+  margin-top:20px;
+  font-family:inherit;
 }
 
 /* ---------- Utility Bar (Theme / Focus) ---------- */
@@ -181,49 +185,47 @@ font-family:inherit;
 }
 
 .video{
-width:90%;
-max-width:900px;
-margin:auto;
-border-radius:25px;
-overflow:hidden;
-box-shadow:0 10px 30px var(--shadow);
-position:relative;
-padding-top:56.25%; /* 16:9 ratio */
-background:var(--card-bg);
+  width:90%;
+  max-width:900px;
+  margin:auto;
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 10px 30px var(--shadow);
+  position:relative;
+  padding-top:56.25%; /* 16:9 ratio */
+  background:var(--card-bg);
 }
 
 .video iframe{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-border:0;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
 }
 
 /* ---------- Shadowing Card ---------- */
-
 .shadow-card{
-width:90%;
-max-width:900px;
-background:var(--card-bg);
-margin:30px auto;
-border-radius:24px;
-box-shadow:0 10px 30px var(--shadow);
-padding:35px 30px;
-box-sizing:border-box;
+  width:90%;
+  max-width:900px;
+  background:var(--card-bg);
+  margin:30px auto;
+  border-radius:24px;
+  box-shadow:0 10px 30px var(--shadow);
+  padding:35px 30px;
+  box-sizing:border-box;
 }
 
 .shadow-controls{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:24px;
-margin-bottom:25px;
-flex-wrap:wrap;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  margin-bottom:25px;
+  flex-wrap:wrap;
 }
 
-/* Playback group: prev / play / next, merged into one pill */
 .playback-group{
   display:flex;
   align-items:center;
@@ -265,16 +267,16 @@ flex-wrap:wrap;
 }
 
 .shadow-controls .play-btn{
-width:56px;
-height:56px;
-border-radius:50%;
-padding:0;
-margin-top:0;
-font-size:20px;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 4px 10px var(--shadow);
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  padding:0;
+  margin-top:0;
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 10px var(--shadow);
 }
 
 .play-btn svg{
@@ -284,7 +286,6 @@ box-shadow:0 4px 10px var(--shadow);
   stroke:none;
 }
 
-/* Settings group: loop + speed, visually secondary */
 .settings-group{
   display:flex;
   align-items:center;
@@ -352,7 +353,7 @@ box-shadow:0 4px 10px var(--shadow);
     line-height:2;
 }
 .word{
-    display:inline;
+    display:inline-block;
     padding:2px 4px;
     margin-right: 4px;
     background:none;
@@ -371,86 +372,85 @@ box-shadow:0 4px 10px var(--shadow);
 }
 
 .lesson-nav{
-width:90%;
-max-width:900px;
-margin:0 auto 15px;
-display:flex;
-align-items:center;
-justify-content:space-between;
+  width:90%;
+  max-width:900px;
+  margin:0 auto 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .lesson-nav button{
-margin-top:0;
-padding:8px 18px;
-font-size:14px;
+  margin-top:0;
+  padding:8px 18px;
+  font-size:14px;
 }
 
 .lesson-progress{
-font-size:14px;
-font-weight:700;
-color:var(--accent);
+  font-size:14px;
+  font-weight:700;
+  color:var(--accent);
 }
 
 .lesson-title{
-width:90%;
-max-width:900px;
-margin:0 auto 20px;
-text-align:center;
+  width:90%;
+  max-width:900px;
+  margin:0 auto 20px;
+  text-align:center;
 }
 
 .lesson-number{
-display:inline-block;
-background:var(--tag-bg);
-color:var(--text);
-padding:6px 18px;
-border-radius:999px;
-font-size:14px;
-font-weight:700;
-letter-spacing:.5px;
-margin-bottom:10px;
+  display:inline-block;
+  background:var(--tag-bg);
+  color:var(--text);
+  padding:6px 18px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.5px;
+  margin-bottom:10px;
 }
 
 .lesson-title h2{
-font-size:28px;
-margin:10px 0 0;
+  font-size:28px;
+  margin:10px 0 0;
 }
 
-/* ---------- Lesson Sections (Vocabulary / Expressions / Reflection / Quote) ---------- */
-
+/* ---------- Lesson Sections ---------- */
 .lesson-section{
-width:90%;
-max-width:900px;
-background:var(--card-bg);
-margin:20px auto;
-border-radius:24px;
-box-shadow:0 10px 30px var(--shadow);
-padding:35px 30px;
-box-sizing:border-box;
+  width:90%;
+  max-width:900px;
+  background:var(--card-bg);
+  margin:20px auto;
+  border-radius:24px;
+  box-shadow:0 10px 30px var(--shadow);
+  padding:35px 30px;
+  box-sizing:border-box;
 }
 
 .lesson-section h3{
-margin-top:0;
-font-size:22px;
-color:var(--text);
+  margin-top:0;
+  font-size:22px;
+  color:var(--text);
 }
 
 .vocab-table{
-width:100%;
-border-collapse:collapse;
+  width:100%;
+  border-collapse:collapse;
 }
 
 .vocab-table th, .vocab-table td{
-text-align:left;
-padding:10px 12px;
-border-bottom:1px solid var(--tag-bg);
-font-size:16px;
+  text-align:left;
+  padding:10px 12px;
+  border-bottom:1px solid var(--tag-bg);
+  font-size:16px;
 }
 
 .vocab-table th{
-color:var(--accent);
-font-size:14px;
-text-transform:uppercase;
-letter-spacing:.5px;
+  color:var(--accent);
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
 }
 
 .save-word-btn{
@@ -482,61 +482,61 @@ letter-spacing:.5px;
 }
 
 .expressions-list{
-list-style:none;
-margin:0;
-padding:0;
+  list-style:none;
+  margin:0;
+  padding:0;
 }
 
 .expressions-list li{
-padding:10px 16px;
-background:var(--bg);
-border-radius:14px;
-margin-bottom:10px;
-font-size:16px;
+  padding:10px 16px;
+  background:var(--bg);
+  border-radius:14px;
+  margin-bottom:10px;
+  font-size:16px;
 }
 
 .reflection-box{
-background:var(--tag-bg);
-border-radius:18px;
-padding:20px;
-font-size:17px;
-font-style:italic;
+  background:var(--tag-bg);
+  border-radius:18px;
+  padding:20px;
+  font-size:17px;
+  font-style:italic;
 }
 
 .quote-section{
-text-align:center;
-background:#2B241F;
-color:#F8F6F2;
+  text-align:center;
+  background:#2B241F;
+  color:#F8F6F2;
 }
 
 .quote-section p{
-color:#F8F6F2;
-font-size:22px;
-font-style:italic;
-line-height:1.5;
-margin:0;
+  color:#F8F6F2;
+  font-size:22px;
+  font-style:italic;
+  line-height:1.5;
+  margin:0;
 }
 
 .lesson-nav button:disabled{
-opacity:.4;
-cursor:default;
+  opacity:.4;
+  cursor:default;
 }
 
 .cards{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-padding:40px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  padding:40px;
 }
 
 .card{
-background:var(--card-bg);
-padding:25px;
-border-radius:20px;
-width:250px;
-box-shadow:0 5px 20px var(--shadow);
-text-align:center;
+  background:var(--card-bg);
+  padding:25px;
+  border-radius:20px;
+  width:250px;
+  box-shadow:0 5px 20px var(--shadow);
+  text-align:center;
 }
 
 /* ---------- Voice Practice Card ---------- */
@@ -730,16 +730,18 @@ text-align:center;
 }
 
 /* ---------- Focus Mode ---------- */
-/* Focus mode keeps visible only: lesson title/number + video + shadowing card (sentence + controls) + exit-focus button */
 body.focus-mode .lesson-section,
 body.focus-mode .cards,
 body.focus-mode .filter-bar,
 body.focus-mode .lesson-nav,
+body.focus-mode .progress-container,
 body.focus-mode header p,
 body.focus-mode header h1,
 body.focus-mode header button,
-body.focus-mode #themeToggle{
-  display:none;
+body.focus-mode header a,
+body.focus-mode #themeToggle,
+body.focus-mode #authBox{
+  display:none !important;
 }
 
 body.focus-mode header{
@@ -873,6 +875,12 @@ body:not(.library-item-mode) .back-to-library-btn{
   grid-column:1 / -1;
 }
 
+#authBox {
+  text-align: center;
+  margin: 30px auto;
+  padding: 15px;
+}
+
 /* ---------- Mobile ---------- */
 @media (max-width:480px){
   h1{font-size:30px;}
@@ -885,7 +893,6 @@ body:not(.library-item-mode) .back-to-library-btn{
 }
 
 </style>
-
 </head>
 
 <body>
@@ -905,7 +912,7 @@ body:not(.library-item-mode) .back-to-library-btn{
   </button>
   <button id="myVocabToggle" class="mode-btn">
     <span class="icon">
-      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9 12 2"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 12 2"/></svg>
     </span>
     <span class="label" id="myVocabLabel">My Words</span>
   </button>
@@ -918,16 +925,18 @@ body:not(.library-item-mode) .back-to-library-btn{
 </div>
 
 <header>
-
-<h1>EnglishWith_EK</h1>
-
-<p>Listen • Repeat • Speak Naturally</p>
-
-<button>Start Shadowing</button> 
+  <h1>EnglishWith_EK</h1>
+  <p>Listen • Repeat • Speak Naturally</p>
+  <button id="startShadowingBtn">Start Shadowing</button> 
   <a href="achievements.html" style="display:inline-block; margin-top:10px; padding:8px 16px; background:#fff; border:1px solid #E1DACB; border-radius:8px; text-decoration:none; color:#2B241F; font-weight:600;">🏆 Achievements</a>
-
-
 </header>
+
+<div class="progress-container curriculum-only">
+  <div id="progressText">0 / 0 lessons completed</div>
+  <div class="progress-bg">
+    <div id="progressBar" class="progress-fill"></div>
+  </div>
+</div>
 
 <div class="filter-bar curriculum-only">
   <label for="levelFilter">🎓 Filter by level (CEFR):</label>
@@ -942,7 +951,9 @@ body:not(.library-item-mode) .back-to-library-btn{
 <div class="lesson-section" id="myVocabSection" style="display:none;">
   <h3>⭐ My Saved Words</h3>
   <table class="vocab-table">
-    <tr><th>Word</th><th>Meaning</th><th></th></tr>
+    <thead>
+      <tr><th>Word</th><th>Meaning</th><th>Action</th></tr>
+    </thead>
     <tbody id="myVocabBody"></tbody>
   </table>
   <p id="myVocabEmpty" style="display:none;">No saved words yet. Tap ⭐ next to any word in the Vocabulary table to save it.</p>
@@ -964,10 +975,9 @@ body:not(.library-item-mode) .back-to-library-btn{
 </div>
 
 <div class="video">
-<div id="lessonVideo"></div>
+  <div id="lessonVideo"></div>
 </div>
 
-<!-- ---------- Shadowing Card ---------- -->
 <div class="shadow-card">
 
   <div class="shadow-controls">
@@ -1009,7 +1019,6 @@ body:not(.library-item-mode) .back-to-library-btn{
 
 </div>
 
-<!-- ---------- Voice Practice Card (under Shadowing) ---------- -->
 <div class="practice-card">
   <h3>🎙️ Practice Your Pronunciation</h3>
   <div class="practice-sub">Listen to the sentence, then record yourself repeating it</div>
@@ -1068,51 +1077,51 @@ body:not(.library-item-mode) .back-to-library-btn{
   </div>
 </div>
 
-<!-- ---------- Vocabulary ---------- -->
 <div class="lesson-section">
   <h3>📚 Vocabulary</h3>
   <table class="vocab-table">
-    <tr><th>Word</th><th>Meaning</th><th></th></tr>
+    <thead>
+      <tr><th>Word</th><th>Meaning</th><th>Save</th></tr>
+    </thead>
     <tbody id="vocabBody"></tbody>
   </table>
 </div>
 
-<!-- ---------- Useful Expressions ---------- -->
 <div class="lesson-section">
   <h3>💬 Useful Expressions</h3>
   <ul class="expressions-list" id="expressionsList"></ul>
 </div>
 
-<!-- ---------- Reflection Question ---------- -->
 <div class="lesson-section">
   <h3>❓ Reflection Question</h3>
   <div class="reflection-box" id="reflectionBox"></div>
 </div>
 
-<!-- ---------- Quote ---------- -->
 <div class="lesson-section quote-section">
   <p id="quoteText"></p>
 </div>
 
-</div><!-- /playerArea -->
+</div><div class="cards curriculum-only">
+  <div class="card">
+    <h2>Daily Conversation</h2>
+    <p>Practice everyday English.</p>
+  </div>
 
-<div class="cards curriculum-only">
+  <div class="card">
+    <h2>Psychology</h2>
+    <p>Learn through powerful ideas.</p>
+  </div>
 
-<div class="card">
-<h2>Daily Conversation</h2>
-<p>Practice everyday English.</p>
+  <div class="card">
+    <h2>Motivation</h2>
+    <p>Improve English while growing.</p>
+  </div>
 </div>
 
-<div class="card">
-<h2>Psychology</h2>
-<p>Learn through powerful ideas.</p>
-</div>
-
-<div class="card">
-<h2>Motivation</h2>
-<p>Improve English while growing.</p>
-</div>
-
+<div id="authBox">
+    <button id="loginBtn">🔑 Sign in with Google</button>
+    <button id="logoutBtn" style="display:none;">🚪 Sign Out</button>
+    <p id="userName"></p>
 </div>
 
 <script src="lessons.js"></script>
@@ -1121,14 +1130,14 @@ body:not(.library-item-mode) .back-to-library-btn{
 
 let currentLesson = 0;
 let sentenceIndex = 0;
-let wordIndex = 0;
+let wordIndex = -1;
 let playing = false;
 let timer = null;
 let loopSentence = false;
 let player = null;
 let pendingVideoId = null;
 let levelFilter = "All";
-let filteredLessons = lessons.map((l, i) => i);
+let filteredLessons = typeof lessons !== 'undefined' ? lessons.map((l, i) => i) : [];
 const baseWordInterval = 500; // ms per word at 1x speed
 let syncMode = false;
 let syncPollTimer = null;
@@ -1167,7 +1176,7 @@ const libraryCategoriesEl = document.getElementById("libraryCategories");
 const libraryGridEl = document.getElementById("libraryGrid");
 const backToLibraryBtn = document.getElementById("backToLibraryBtn");
 
-/* ---------- Icon markup (used to swap play/pause and sun/moon) ---------- */
+/* ---------- Icons ---------- */
 const ICON_MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 const ICON_SUN = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="1.5" x2="12" y2="4.5"/><line x1="12" y1="19.5" x2="12" y2="22.5"/><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/><line x1="1.5" y1="12" x2="4.5" y2="12"/><line x1="19.5" y1="12" x2="22.5" y2="12"/><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/></svg>';
 const ICON_PLAY = '<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
@@ -1198,35 +1207,17 @@ focusToggle.addEventListener("click", () => {
   focusLabel.textContent = active ? "Exit Focus" : "Focus Mode";
 });
 
-/* ---------- Library Content ----------
-   TODO: replace this demo array with real content, ideally moved into
-   its own library.js file (same structure as lessons.js) loaded via
-   <script src="library.js"></script> before this script. Each item
-   needs: category, title, level, videoId, sentences, sentenceTimes,
-   vocab, expressions, reflection, quote. */
+/* ---------- Start Shadowing Button Smooth Scroll ---------- */
+document.getElementById("startShadowingBtn").addEventListener("click", () => {
+  document.getElementById("playerArea").scrollIntoView({ behavior: 'smooth' });
+});
+
+/* ---------- Library Content ---------- */
 const libraryContent = (typeof window.libraryContent !== "undefined") ? window.libraryContent : [
   { category: "Podcasts", title: "Demo Podcast Episode", level: "B2", videoId: "",
     sentences: [["This","is","a","demo","podcast","sentence."]], sentenceTimes: [0],
     vocab: [["Demo","An example used for testing"]], expressions: ["This is just a demo."],
-    reflection: "Replace this with a real podcast episode.", quote: "Real content coming soon." },
-  { category: "Movies", title: "Demo Movie Scene", level: "B1", videoId: "",
-    sentences: [["Demo","movie","scene","sentence."]], sentenceTimes: [0],
-    vocab: [], expressions: [], reflection: "", quote: "" },
-  { category: "TED Talks", title: "Demo TED Talk", level: "C1", videoId: "",
-    sentences: [["Demo","TED","talk","sentence."]], sentenceTimes: [0],
-    vocab: [], expressions: [], reflection: "", quote: "" },
-  { category: "News", title: "Demo News Clip", level: "B2", videoId: "",
-    sentences: [["Demo","news","sentence."]], sentenceTimes: [0],
-    vocab: [], expressions: [], reflection: "", quote: "" },
-  { category: "Conversations", title: "Demo Conversation", level: "A2", videoId: "",
-    sentences: [["Demo","conversation","sentence."]], sentenceTimes: [0],
-    vocab: [], expressions: [], reflection: "", quote: "" },
-  { category: "Audiobooks", title: "Demo Audiobook Chapter", level: "B1", videoId: "",
-    sentences: [["Demo","audiobook","sentence."]], sentenceTimes: [0],
-    vocab: [], expressions: [], reflection: "", quote: "" },
-  { category: "Stories", title: "Demo Short Story", level: "A2", videoId: "",
-    sentences: [["Demo","story","sentence."]], sentenceTimes: [0],
-    vocab: [], expressions: [], reflection: "", quote: "" }
+    reflection: "Replace this with a real podcast episode.", quote: "Real content coming soon." }
 ];
 
 const LIBRARY_CATEGORIES = [
@@ -1426,6 +1417,7 @@ function removeVocabWord(word){
 
 function renderVocabTable(lesson){
   vocabBody.innerHTML = "";
+  if(!lesson || !lesson.vocab) return;
   lesson.vocab.forEach(([word, meaning]) => {
     const saved = isWordSaved(word);
     const tr = document.createElement("tr");
@@ -1465,7 +1457,7 @@ vocabBody.addEventListener("click", (e) => {
   } else {
     saveVocabWord(word, meaning);
   }
-  renderVocabTable(lessons[currentLesson]);
+  renderVocabTable(getActiveContent());
   renderMyVocabPanel();
 });
 
@@ -1473,7 +1465,7 @@ myVocabBody.addEventListener("click", (e) => {
   const btn = e.target.closest(".remove-word-btn");
   if (!btn) return;
   removeVocabWord(btn.dataset.word);
-  renderVocabTable(lessons[currentLesson]);
+  renderVocabTable(getActiveContent());
   renderMyVocabPanel();
 });
 
@@ -1485,8 +1477,9 @@ myVocabToggle.addEventListener("click", () => {
   if (!showing) renderMyVocabPanel();
 });
 
-/* ---------- YouTube Player (needed for speed control) ---------- */
+/* ---------- YouTube Player ---------- */
 function onYouTubeIframeAPIReady(){
+  if(typeof lessons === 'undefined' || !lessons[currentLesson]) return;
   player = new YT.Player("lessonVideo", {
     videoId: pendingVideoId || lessons[currentLesson].videoId,
     playerVars: { rel: 0 },
@@ -1519,7 +1512,6 @@ speedSelect.addEventListener("change", () => {
   if (player && player.setPlaybackRate) {
     player.setPlaybackRate(parseFloat(speedSelect.value));
   }
-  // If words are currently animating, immediately re-sync their speed with the new rate
   if (playing) {
     clearInterval(timer);
     timer = setInterval(stepWord, getWordInterval());
@@ -1532,7 +1524,7 @@ loopBtn.addEventListener("click", () => {
   loopBtn.classList.toggle("active", loopSentence);
 });
 
-/* ---------- Sync sentences with real video time ---------- */
+/* ---------- Sync ---------- */
 function getSentenceTimes(){
   return getActiveContent().sentenceTimes || null;
 }
@@ -1549,7 +1541,8 @@ function findSentenceIndexForTime(times, t){
 function startSyncedWordAnimation(){
   clearInterval(timer);
   const times = getSentenceTimes();
-  const words = getActiveContent().sentences[sentenceIndex];
+  const rawWords = getActiveContent().sentences[sentenceIndex];
+  const words = Array.isArray(rawWords) ? rawWords : rawWords.split(" ");
   const start = times[sentenceIndex];
   const end = times[sentenceIndex + 1] != null ? times[sentenceIndex + 1] : start + 5;
   const duration = Math.max(end - start, 1);
@@ -1594,7 +1587,7 @@ function setSyncControlsDisabled(disabled){
 syncBtn.addEventListener("click", () => {
   if (!syncMode) {
     if (!getSentenceTimes()) {
-      alert("This lesson doesn't have sentence timing data yet. Add a \"sentenceTimes\" array to it in lessons.js to use Sync mode.");
+      alert("This lesson doesn't have sentence timing data yet.");
       return;
     }
     syncMode = true;
@@ -1621,20 +1614,24 @@ function loadLesson(index){
   currentLesson = index;
   const lesson = lessons[currentLesson];
 
+  if(!lesson) return;
+
   lessonTitle.textContent = lesson.title;
   loadVideo(lesson.videoId);
 
   renderVocabTable(lesson);
 
   expressionsList.innerHTML = "";
-  lesson.expressions.forEach(exp => {
-    const li = document.createElement("li");
-    li.textContent = exp;
-    expressionsList.appendChild(li);
-  });
+  if(lesson.expressions) {
+    lesson.expressions.forEach(exp => {
+      const li = document.createElement("li");
+      li.textContent = exp;
+      expressionsList.appendChild(li);
+    });
+  }
 
-  reflectionBox.textContent = lesson.reflection;
-  quoteText.textContent = "\"" + lesson.quote + "\"";
+  reflectionBox.textContent = lesson.reflection || "";
+  quoteText.textContent = lesson.quote ? "\"" + lesson.quote + "\"" : "";
 
   sentenceIndex = 0;
   wordIndex = -1;
@@ -1645,9 +1642,10 @@ function loadLesson(index){
 }
 
 function renderSentence() {
+    const activeContent = getActiveContent();
+    if(!activeContent || !activeContent.sentences || !activeContent.sentences[sentenceIndex]) return;
 
-    let sentence = getActiveContent().sentences[sentenceIndex];
-
+    let sentence = activeContent.sentences[sentenceIndex];
     if (Array.isArray(sentence)) {
         sentence = sentence.join(" ");
     }
@@ -1656,7 +1654,6 @@ function renderSentence() {
     sentenceEl.innerHTML = "";
 
     words.forEach((word, index) => {
-
         const span = document.createElement("span");
         span.className = "word";
         span.textContent = word;
@@ -1670,8 +1667,11 @@ function renderSentence() {
 }
 
 function stepWord() {
+    const activeContent = getActiveContent();
+    if(!activeContent || !activeContent.sentences) return;
 
-    const words = getActiveContent().sentences[sentenceIndex];
+    const rawWords = activeContent.sentences[sentenceIndex];
+    const words = Array.isArray(rawWords) ? rawWords : rawWords.split(" ");
 
     wordIndex++;
 
@@ -1688,7 +1688,7 @@ function stepWord() {
     }
 
     renderSentence();
-  }
+}
 
 function play(){
   playing = true;
@@ -1705,7 +1705,11 @@ function pause(){
 }
 
 playBtn.addEventListener("click", () => {
-  const words = getActiveContent().sentences[sentenceIndex];
+  const activeContent = getActiveContent();
+  if(!activeContent || !activeContent.sentences) return;
+  
+  const rawWords = activeContent.sentences[sentenceIndex];
+  const words = Array.isArray(rawWords) ? rawWords : rawWords.split(" ");
   if(playing){
     pause();
   } else {
@@ -1751,10 +1755,7 @@ prevLessonBtn.addEventListener("click", () => {
     if (pos > 0) loadLesson(filteredLessons[pos - 1]);
 });
 
-/* =====================================================
-   ---------- Voice Practice (Record + Compare) ----------
-   ===================================================== */
-
+/* ---------- Voice Practice ---------- */
 const ptSentence = document.getElementById("ptSentence");
 const listenBtn = document.getElementById("listenBtn");
 
@@ -1779,13 +1780,15 @@ let audioURL;
 let isRecording = false;
 
 function getCurrentTargetSentence(){
-  let sentence = getActiveContent().sentences[sentenceIndex];
+  const activeContent = getActiveContent();
+  if(!activeContent || !activeContent.sentences) return "";
+  let sentence = activeContent.sentences[sentenceIndex];
   if (Array.isArray(sentence)) sentence = sentence.join(" ");
   return sentence;
 }
 
 function updatePracticeTarget(){
-  ptSentence.textContent = getCurrentTargetSentence();
+  ptSentence.textContent = getCurrentTargetSentence() || "—";
   resetPracticeUI();
 }
 
@@ -1798,7 +1801,6 @@ function resetPracticeUI(){
   recognizedText = "";
 }
 
-/* ---- Listen to original (TTS) ---- */
 listenBtn.addEventListener("click", () => {
   if (!("speechSynthesis" in window)) return;
   const utter = new SpeechSynthesisUtterance(getCurrentTargetSentence());
@@ -1808,7 +1810,6 @@ listenBtn.addEventListener("click", () => {
   speechSynthesis.speak(utter);
 });
 
-/* ---- Speech recognition setup ---- */
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 let recognition = null;
 let recognizedText = "";
@@ -1825,9 +1826,7 @@ if (SpeechRecognition) {
     recognizedText = event.results[0][0].transcript;
   };
 
-  recognition.onerror = () => {
-    // leave recognizedText as-is; onend will still fire after this
-  };
+  recognition.onerror = () => {};
 
   recognition.onend = () => {
     recognitionEnded = true;
@@ -1838,14 +1837,10 @@ if (SpeechRecognition) {
 }
 
 function maybeShowResults(){
-  // Only show results once BOTH the recording has stopped AND
-  // speech recognition has actually finished processing.
   if (recordingStopped && (recognitionEnded || !SpeechRecognition)) {
     showPracticeResults();
   }
 }
-
-/* ---- Record button ---- */
 
 function pickSupportedMimeType(){
   const candidates = [
@@ -1859,7 +1854,7 @@ function pickSupportedMimeType(){
       return type;
     }
   }
-  return ""; // let the browser pick its own default
+  return "";
 }
 
 recordBtn.addEventListener("click", async () => {
@@ -1892,7 +1887,6 @@ recordBtn.addEventListener("click", async () => {
         playbackRow.classList.add("visible");
 
         if (audioBlob.size < 1000) {
-          // Suspiciously small/empty file — the mic likely captured no real audio
           practiceStatus.textContent = "⚠️ Recording seems empty — check mic permission and try again";
           practiceStatus.className = "practice-status recording";
         } else {
@@ -1906,7 +1900,6 @@ recordBtn.addEventListener("click", async () => {
         maybeShowResults();
       };
 
-      // request a data chunk every 250ms instead of waiting until stop()
       mediaRecorder.start(250);
       if (recognition) {
         try { recognition.start(); } catch (e) {}
@@ -1928,7 +1921,7 @@ recordBtn.addEventListener("click", async () => {
     }
 
   } else {
-    mediaRecorder.stop();
+    if(mediaRecorder) mediaRecorder.stop();
     if (recognition) {
       try { recognition.stop(); } catch (e) {}
     }
@@ -1940,7 +1933,6 @@ recordBtn.addEventListener("click", async () => {
   }
 });
 
-/* ---- Playback / redo ---- */
 playMyBtn.addEventListener("click", () => {
   if (!audioURL) return;
   const audio = new Audio(audioURL);
@@ -1958,7 +1950,6 @@ redoBtn.addEventListener("click", () => {
   resetPracticeUI();
 });
 
-/* ---- Compare recognized text vs target sentence ---- */
 function normalizeWords(str) {
   return str
     .toLowerCase()
@@ -1978,11 +1969,9 @@ function showPracticeResults() {
   const saidWords = normalizeWords(recognizedText);
 
   let matches = 0;
-  const highlighted = targetWords.map((word, i) => {
+  targetWords.forEach((word, i) => {
     const said = saidWords[i];
-    const isMatch = said && said === word;
-    if (isMatch) matches++;
-    return '<span class="' + (isMatch ? "word-correct" : "word-wrong") + '">' + word + "</span>";
+    if (said && said === word) matches++;
   });
 
   const pct = targetWords.length ? Math.round((matches / targetWords.length) * 100) : 0;
@@ -1994,21 +1983,18 @@ function showPracticeResults() {
   resultBox.classList.add("visible");
 }
 
-// ---------- initial load (runs last, after all consts/functions above exist) ----------
-buildLevelOptions();
-loadLesson(0);
-
-if (typeof updateProgressUI === "function") {
+/* ---------- Initialisation ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  buildLevelOptions();
+  if (typeof lessons !== 'undefined' && lessons.length > 0) {
+    loadLesson(0);
+  }
+  if (typeof updateProgressUI === "function") {
     updateProgressUI();
-}
+  }
+});
 
 </script>
-
-<div id="authBox">
-    <button id="loginBtn">🔑 Sign in with Google</button>
-    <button id="logoutBtn" style="display:none;">🚪 Sign Out</button>
-    <p id="userName"></p>
-</div>
 
 <script type="module" src="firebase.js"></script>
 
