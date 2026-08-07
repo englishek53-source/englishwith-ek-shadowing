@@ -30,7 +30,7 @@ function updateProgressUI() {
 
   document.getElementById("progressBar").style.width = percent + "%";
   document.getElementById("progressText").innerText =
-    `${completed.length} / ${lessons.length} lessons completed (${percent}%)`;
+    t("progressText", [completed.length, lessons.length, percent]);
 }
 
 // ---------------- Lessons ----------------

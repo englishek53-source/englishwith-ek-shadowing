@@ -942,6 +942,33 @@ body.focus-mode .utility-bar{
   .mode-btn{padding:8px 14px 8px 12px; font-size:13px;}
 }
 
+/* ---------- Website Language ---------- */
+.lang-select{
+  padding:9px 14px;
+  border-radius:50px;
+  border:1.5px solid var(--border);
+  background:transparent;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:600;
+  font-family:inherit;
+  cursor:pointer;
+  transition:border-color .2s ease, color .2s ease;
+}
+
+.lang-select:hover{
+  border-color:var(--accent);
+  color:var(--text);
+}
+
+/* Right-to-left layout for Arabic */
+html[dir="rtl"] .sentence{ text-align:right; }
+html[dir="rtl"] .vocab-table th,
+html[dir="rtl"] .vocab-table td{ text-align:right; }
+html[dir="rtl"] .practice-target .ptsentence{ direction:ltr; }
+html[dir="rtl"] .transcript-box{ direction:ltr; text-align:left; }
+html[dir="rtl"] .library-item-card .item-play{ direction:ltr; }
+
 </style>
 
 </head>
@@ -980,44 +1007,45 @@ body.focus-mode .utility-bar{
     </span>
     <span class="label" id="libraryLabel">Library</span>
   </button>
+  <select id="langSelect" class="lang-select" aria-label="Website language"></select>
 </div>
 
 <header>
 
 <h1>EnglishWith_EK</h1>
 
-<p>Listen • Repeat • Speak Naturally</p>
+<p data-i18n="tagline">Listen • Repeat • Speak Naturally</p>
 
-<button id="startShadowBtn">Start Shadowing</button> 
-  <a href="achievements.html" style="display:inline-block; margin-top:10px; padding:8px 16px; background:#fff; border:1px solid #E1DACB; border-radius:8px; text-decoration:none; color:#2B241F; font-weight:600;">🏆 Achievements</a>
+<button id="startShadowBtn" data-i18n="startShadowing">Start Shadowing</button> 
+  <a href="achievements.html" style="display:inline-block; margin-top:10px; padding:8px 16px; background:#fff; border:1px solid #E1DACB; border-radius:8px; text-decoration:none; color:#2B241F; font-weight:600;" data-i18n="achievements">🏆 Achievements</a>
 
 
 </header>
 
 <div class="lesson-section" id="myVocabSection" style="display:none;">
-  <h3>⭐ My Saved Words</h3>
+  <h3 data-i18n="mySavedWords">⭐ My Saved Words</h3>
   <table class="vocab-table">
-    <tr><th>Word</th><th>Meaning</th><th></th></tr>
+    <tr><th data-i18n="word">Word</th><th data-i18n="meaning">Meaning</th><th></th></tr>
     <tbody id="myVocabBody"></tbody>
   </table>
-  <p id="myVocabEmpty" style="display:none;">لسا ما حفظت أي كلمة. اضغط ⭐ جنب أي كلمة بجدول Vocabulary لتحفظها.</p>
+  <p id="myVocabEmpty" style="display:none;" data-i18n="myVocabEmpty">لسا ما حفظت أي كلمة. اضغط ⭐ جنب أي كلمة بجدول Vocabulary لتحفظها.</p>
 </div>
 
 <div id="courseView">
 
 <div class="filter-bar">
-  <label for="levelFilter">🎓 Filter by level (CEFR):</label>
+  <label for="levelFilter" data-i18n="filterByLevel">🎓 Filter by level (CEFR):</label>
   <select id="levelFilter"></select>
 </div>
 
 <div class="lesson-nav" id="courseNav">
-  <button id="prevLessonBtn">◀ Previous Lesson</button>
+  <button id="prevLessonBtn" data-i18n="prevLesson">◀ Previous Lesson</button>
   <span class="lesson-progress" id="lessonProgress">Lesson 1 / 30</span>
-  <button id="nextLessonBtn">Next Lesson ▶</button>
+  <button id="nextLessonBtn" data-i18n="nextLesson">Next Lesson ▶</button>
 </div>
 
 <div class="lesson-nav" id="libraryNav" style="display:none;">
-  <button id="libraryBackBtn">← Back to Library</button>
+  <button id="libraryBackBtn" data-i18n="backToLibrary">← Back to Library</button>
   <span class="lesson-progress" id="libraryItemProgress"></span>
   <span></span>
 </div>
@@ -1051,7 +1079,7 @@ body.focus-mode .utility-bar{
     <div class="settings-group">
       <button id="loopBtn" class="loop-btn">
         <svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
-        Loop
+        <span class="loop-text" data-i18n="loop">Loop</span>
       </button>
       <select id="speedSelect">
         <option value="0.5">0.5x</option>
@@ -1071,15 +1099,15 @@ body.focus-mode .utility-bar{
 
 <!-- ---------- Voice Practice Card (under Shadowing) ---------- -->
 <div class="practice-card">
-  <h3>🎙️ Practice Your Pronunciation</h3>
-  <div class="practice-sub">Listen to the sentence, then record yourself repeating it</div>
+  <h3 data-i18n="practiceTitle">🎙️ Practice Your Pronunciation</h3>
+  <div class="practice-sub" data-i18n="practiceSub">Listen to the sentence, then record yourself repeating it</div>
 
   <div class="practice-target">
-    <div class="ptlabel">Current Sentence</div>
+    <div class="ptlabel" data-i18n="currentSentence">Current Sentence</div>
     <div class="ptsentence" id="ptSentence">—</div>
     <button class="listen-btn" id="listenBtn">
       <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-      Listen to Original
+      <span data-i18n="listenOriginal">Listen to Original</span>
     </button>
   </div>
 
@@ -1098,57 +1126,57 @@ body.focus-mode .utility-bar{
     </button>
   </div>
 
-  <div class="practice-status" id="practiceStatus">Tap to start recording</div>
+  <div class="practice-status" id="practiceStatus" data-i18n="tapToRecord">Tap to start recording</div>
   <div class="recog-status" id="recogStatus" style="display:none;"></div>
 
   <div class="playback-row" id="playbackRow">
     <button class="play-my-btn" id="playMyBtn">
       <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
-      Play My Voice
+      <span data-i18n="playMyVoice">Play My Voice</span>
     </button>
     <button class="redo-btn" id="redoBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="1 4 1 10 7 10"></polyline>
         <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
       </svg>
-      Redo
+      <span data-i18n="redo">Redo</span>
     </button>
   </div>
 
   <div class="result-box" id="resultBox">
     <div class="accuracy-row">
-      <span class="alabel">Pronunciation Match</span>
+      <span class="alabel" data-i18n="pronunciationMatch">Pronunciation Match</span>
       <span class="accuracy-score" id="accuracyScore">--%</span>
     </div>
-    <div class="transcript-label">Target — green = heard correctly, red = missed</div>
+    <div class="transcript-label" data-i18n="targetLabel">Target — green = heard correctly, red = missed</div>
     <div class="transcript-box" id="targetMatchBox">—</div>
-    <div class="transcript-label">What we heard you say</div>
+    <div class="transcript-label" data-i18n="whatWeHeard">What we heard you say</div>
     <div class="transcript-box" id="transcriptBox">—</div>
   </div>
 
-  <div class="no-support" id="noSupport" style="display:none;">
+  <div class="no-support" id="noSupport" style="display:none;" data-i18n="noSupport">
     Speech recognition isn't supported in this browser. Try Chrome on desktop or Android for pronunciation analysis.
   </div>
 </div>
 
 <!-- ---------- Vocabulary ---------- -->
 <div class="lesson-section">
-  <h3>📚 Vocabulary</h3>
+  <h3 data-i18n="vocabulary">📚 Vocabulary</h3>
   <table class="vocab-table">
-    <tr><th>Word</th><th>Meaning</th><th></th></tr>
+    <tr><th data-i18n="word">Word</th><th data-i18n="meaning">Meaning</th><th></th></tr>
     <tbody id="vocabBody"></tbody>
   </table>
 </div>
 
 <!-- ---------- Useful Expressions ---------- -->
 <div class="lesson-section">
-  <h3>💬 Useful Expressions</h3>
+  <h3 data-i18n="expressions">💬 Useful Expressions</h3>
   <ul class="expressions-list" id="expressionsList"></ul>
 </div>
 
 <!-- ---------- Reflection Question ---------- -->
 <div class="lesson-section">
-  <h3>❓ Reflection Question</h3>
+  <h3 data-i18n="reflection">❓ Reflection Question</h3>
   <div class="reflection-box" id="reflectionBox"></div>
 </div>
 
@@ -1160,18 +1188,18 @@ body.focus-mode .utility-bar{
 <div class="cards">
 
 <div class="card">
-<h2>Daily Conversation</h2>
-<p>Practice everyday English.</p>
+<h2 data-i18n="cardDailyTitle">Daily Conversation</h2>
+<p data-i18n="cardDailyText">Practice everyday English.</p>
 </div>
 
 <div class="card">
-<h2>Psychology</h2>
-<p>Learn through powerful ideas.</p>
+<h2 data-i18n="cardPsychTitle">Psychology</h2>
+<p data-i18n="cardPsychText">Learn through powerful ideas.</p>
 </div>
 
 <div class="card">
-<h2>Motivation</h2>
-<p>Improve English while growing.</p>
+<h2 data-i18n="cardMotTitle">Motivation</h2>
+<p data-i18n="cardMotText">Improve English while growing.</p>
 </div>
 
 </div>
@@ -1182,15 +1210,15 @@ body.focus-mode .utility-bar{
 <div id="libraryView" style="display:none;">
 
   <div class="lesson-title">
-    <span class="lesson-number">📚 Library</span>
-    <h2 id="libraryHeading">Choose a Category</h2>
-    <p id="librarySub">Podcasts, movies, TED Talks and more — pick a format and start shadowing.</p>
+    <span class="lesson-number" data-i18n="libraryBadge">📚 Library</span>
+    <h2 id="libraryHeading" data-i18n="chooseCategory">Choose a Category</h2>
+    <p id="librarySub" data-i18n="librarySub">Podcasts, movies, TED Talks and more — pick a format and start shadowing.</p>
   </div>
 
   <div class="library-tools">
-    <input type="search" id="librarySearch" class="library-search" placeholder="🔍 Search by title or type..." autocomplete="off">
+    <input type="search" id="librarySearch" class="library-search" placeholder="🔍 Search by title or type..." autocomplete="off" data-i18n="searchPlaceholder" data-i18n-placeholder="searchPlaceholder">
     <select id="libraryLevelFilter" class="library-level" aria-label="Filter by level">
-      <option value="All">🎓 All levels</option>
+      <option value="All" data-i18n="allLevels">🎓 All levels</option>
       <option value="A1">A1</option>
       <option value="A2">A2</option>
       <option value="B1">B1</option>
@@ -1204,7 +1232,7 @@ body.focus-mode .utility-bar{
 
   <div id="libraryItemsWrap" style="display:none;">
     <div class="lesson-nav">
-      <button id="backToCategoriesBtn">← All Categories</button>
+      <button id="backToCategoriesBtn" data-i18n="allCategories">← All Categories</button>
       <span class="lesson-progress" id="libraryCategoryName"></span>
       <span></span>
     </div>
@@ -1218,7 +1246,9 @@ body.focus-mode .utility-bar{
 <script src="library.js"></script>
 <script src="lessons.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
+<script src="config.js"></script>
 <script src="practice.js"></script>
+<script src="i18n.js"></script>
 <script>
 
 let currentLesson = 0;
@@ -1298,7 +1328,7 @@ function applyTheme(theme){
   localStorage.setItem("ek-theme", theme);
   const isDark = theme === "dark";
   themeIcon.innerHTML = isDark ? ICON_SUN : ICON_MOON;
-  themeLabel.textContent = isDark ? "Light Mode" : "Dark Mode";
+  themeLabel.textContent = isDark ? t("themeLight") : t("themeDark");
   themeToggle.classList.toggle("active", isDark);
 }
 
@@ -1314,7 +1344,7 @@ focusToggle.addEventListener("click", () => {
   document.body.classList.toggle("focus-mode");
   const active = document.body.classList.contains("focus-mode");
   focusToggle.classList.toggle("active", active);
-  focusLabel.textContent = active ? "Exit Focus" : "Focus Mode";
+  focusLabel.textContent = active ? t("exitFocus") : t("focusMode");
 });
 
 /* ---------- CEFR Level Filter ---------- */
@@ -1324,7 +1354,7 @@ function buildLevelOptions(){
   levels.forEach(lvl => {
     const opt = document.createElement("option");
     opt.value = lvl;
-    opt.textContent = lvl;
+    opt.textContent = lvl === "All" ? t("all") : lvl;
     levelSelect.appendChild(opt);
   });
 }
@@ -1349,8 +1379,8 @@ levelSelect.addEventListener("change", () => applyFilter(levelSelect.value));
 function updateLessonNavUI(){
   const pos = filteredLessons.indexOf(currentLesson);
   const num = String(currentLesson + 1).padStart(2, "0");
-  lessonNumber.textContent = "Lesson " + num;
-  lessonProgress.textContent = "Lesson " + (pos + 1) + " / " + filteredLessons.length;
+  lessonNumber.textContent = t("lesson") + " " + num;
+  lessonProgress.textContent = t("lessonProgress", [pos + 1, filteredLessons.length]);
   prevLessonBtn.disabled = pos <= 0;
   nextLessonBtn.disabled = pos >= filteredLessons.length - 1;
 }
@@ -1438,7 +1468,7 @@ myVocabToggle.addEventListener("click", () => {
   const showing = myVocabSection.style.display !== "none";
   myVocabSection.style.display = showing ? "none" : "block";
   myVocabToggle.classList.toggle("active", !showing);
-  myVocabLabel.textContent = showing ? "My Words" : "Hide My Words";
+  myVocabLabel.textContent = showing ? t("myWords") : t("hideMyWords");
   if (!showing) renderMyVocabPanel();
 });
 
@@ -1669,10 +1699,10 @@ function getLibraryFilteredItems(){
 function updateLibraryEmptyMessage(){
   const filtering = librarySearchQuery.trim() !== "" || libraryLevelFilter !== "All";
   if (libraryData.length === 0) {
-    libraryNoResults.textContent = "The library is empty — add items to library.js to get started.";
+    libraryNoResults.textContent = t("libraryEmpty");
     libraryNoResults.style.display = "block";
   } else if (filtering) {
-    libraryNoResults.textContent = "No items match your search or level filter.";
+    libraryNoResults.textContent = t("noResults");
     libraryNoResults.style.display = "block";
   } else {
     libraryNoResults.style.display = "none";
@@ -1689,7 +1719,7 @@ function renderLibraryCategories(){
     btn.className = "category-card";
     btn.innerHTML =
       '<span class="cat-icon">' + cat.icon + "</span>" +
-      '<span class="cat-name">' + cat.label + "</span>" +
+      '<span class="cat-name">' + t("cat." + cat.key) + "</span>" +
       '<span class="cat-count">' + count + " item" + (count > 1 ? "s" : "") + "</span>";
     btn.addEventListener("click", () => openCategory(cat.key));
     libraryCategories.appendChild(btn);
@@ -1700,7 +1730,7 @@ function renderLibraryCategories(){
 function renderCategoryItems(){
   activeLibraryItems = getLibraryFilteredItems().filter(i => libraryData[i].category === activeLibraryCategory);
   const cat = getCategory(activeLibraryCategory);
-  libraryCategoryName.textContent = cat.icon + " " + cat.label + " · " + activeLibraryItems.length + " items";
+  libraryCategoryName.textContent = cat.icon + " " + t("cat." + activeLibraryCategory) + " · " + t("items", [activeLibraryItems.length]);
   libraryItems.innerHTML = "";
   activeLibraryItems.forEach(idx => {
     const item = libraryData[idx];
@@ -1710,9 +1740,9 @@ function renderCategoryItems(){
       '<span class="item-icon">' + cat.icon + "</span>" +
       '<span class="item-body">' +
         '<span class="item-title">' + item.title + "</span>" +
-        '<span class="item-meta">' + (item.level || "B1") + " · " + item.sentences.length + " sentences</span>" +
+        '<span class="item-meta">' + (item.level || "B1") + " · " + t("sentencesMeta", [item.sentences.length]) + "</span>" +
       "</span>" +
-      '<span class="item-play">▶ Shadow</span>';
+      '<span class="item-play">' + t("shadow") + "</span>";
     btn.addEventListener("click", () => openLibraryItem(idx));
     libraryItems.appendChild(btn);
   });
@@ -1722,7 +1752,7 @@ function renderCategoryItems(){
 function openCategory(catKey){
   activeLibraryCategory = catKey;
   const cat = getCategory(catKey);
-  libraryHeading.textContent = cat.icon + " " + cat.label;
+  libraryHeading.textContent = cat.icon + " " + t("cat." + catKey);
   renderCategoryItems();
   showView("libraryItems");
 }
@@ -1758,7 +1788,7 @@ function showView(v){
   courseView.style.display = inPlayer ? "" : "none";
   libraryView.style.display = inPlayer ? "none" : "";
   libraryToggle.classList.toggle("active", !inPlayer);
-  libraryLabel.textContent = inPlayer ? "Library" : "Back to Course";
+  libraryLabel.textContent = inPlayer ? t("library") : t("backToCourse");
   if (v === "course") setModeUI("course");
   if (v === "libraryPlayer") setModeUI("library");
   if (v === "libraryCategories") libraryItemsWrap.style.display = "none";
@@ -1775,7 +1805,7 @@ function setModeUI(mode){
     const cat = getCategory(activeLibraryCategory);
     lessonNumber.textContent = cat.icon + " " + cat.label;
     const pos = activeLibraryItems.indexOf(activeLibraryItem);
-    libraryItemProgress.textContent = "Item " + (pos + 1) + " / " + activeLibraryItems.length;
+    libraryItemProgress.textContent = t("itemOf", [pos + 1, activeLibraryItems.length]);
   } else {
     updateLessonNavUI();
   }
@@ -1786,7 +1816,7 @@ libraryToggle.addEventListener("click", () => {
     showView("course");
   } else {
     renderLibraryCategories();
-    libraryHeading.textContent = "Choose a Category";
+    libraryHeading.textContent = t("chooseCategory");
     showView("libraryCategories");
   }
 });
