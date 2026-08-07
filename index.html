@@ -1837,6 +1837,7 @@ function resetPracticeUI(){
   practiceStatus.className = "practice-status";
   audioChunks = [];
   recognizedText = "";
+  if (recognitionTimeout) { clearTimeout(recognitionTimeout); recognitionTimeout = null; }
 }
 
 /* ---- Listen to original (TTS) ---- */
@@ -1856,25 +1857,65 @@ let recognizedText = "";
 let recognitionEnded = false;
 let recordingStopped = false;
 
-if (SpeechRecognition) {
-  recognition = new SpeechRecognition();
-  recognition.lang = "en-US";
-  recognition.interimResults = false;
-  recognition.maxAlternatives = 1;
+let recognitionError = "";      // human-readable message from the last recognition attempt
+let stopRequested = false;      // true when the user taps stop (intentional end)
+let recognitionRestarts = 0;    // how many times we auto-restarted recognition
+let recognitionTimeout = null;  // safety timer so "Analyzing..." never hangs
 
-  recognition.onresult = (event) => {
-    recognizedText = event.results[0][0].transcript;
+// Build a FRESH recognition session for every recording. Reusing one Chrome
+// SpeechRecognition instance across takes can get stuck and silently return
+// nothing — the #1 cause of "(nothing recognized)" after a good recording.
+function setupRecognition() {
+  if (!SpeechRecognition) return null;
+
+  const rec = new SpeechRecognition();
+  rec.lang = "en-US";
+  rec.interimResults = false;
+  rec.maxAlternatives = 1;
+  recognitionError = "";
+
+  rec.onresult = (event) => {
+    // Keep the latest final transcript (Chrome can fire several result events).
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      if (event.results[i].isFinal) {
+        recognizedText = event.results[i][0].transcript;
+      }
+    }
   };
 
-  recognition.onerror = () => {
-    // leave recognizedText as-is; onend will still fire after this
+  rec.onerror = (event) => {
+    const code = event && event.error;
+    if (code === "not-allowed" || code === "service-not-allowed") {
+      recognitionError = "Microphone is blocked — click the 🔒 icon in the address bar, allow Microphone, then try again.";
+    } else if (code === "network") {
+      recognitionError = "Speech service is unreachable (network blocked) — check your internet connection and try again.";
+    } else if (code === "no-speech") {
+      recognitionError = "No speech detected — speak louder and closer to the microphone.";
+    } else if (code === "audio-capture") {
+      recognitionError = "No microphone found on this device.";
+    } else if (code === "aborted") {
+      // Stopped on purpose — not an error.
+    } else {
+      recognitionError = "Speech recognition failed (" + (code || "unknown error") + ") — please try again.";
+    }
   };
 
-  recognition.onend = () => {
+  rec.onend = () => {
     recognitionEnded = true;
+    if (recognitionTimeout) { clearTimeout(recognitionTimeout); recognitionTimeout = null; }
+    // If the user is STILL recording, Chrome's recognition may have dropped
+    // early (or hit its ~60s cap) — silently restart it to keep capturing.
+    if (isRecording && !stopRequested && recognitionRestarts < 3 && recognitionError === "") {
+      recognitionRestarts++;
+      try { rec.start(); return; } catch (e) {}
+    }
     maybeShowResults();
   };
-} else {
+
+  return rec;
+}
+
+if (!SpeechRecognition) {
   noSupport.style.display = "block";
 }
 
@@ -1921,6 +1962,9 @@ recordBtn.addEventListener("click", async () => {
       recognizedText = "";
       recognitionEnded = false;
       recordingStopped = false;
+      stopRequested = false;
+      recognitionError = "";
+      recognitionRestarts = 0;
 
       mediaRecorder.ondataavailable = (e) => {
         if (e.data && e.data.size > 0) audioChunks.push(e.data);
@@ -1944,13 +1988,32 @@ recordBtn.addEventListener("click", async () => {
         stream.getTracks().forEach(track => track.stop());
 
         recordingStopped = true;
+
+        // Safety: if recognition never finishes, don't leave the user stuck on
+        // "Analyzing pronunciation..." — show results with what we have.
+        if (recognitionTimeout) clearTimeout(recognitionTimeout);
+        recognitionTimeout = setTimeout(() => {
+          if (!recognitionEnded) {
+            if (recognition) { try { recognition.stop(); } catch (e) {} }
+            recognitionEnded = true;
+            maybeShowResults();
+          }
+        }, 4000);
+
         maybeShowResults();
       };
 
       // request a data chunk every 250ms instead of waiting until stop()
       mediaRecorder.start(250);
+      // Fresh recognition session per take (see setupRecognition).
+      recognition = setupRecognition();
       if (recognition) {
-        try { recognition.start(); } catch (e) {}
+        try {
+          recognition.start();
+        } catch (e) {
+          recognitionError = "Speech recognition couldn't start — check mic permission and try again.";
+          recognitionEnded = true;
+        }
       }
       isRecording = true;
 
@@ -1969,6 +2032,7 @@ recordBtn.addEventListener("click", async () => {
     }
 
   } else {
+    stopRequested = true;
     mediaRecorder.stop();
     if (recognition) {
       try { recognition.stop(); } catch (e) {}
@@ -2010,27 +2074,49 @@ function normalizeWords(str) {
 }
 
 function showPracticeResults() {
-  if (!SpeechRecognition) return;
-
   practiceStatus.textContent = "Recording saved ✓";
   practiceStatus.className = "practice-status ready";
+
+  // No speech recognition in this browser — the recording still works fine.
+  if (!SpeechRecognition) {
+    transcriptBox.textContent = "Speech recognition isn't available in this browser. Use Chrome (desktop or Android) for pronunciation analysis — your recording still plays below.";
+    accuracyScore.textContent = "--%";
+    accuracyScore.className = "accuracy-score mid";
+    resultBox.classList.add("visible");
+    return;
+  }
+
+  // Recognition failed — explain the real cause instead of a confusing 0%.
+  if (!recognizedText && recognitionError) {
+    transcriptBox.textContent = recognitionError;
+    accuracyScore.textContent = "--%";
+    accuracyScore.className = "accuracy-score low";
+    resultBox.classList.add("visible");
+    return;
+  }
+
+  // Recording worked but the mic heard nothing.
+  if (!recognizedText) {
+    transcriptBox.textContent = "Nothing recognized — speak clearly, a bit louder, and closer to the microphone, then tap Redo and try again.";
+    accuracyScore.textContent = "--%";
+    accuracyScore.className = "accuracy-score low";
+    resultBox.classList.add("visible");
+    return;
+  }
 
   const targetWords = normalizeWords(getCurrentTargetSentence());
   const saidWords = normalizeWords(recognizedText);
 
   let matches = 0;
-  const highlighted = targetWords.map((word, i) => {
-    const said = saidWords[i];
-    const isMatch = said && said === word;
-    if (isMatch) matches++;
-    return '<span class="' + (isMatch ? "word-correct" : "word-wrong") + '">' + word + "</span>";
+  targetWords.forEach((word, i) => {
+    if (saidWords[i] === word) matches++;
   });
 
   const pct = targetWords.length ? Math.round((matches / targetWords.length) * 100) : 0;
 
   accuracyScore.textContent = pct + "%";
   accuracyScore.className = "accuracy-score " + (pct >= 80 ? "good" : pct >= 50 ? "mid" : "low");
-  transcriptBox.textContent = recognizedText || "(nothing recognized — try speaking clearly)";
+  transcriptBox.textContent = recognizedText;
 
   resultBox.classList.add("visible");
 }
