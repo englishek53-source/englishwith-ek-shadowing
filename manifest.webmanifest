@@ -1,0 +1,28 @@
+{
+  "name": "EnglishWith_EK — Shadowing",
+  "short_name": "EnglishWith_EK",
+  "description": "Improve your English pronunciation with shadowing lessons, a content library, pronunciation analysis and saved words — on your phone or desktop.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F8F6F2",
+  "theme_color": "#2f8f46",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

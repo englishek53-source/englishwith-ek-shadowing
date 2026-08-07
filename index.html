@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EnglishWith_EK Shadowing</title>
 
+<!-- ===== PWA (installable app) ===== -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2f8f46">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EnglishWith_EK">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+
 <style>
 
 /* ---------- Theme Variables ---------- */
@@ -1578,6 +1588,16 @@ html[dir="rtl"] .library-item-card .item-play{ direction:ltr; }
 <script src="i18n.js"></script>
 <script src="wordpopup.js"></script>
 <script src="headerui.js"></script>
+<script>
+/* ---------- PWA: register the service worker (offline + installable) ---------- */
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch((err) => {
+      console.warn("Service worker registration failed:", err);
+    });
+  });
+}
+</script>
 <script>
 
 let currentLesson = 0;
