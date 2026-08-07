@@ -732,16 +732,23 @@ text-align:center;
 }
 
 /* ---------- Focus Mode ---------- */
-/* يبقى ظاهر فقط: عنوان الدرس ورقمه + الفيديو + كرت الشادووينغ (نص + أزرار التحكم) + زر الخروج من التركيز */
+/* يبقى ظاهر فقط: الفيديو + كرت الشادووينغ (نص + أزرار التحكم) + بطاقة التسجيل الصوتي + زر الخروج من التركيز.
+   يُخفى تماماً: شريط التقدم، المكتبة بكل تصنيفاتها، الكلمات المحفوظة، الإنجازات، وكل العناصر التحفيزية. */
+body.focus-mode .progress-container,
 body.focus-mode .lesson-section,
+body.focus-mode .lesson-title,
 body.focus-mode .cards,
 body.focus-mode .filter-bar,
 body.focus-mode .lesson-nav,
+body.focus-mode #libraryView,
 body.focus-mode header p,
 body.focus-mode header h1,
 body.focus-mode header button,
-body.focus-mode #themeToggle{
-  display:none;
+body.focus-mode header a,
+body.focus-mode #themeToggle,
+body.focus-mode #myVocabToggle,
+body.focus-mode #libraryToggle{
+  display:none !important;
 }
 
 body.focus-mode header{
