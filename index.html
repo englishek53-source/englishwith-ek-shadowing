@@ -656,6 +656,15 @@ text-align:center;
 }
 .practice-status.recording{ color:var(--red); }
 .practice-status.ready{ color:var(--accent-dark); }
+.recog-status{
+  text-align:center;
+  font-size:12px;
+  font-weight:600;
+  color:var(--accent-dark);
+  margin:-8px 0 12px;
+  min-height:14px;
+}
+.recog-status.error{ color:var(--red); }
 
 .playback-row{
   display:none;
@@ -1090,6 +1099,7 @@ body.focus-mode .utility-bar{
   </div>
 
   <div class="practice-status" id="practiceStatus">Tap to start recording</div>
+  <div class="recog-status" id="recogStatus" style="display:none;"></div>
 
   <div class="playback-row" id="playbackRow">
     <button class="play-my-btn" id="playMyBtn">
@@ -1110,6 +1120,8 @@ body.focus-mode .utility-bar{
       <span class="alabel">Pronunciation Match</span>
       <span class="accuracy-score" id="accuracyScore">--%</span>
     </div>
+    <div class="transcript-label">Target — green = heard correctly, red = missed</div>
+    <div class="transcript-box" id="targetMatchBox">—</div>
     <div class="transcript-label">What we heard you say</div>
     <div class="transcript-box" id="transcriptBox">—</div>
   </div>
@@ -1206,6 +1218,7 @@ body.focus-mode .utility-bar{
 <script src="library.js"></script>
 <script src="lessons.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
+<script src="practice.js"></script>
 <script>
 
 let currentLesson = 0;
@@ -1812,7 +1825,22 @@ const redoBtn = document.getElementById("redoBtn");
 const resultBox = document.getElementById("resultBox");
 const accuracyScore = document.getElementById("accuracyScore");
 const transcriptBox = document.getElementById("transcriptBox");
+const targetMatchBox = document.getElementById("targetMatchBox");
 const noSupport = document.getElementById("noSupport");
+const recogStatus = document.getElementById("recogStatus");
+
+// Live recognition state line under the mic (self-diagnosing feedback).
+function setRecogStatus(msg, isError) {
+  if (!recogStatus) return;
+  if (msg) {
+    recogStatus.textContent = msg;
+    recogStatus.className = "recog-status" + (isError ? " error" : "");
+    recogStatus.style.display = "block";
+  } else {
+    recogStatus.style.display = "none";
+    recogStatus.textContent = "";
+  }
+}
 
 let mediaRecorder;
 let audioChunks = [];
@@ -1835,6 +1863,9 @@ function resetPracticeUI(){
   resultBox.classList.remove("visible");
   practiceStatus.textContent = "Tap to start recording";
   practiceStatus.className = "practice-status";
+  setRecogStatus("");
+  targetMatchBox.innerHTML = "";
+  lastInterimText = "";
   audioChunks = [];
   recognizedText = "";
   if (recognitionTimeout) { clearTimeout(recognitionTimeout); recognitionTimeout = null; }
@@ -1858,6 +1889,7 @@ let recognitionEnded = false;
 let recordingStopped = false;
 
 let recognitionError = "";      // human-readable message from the last recognition attempt
+let lastInterimText = "";       // latest interim transcript (fallback if no final arrives)
 let stopRequested = false;      // true when the user taps stop (intentional end)
 let recognitionRestarts = 0;    // how many times we auto-restarted recognition
 let recognitionTimeout = null;  // safety timer so "Analyzing..." never hangs
@@ -1870,21 +1902,41 @@ function setupRecognition() {
 
   const rec = new SpeechRecognition();
   rec.lang = "en-US";
-  rec.interimResults = false;
+  rec.interimResults = true;   // stream partial text live — much more reliable
   rec.maxAlternatives = 1;
   recognitionError = "";
+  lastInterimText = "";
+
+  rec.onstart = () => {
+    console.log("[recog] started");
+    setRecogStatus("🎙️ Listening…");
+  };
+  rec.onspeechstart = () => {
+    console.log("[recog] speech detected");
+    setRecogStatus("🗣️ Speaking — listening…");
+  };
+  rec.onaudiostart = () => console.log("[recog] audio captured");
+  rec.onaudioend = () => console.log("[recog] audio capture ended");
 
   rec.onresult = (event) => {
-    // Keep the latest final transcript (Chrome can fire several result events).
+    let interim = "";
     for (let i = event.resultIndex; i < event.results.length; i++) {
-      if (event.results[i].isFinal) {
-        recognizedText = event.results[i][0].transcript;
+      const r = event.results[i];
+      if (r.isFinal) {
+        recognizedText = r[0].transcript;
+      } else {
+        interim += r[0].transcript;
       }
     }
+    if (interim) lastInterimText = interim;
+    const live = recognizedText || interim;
+    if (live) setRecogStatus("🔍 " + live);
+    console.log("[recog] result:", JSON.stringify({ final: recognizedText, interim }));
   };
 
   rec.onerror = (event) => {
     const code = event && event.error;
+    console.log("[recog] error:", code);
     if (code === "not-allowed" || code === "service-not-allowed") {
       recognitionError = "Microphone is blocked — click the 🔒 icon in the address bar, allow Microphone, then try again.";
     } else if (code === "network") {
@@ -2034,8 +2086,13 @@ recordBtn.addEventListener("click", async () => {
   } else {
     stopRequested = true;
     mediaRecorder.stop();
+    // Give the recognizer a beat to flush its final transcript before forcing a
+    // stop — stopping it instantly can discard the final result and produce
+    // "nothing recognized" / 0% even though the recording itself is fine.
     if (recognition) {
-      try { recognition.stop(); } catch (e) {}
+      try {
+        setTimeout(() => { try { recognition.stop(); } catch (e) {} }, 700);
+      } catch (e) {}
     }
     isRecording = false;
     recordBtn.classList.remove("recording");
@@ -2067,15 +2124,67 @@ redoBtn.addEventListener("click", () => {
 function normalizeWords(str) {
   return str
     .toLowerCase()
-    .replace(/[^\w\s']/g, "")
+    .replace(/[^\w\s]/g, "")   // strip ALL punctuation incl. apostrophes (it's -> its, don't -> dont)
     .trim()
     .split(/\s+/)
     .filter(Boolean);
 }
 
+// Character-level Levenshtein distance -- tolerates recognizer typos.
+function charDistance(a, b) {
+  if (a === b) return 0;
+  const m = a.length, n = b.length;
+  if (m === 0) return n;
+  if (n === 0) return m;
+  const dp = [];
+  for (let i = 0; i <= m; i++) dp[i] = [i];
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+    }
+  }
+  return dp[m][n];
+}
+
+// Two words count as equal if identical or nearly so
+// (succesful vs successful, favourite vs favorite, ...).
+function wordsMatch(a, b) {
+  if (a === b) return true;
+  const len = Math.max(a.length, b.length);
+  return charDistance(a, b) <= Math.max(1, Math.round(len * 0.25));
+}
+
+// Word-sequence edit distance: insertions / deletions / substitutions each cost 1,
+// and a substitution costs 0 when the words are close. This makes the score
+// forgiving when the recognizer adds, skips or reorders a word -- instead of the
+// old strict "word at position i must be identical" check, which collapsed the
+// whole score on a single misaligned word.
+function sequenceDistance(target, said) {
+  const m = target.length, n = said.length;
+  if (m === 0) return 0;
+  if (n === 0) return m;
+  const dp = [];
+  for (let i = 0; i <= m; i++) dp[i] = [i];
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      const cost = wordsMatch(target[i - 1], said[j - 1]) ? 0 : 1;
+      dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+    }
+  }
+  return dp[m][n];
+}
+
 function showPracticeResults() {
   practiceStatus.textContent = "Recording saved ✓";
   practiceStatus.className = "practice-status ready";
+
+  // Chrome sometimes only delivers interim (partial) results when a take is
+  // stopped quickly — use the latest interim text as a fallback so we always
+  // compare against what was actually heard, not an empty transcript.
+  const saidText = (recognizedText || lastInterimText || "").trim();
 
   // No speech recognition in this browser — the recording still works fine.
   if (!SpeechRecognition) {
@@ -2087,7 +2196,7 @@ function showPracticeResults() {
   }
 
   // Recognition failed — explain the real cause instead of a confusing 0%.
-  if (!recognizedText && recognitionError) {
+  if (!saidText && recognitionError) {
     transcriptBox.textContent = recognitionError;
     accuracyScore.textContent = "--%";
     accuracyScore.className = "accuracy-score low";
@@ -2096,7 +2205,7 @@ function showPracticeResults() {
   }
 
   // Recording worked but the mic heard nothing.
-  if (!recognizedText) {
+  if (!saidText) {
     transcriptBox.textContent = "Nothing recognized — speak clearly, a bit louder, and closer to the microphone, then tap Redo and try again.";
     accuracyScore.textContent = "--%";
     accuracyScore.className = "accuracy-score low";
@@ -2105,18 +2214,14 @@ function showPracticeResults() {
   }
 
   const targetWords = normalizeWords(getCurrentTargetSentence());
-  const saidWords = normalizeWords(recognizedText);
+  const saidWords = normalizeWords(saidText);
 
-  let matches = 0;
-  targetWords.forEach((word, i) => {
-    if (saidWords[i] === word) matches++;
-  });
-
-  const pct = targetWords.length ? Math.round((matches / targetWords.length) * 100) : 0;
+  const dist = sequenceDistance(targetWords, saidWords);
+  const pct = targetWords.length ? Math.round(Math.max(0, (1 - dist / targetWords.length) * 100)) : 0;
 
   accuracyScore.textContent = pct + "%";
   accuracyScore.className = "accuracy-score " + (pct >= 80 ? "good" : pct >= 50 ? "mid" : "low");
-  transcriptBox.textContent = recognizedText;
+  transcriptBox.textContent = saidText;
 
   resultBox.classList.add("visible");
 }
