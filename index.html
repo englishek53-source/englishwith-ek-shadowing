@@ -46,33 +46,88 @@
   --gold:#E5BC72;
 }
 
-  .progress-container{
-    width:90%;
-    max-width:900px;
-    margin:0 auto;
-    padding:18px 0 0;
-  }
-
-  #progressText{
-    font-size:13px;
-    font-weight:600;
-    color:var(--muted);
-    margin-bottom:8px;
-  }
-
-  .progress-bg {
-  width: 100%;
-  background: #e0e0e0;
-  border-radius: 10px;
-  height: 10px;
-  overflow: hidden;
+/* =====================================================
+   ---------- Top bar: thin progress + round buttons ----------
+   ===================================================== */
+.top-bar{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:90%;
+  max-width:900px;
+  margin:16px auto 0;
 }
-.progress-fill {
-  height: 100%;
-  background: #4caf50;
-  width: 0%;
-  transition: width 0.3s ease;
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
 }
+
+.round-icon-btn{
+  margin-top:0;
+  width:42px;
+  height:42px;
+  padding:0;
+  border-radius:50%;
+  background:transparent;
+  color:var(--text);
+  border:1.5px solid var(--border);
+  font-size:17px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:all .2s ease;
+  flex-shrink:0;
+}
+
+.round-icon-btn:hover{
+  border-color:var(--accent);
+  color:var(--accent-dark);
+  background:var(--accent-light);
+}
+
+/* Focus Mode 🎯 — green border while active */
+.round-icon-btn.on{
+  border-color:#34a853;
+  color:#34a853;
+  background:rgba(52,168,83,.12);
+  box-shadow:0 0 0 3px rgba(52,168,83,.18);
+}
+
+.progress-area{
+  flex:1;
+  min-width:0;
+}
+
+.top-bar .progress-bg{
+  width:100%;
+  height:6px;
+  border-radius:999px;
+  background:#e0e0e0;
+  overflow:hidden;
+}
+
+.top-bar .progress-fill{
+  height:100%;
+  background:linear-gradient(90deg,#52b35c,#2f8f46);
+  border-radius:999px;
+  width:0%;
+  transition:width .45s ease;
+}
+
+#progressText{
+  display:block;
+  margin-top:6px;
+  font-size:11px;
+  font-weight:600;
+  color:var(--muted);
+  text-align:right;
+}
+
 .completed {
   color: #4caf50;
   font-weight: bold;
@@ -87,8 +142,65 @@ transition:background .3s ease, color .3s ease;
 }
 
 header{
-padding:25px;
+padding:30px 25px 0;
 text-align:center;
+}
+
+header h1{
+  font-size:46px;
+  letter-spacing:-.5px;
+  margin:10px;
+}
+
+header .tagline{
+  font-size:15px;
+  color:var(--muted);
+  margin:0 auto 28px;
+}
+
+/* ---------- Primary CTA (the only prominent element) ---------- */
+#startShadowBtn{
+  display:block;
+  width:90%;
+  max-width:900px;
+  margin:0 auto;
+  padding:17px 20px;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.3px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,#52b35c,#2f8f46);
+  color:#fff;
+  box-shadow:0 12px 26px rgba(47,143,70,.3);
+  cursor:pointer;
+  font-family:inherit;
+  transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+#startShadowBtn:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.06);
+  box-shadow:0 16px 32px rgba(47,143,70,.38);
+}
+
+#startShadowBtn:active{
+  transform:translateY(0) scale(.99);
+}
+
+/* ---------- Secondary text link (no background) ---------- */
+.achievements-link{
+  display:block;
+  margin:16px auto 6px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--muted);
+  text-decoration:none;
+  transition:color .2s ease;
+}
+
+.achievements-link:hover{
+  color:var(--accent-dark);
 }
 
 h1{
@@ -112,47 +224,77 @@ margin-top:20px;
 font-family:inherit;
 }
 
-/* ---------- Utility Bar (Theme / Focus) ---------- */
-.utility-bar{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  padding:10px 0 0;
-  flex-wrap:wrap;
+/* ---------- Settings menu (⋮) ---------- */
+.settings-wrap{
+  position:relative;
 }
 
-.mode-btn{
+.settings-menu{
+  position:absolute;
+  top:calc(100% + 8px);
+  right:0;
+  min-width:200px;
+  background:var(--card-bg);
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 14px 34px var(--shadow);
+  padding:8px;
+  z-index:900;
+  display:none;
+  flex-direction:column;
+  gap:2px;
+}
+
+.settings-menu.open{
+  display:flex;
+  animation:menuIn .16s ease;
+}
+
+@keyframes menuIn{
+  from{opacity:0; transform:translateY(-5px) scale(.98);}
+  to{opacity:1; transform:translateY(0) scale(1);}
+}
+
+.settings-item{
   margin-top:0;
-  padding:9px 18px 9px 14px;
+  width:100%;
+  padding:11px 12px;
+  border:none;
+  border-radius:11px;
+  background:transparent;
+  color:var(--text);
   font-size:14px;
   font-weight:600;
-  border-radius:50px;
-  background:transparent;
-  color:var(--muted);
-  border:1.5px solid var(--border);
+  font-family:inherit;
   display:flex;
   align-items:center;
-  gap:8px;
-  transition:all .2s ease;
+  gap:11px;
+  text-align:left;
+  cursor:pointer;
+  transition:background .15s ease, color .15s ease;
 }
 
-.mode-btn:hover{
-  border-color:var(--accent);
-  color:var(--text);
+.settings-item:hover{
+  background:var(--accent-light);
+  color:var(--accent-dark);
 }
 
-.mode-btn .icon{
-  width:17px;
-  height:17px;
-  display:flex;
+.settings-item.active{
+  color:var(--accent-dark);
+}
+
+.settings-icon{
+  width:20px;
+  display:inline-flex;
   align-items:center;
   justify-content:center;
   flex-shrink:0;
+  font-size:15px;
 }
 
-.mode-btn .icon svg{
-  width:100%;
-  height:100%;
+.settings-icon svg{
+  width:17px;
+  height:17px;
   stroke:currentColor;
   fill:none;
   stroke-width:2;
@@ -160,10 +302,13 @@ font-family:inherit;
   stroke-linejoin:round;
 }
 
-.mode-btn.active{
-  background:var(--accent);
-  color:#fff;
-  border-color:var(--accent);
+html[dir="rtl"] .settings-menu{
+  right:auto;
+  left:0;
+}
+
+html[dir="rtl"] .settings-item{
+  text-align:right;
 }
 
 /* ---------- Filter Bar ---------- */
@@ -413,8 +558,87 @@ margin-bottom:10px;
 }
 
 .lesson-title h2{
-font-size:28px;
-margin:10px 0 0;
+font-size:31px;
+margin:0;
+line-height:1.3;
+}
+
+/* ---------- Lesson Navigation Box ---------- */
+.lesson-nav-box{
+  width:90%;
+  max-width:900px;
+  margin:24px auto 16px;
+  background:var(--card-bg);
+  border:1.5px solid var(--border);
+  border-radius:20px;
+  padding:14px 16px;
+  box-sizing:border-box;
+}
+
+.nav-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.nav-arrow{
+  margin-top:0;
+  width:42px;
+  height:42px;
+  padding:0;
+  border-radius:50%;
+  border:1.5px solid var(--border);
+  background:transparent;
+  color:var(--text);
+  font-size:14px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:all .2s ease;
+  flex-shrink:0;
+}
+
+.nav-arrow:hover:not(:disabled){
+  border-color:var(--accent);
+  color:var(--accent-dark);
+  background:var(--accent-light);
+}
+
+.nav-arrow:disabled{
+  opacity:.35;
+  cursor:default;
+}
+
+.lesson-nav-box .lesson-progress{
+  font-size:15px;
+  font-weight:700;
+  color:var(--accent-dark);
+}
+
+.lesson-nav-box .filter-bar{
+  width:auto;
+  margin:12px 0 0;
+}
+
+.level-pill{
+  padding:8px 18px;
+  border-radius:999px;
+  border:1.5px solid var(--border);
+  background:var(--bg);
+  color:var(--muted);
+  font-size:13.5px;
+  font-weight:600;
+  font-family:inherit;
+  cursor:pointer;
+  transition:border-color .2s ease, color .2s ease;
+}
+
+.level-pill:hover{
+  border-color:var(--accent);
+  color:var(--text);
 }
 
 /* ---------- Lesson Sections (Vocabulary / Expressions / Reflection / Quote) ---------- */
@@ -742,18 +966,21 @@ text-align:center;
 
 /* ---------- Focus Mode ---------- */
 /* يبقى ظاهر فقط: الفيديو + كرت الشادووينغ (نص + أزرار التحكم) + بطاقة التسجيل الصوتي + زر الخروج من التركيز.
-   يُخفى تماماً: شريط التقدم، المكتبة بكل تصنيفاتها، الكلمات المحفوظة، الإنجازات، وكل العناصر التحفيزية. */
-body.focus-mode .progress-container,
-body.focus-mode .lesson-section,
+   يُخفى تماماً: شريط التقدم، قائمة الإعدادات، اللغة، المكتبة بكل تصنيفاتها، الكلمات المحفوظة، الإنجازات، وكل العناصر التحفيزية. */
+body.focus-mode .progress-area,
+body.focus-mode #settingsToggle,
+body.focus-mode .lang-row,
 body.focus-mode .lesson-title,
+body.focus-mode .lesson-nav-box,
+body.focus-mode .lesson-nav,
+body.focus-mode .lesson-section,
 body.focus-mode .cards,
 body.focus-mode .filter-bar,
-body.focus-mode .lesson-nav,
 body.focus-mode #libraryView,
 body.focus-mode header p,
 body.focus-mode header h1,
-body.focus-mode header button,
-body.focus-mode header a,
+body.focus-mode #startShadowBtn,
+body.focus-mode .achievements-link,
 body.focus-mode #themeToggle,
 body.focus-mode #myVocabToggle,
 body.focus-mode #libraryToggle{
@@ -761,11 +988,7 @@ body.focus-mode #libraryToggle{
 }
 
 body.focus-mode header{
-  padding:15px 25px 5px;
-}
-
-body.focus-mode .utility-bar{
-  padding:10px 0 0;
+  padding:0;
 }
 
 /* ---------- Library ---------- */
@@ -1019,31 +1242,41 @@ html[dir="rtl"] .wp-word{
 /* ---------- Mobile ---------- */
 @media (max-width:480px){
   h1{font-size:30px;}
+  header h1{font-size:34px;}
   .word{font-size:26px;}
   .lesson-nav{flex-direction:column;gap:10px;}
-  .utility-bar{gap:8px;}
   .shadow-controls{gap:14px;}
   .shadow-card, .lesson-section, .practice-card{padding:25px 18px;}
-  .mode-btn{padding:8px 14px 8px 12px; font-size:13px;}
+  .top-bar{gap:10px;}
+  .round-icon-btn{width:40px; height:40px; font-size:16px;}
+  #startShadowBtn{font-size:16px; padding:15px 18px;}
 }
 
-/* ---------- Website Language ---------- */
-.lang-select{
-  padding:9px 14px;
-  border-radius:50px;
+/* ---------- Website Language (small pill) ---------- */
+.lang-row{
+  display:flex;
+  justify-content:center;
+  width:90%;
+  max-width:900px;
+  margin:14px auto 0;
+}
+
+.lang-pill{
+  padding:7px 18px;
+  border-radius:999px;
   border:1.5px solid var(--border);
-  background:transparent;
-  color:var(--muted);
-  font-size:14px;
+  background:var(--card-bg);
+  color:var(--text);
+  font-size:13.5px;
   font-weight:600;
   font-family:inherit;
   cursor:pointer;
-  transition:border-color .2s ease, color .2s ease;
+  transition:border-color .2s ease, box-shadow .2s ease;
 }
 
-.lang-select:hover{
+.lang-pill:hover{
   border-color:var(--accent);
-  color:var(--text);
+  box-shadow:0 0 0 3px var(--accent-light);
 }
 
 /* Right-to-left layout for Arabic */
@@ -1060,51 +1293,46 @@ html[dir="rtl"] .library-item-card .item-play{ direction:ltr; }
 
 <body>
 
-<div class="progress-container">
-  <div id="progressText">0 / 0 lessons completed</div>
-  <div class="progress-bg">
-    <div id="progressBar" class="progress-fill"></div>
+<!-- ===== Top bar: thin progress bar + round buttons (🎯 Focus / ⋮ Settings) ===== -->
+<div class="top-bar">
+  <div class="top-actions">
+    <button id="focusToggle" class="round-icon-btn" title="Focus Mode" aria-label="Focus Mode">🎯</button>
+    <div class="settings-wrap">
+      <button id="settingsToggle" class="round-icon-btn" title="Settings" aria-label="Settings">⋮</button>
+      <div class="settings-menu" id="settingsMenu">
+        <button class="settings-item" id="themeToggle">
+          <span class="settings-icon" id="themeIcon"></span>
+          <span id="themeLabel">Dark Mode</span>
+        </button>
+        <button class="settings-item" id="myVocabToggle">
+          <span class="settings-icon">⭐</span>
+          <span id="myVocabLabel">My Words</span>
+        </button>
+        <button class="settings-item" id="libraryToggle">
+          <span class="settings-icon">📚</span>
+          <span id="libraryLabel">Library</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="progress-area">
+    <div class="progress-bg">
+      <div id="progressBar" class="progress-fill"></div>
+    </div>
+    <span id="progressText">0 / 0 lessons completed</span>
   </div>
 </div>
 
-<div class="utility-bar">
-  <button id="themeToggle" class="mode-btn">
-    <span class="icon" id="themeIcon">
-      <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </span>
-    <span class="label" id="themeLabel">Dark Mode</span>
-  </button>
-  <button id="focusToggle" class="mode-btn">
-    <span class="icon">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="1.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.5" y2="12"/></svg>
-    </span>
-    <span class="label" id="focusLabel">Focus Mode</span>
-  </button>
-  <button id="myVocabToggle" class="mode-btn">
-    <span class="icon">
-      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9 12 2"/></svg>
-    </span>
-    <span class="label" id="myVocabLabel">My Words</span>
-  </button>
-  <button id="libraryToggle" class="mode-btn">
-    <span class="icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-    </span>
-    <span class="label" id="libraryLabel">Library</span>
-  </button>
-  <select id="langSelect" class="lang-select" aria-label="Website language"></select>
+<!-- ===== Language pill ===== -->
+<div class="lang-row">
+  <select id="langSelect" class="lang-pill" aria-label="Website language"></select>
 </div>
 
 <header>
-
-<h1>EnglishWith_EK</h1>
-
-<p data-i18n="tagline">Listen • Repeat • Speak Naturally</p>
-
-<button id="startShadowBtn" data-i18n="startShadowing">Start Shadowing</button> 
-  <a href="achievements.html" style="display:inline-block; margin-top:10px; padding:8px 16px; background:#fff; border:1px solid #E1DACB; border-radius:8px; text-decoration:none; color:#2B241F; font-weight:600;" data-i18n="achievements">🏆 Achievements</a>
-
-
+  <h1>EnglishWith_EK</h1>
+  <p class="tagline" data-i18n="tagline">Listen • Repeat • Speak Naturally</p>
+  <button id="startShadowBtn" data-i18n="startShadowing">Start Shadowing</button>
+  <a href="achievements.html" class="achievements-link" data-i18n="achievements">🏆 Achievements</a>
 </header>
 
 <div class="lesson-section" id="myVocabSection" style="display:none;">
@@ -1118,15 +1346,15 @@ html[dir="rtl"] .library-item-card .item-play{ direction:ltr; }
 
 <div id="courseView">
 
-<div class="filter-bar">
-  <label for="levelFilter" data-i18n="filterByLevel">🎓 Filter by level (CEFR):</label>
-  <select id="levelFilter"></select>
-</div>
-
-<div class="lesson-nav" id="courseNav">
-  <button id="prevLessonBtn" data-i18n="prevLesson">◀ Previous Lesson</button>
-  <span class="lesson-progress" id="lessonProgress">Lesson 1 / 30</span>
-  <button id="nextLessonBtn" data-i18n="nextLesson">Next Lesson ▶</button>
+<div class="lesson-nav-box" id="courseNav">
+  <div class="nav-row">
+    <button id="prevLessonBtn" class="nav-arrow" aria-label="Previous lesson">◀</button>
+    <span class="lesson-progress" id="lessonProgress">Lesson 1 / 30</span>
+    <button id="nextLessonBtn" class="nav-arrow" aria-label="Next lesson">▶</button>
+  </div>
+  <div class="filter-bar">
+    <select id="levelFilter" class="level-pill"></select>
+  </div>
 </div>
 
 <div class="lesson-nav" id="libraryNav" style="display:none;">
@@ -1345,6 +1573,7 @@ html[dir="rtl"] .library-item-card .item-play{ direction:ltr; }
 <script src="practice.js"></script>
 <script src="i18n.js"></script>
 <script src="wordpopup.js"></script>
+<script src="headerui.js"></script>
 <script>
 
 let currentLesson = 0;
@@ -1385,7 +1614,6 @@ const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
 const themeLabel = document.getElementById("themeLabel");
 const focusToggle = document.getElementById("focusToggle");
-const focusLabel = document.getElementById("focusLabel");
 const levelSelect = document.getElementById("levelFilter");
 const myVocabToggle = document.getElementById("myVocabToggle");
 const myVocabLabel = document.getElementById("myVocabLabel");
@@ -1435,12 +1663,34 @@ themeToggle.addEventListener("click", () => {
   applyTheme(current === "dark" ? "light" : "dark");
 });
 
+/* ---------- Settings menu (⋮) ---------- */
+const settingsToggle = document.getElementById("settingsToggle");
+const settingsMenu = document.getElementById("settingsMenu");
+
+settingsToggle.addEventListener("click", (e) => {
+  e.stopPropagation();
+  settingsMenu.classList.toggle("open");
+});
+
+settingsMenu.addEventListener("click", () => {
+  settingsMenu.classList.remove("open");
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".settings-wrap")) settingsMenu.classList.remove("open");
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") settingsMenu.classList.remove("open");
+});
+
 /* ---------- Focus Mode ---------- */
 focusToggle.addEventListener("click", () => {
   document.body.classList.toggle("focus-mode");
   const active = document.body.classList.contains("focus-mode");
-  focusToggle.classList.toggle("active", active);
-  focusLabel.textContent = active ? t("exitFocus") : t("focusMode");
+  focusToggle.classList.toggle("on", active);
+  focusToggle.title = active ? t("exitFocus") : t("focusMode");
+  settingsMenu.classList.remove("open");
 });
 
 /* ---------- CEFR Level Filter ---------- */
@@ -1474,8 +1724,7 @@ levelSelect.addEventListener("change", () => applyFilter(levelSelect.value));
 
 function updateLessonNavUI(){
   const pos = filteredLessons.indexOf(currentLesson);
-  const num = String(currentLesson + 1).padStart(2, "0");
-  lessonNumber.textContent = t("lesson") + " " + num;
+  lessonNumber.style.display = "none"; // no lesson-number badge in the course view (clean hierarchy)
   lessonProgress.textContent = t("lessonProgress", [pos + 1, filteredLessons.length]);
   prevLessonBtn.disabled = pos <= 0;
   nextLessonBtn.disabled = pos >= filteredLessons.length - 1;
