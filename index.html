@@ -232,7 +232,7 @@ font-family:inherit;
 .settings-menu{
   position:absolute;
   top:calc(100% + 8px);
-  right:0;
+  left:0; /* يفتح لليمين عشان الزر بأقصى اليسار — ما يطلع برا الشاشة */
   min-width:200px;
   background:var(--card-bg);
   border:1.5px solid var(--border);
@@ -279,6 +279,10 @@ font-family:inherit;
   color:var(--accent-dark);
 }
 
+.settings-item .settings-label{
+  white-space:nowrap;
+}
+
 .settings-item.active{
   color:var(--accent-dark);
 }
@@ -303,8 +307,8 @@ font-family:inherit;
 }
 
 html[dir="rtl"] .settings-menu{
-  right:auto;
-  left:0;
+  left:auto;
+  right:0;
 }
 
 html[dir="rtl"] .settings-item{
@@ -1302,15 +1306,15 @@ html[dir="rtl"] .library-item-card .item-play{ direction:ltr; }
       <div class="settings-menu" id="settingsMenu">
         <button class="settings-item" id="themeToggle">
           <span class="settings-icon" id="themeIcon"></span>
-          <span id="themeLabel">Dark Mode</span>
+          <span class="settings-label" id="themeLabel">Dark Mode</span>
         </button>
         <button class="settings-item" id="myVocabToggle">
           <span class="settings-icon">⭐</span>
-          <span id="myVocabLabel">My Words</span>
+          <span class="settings-label" id="myVocabLabel">My Words</span>
         </button>
         <button class="settings-item" id="libraryToggle">
           <span class="settings-icon">📚</span>
-          <span id="libraryLabel">Library</span>
+          <span class="settings-label" id="libraryLabel">Library</span>
         </button>
       </div>
     </div>
