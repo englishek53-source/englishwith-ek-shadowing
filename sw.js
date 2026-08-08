@@ -11,7 +11,7 @@
    Bump CACHE below when you change a precached file.
    ============================================================ */
 
-const CACHE = "ek-shadowing-v3";
+const CACHE = "ek-shadowing-v4";
 
 const PRECACHE = [
   "./",
